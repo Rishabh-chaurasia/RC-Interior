@@ -145,12 +145,11 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
   position: fixed; z-index: 60; top: 14px; left: var(--gutter); right: var(--gutter);
   display: flex; align-items: center; justify-content: space-between; gap: 20px;
   padding: 8px 8px 8px 18px; border-radius: 999px;
-  background: rgba(250, 247, 241, .75); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4);
-  border: 1px solid rgba(26,21,18,.08); color: var(--ink);
+  background: none; border: 0; color: var(--ink); /* no box: just logo, links and button */
   transition: transform .6s var(--ease), background .4s, color .4s, border-color .4s;
 }
 .nav.is-hidden { transform: translateY(-140%); }
-.nav.is-dark { background: rgba(31,25,21,.38); border-color: rgba(242,237,229,.14); color: var(--bone); }
+.nav.is-dark { color: var(--bone); text-shadow: 0 1px 12px rgba(0,0,0,.45); }
 .nav.is-dark .nav__links a:hover { background: rgba(242,237,229,.1); }
 .nav.is-dark .nav__links a.is-current { background: var(--lime); color: var(--ink); }
 .nav.is-dark .nav__cta { --bg: var(--lime); --fg: var(--ink); --hover: var(--bone); }
@@ -368,6 +367,11 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .panel.is-open { flex: 6; }
 .panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease), filter .8s; filter: brightness(.7) saturate(.85); }
 .panel.is-open img { filter: none; transform: scale(1.03); }
+.panel img { opacity: 0; transition: opacity .7s ease, transform 1.4s var(--ease), filter .8s; }
+.panel img.is-on { opacity: 1; }
+.panel__dots { position: absolute; z-index: 2; top: 16px; left: 50%; translate: -50% 0; display: flex; gap: 5px; }
+.panel__dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(242,237,229,.45); transition: background .3s, width .3s; }
+.panel__dots i.is-on { width: 18px; border-radius: 3px; background: var(--lime); }
 .panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(20,16,13,.85), rgba(20,16,13,0) 55%); }
 .panel__txt { position: absolute; z-index: 1; left: 22px; right: 22px; bottom: 22px; display: grid; gap: 8px; }
 .panel__txt span { font: 400 12px var(--mono); color: var(--lime); }

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { spaces, img } from '../data/content.js';
 import { isDesktop } from '../hooks/scroll.jsx';
 import { SectionHead } from './ui.jsx';
@@ -9,6 +9,15 @@ import { SectionHead } from './ui.jsx';
  */
 export default function Spaces({ onOpenGallery }) {
   const [open, setOpen] = useState(0);
+  // hover slideshow: the hovered panel cycles through its photos
+  const [hovered, setHovered] = useState(-1);
+  const [frame, setFrame] = useState(0);
+  useEffect(() => {
+    setFrame(0);
+    if (hovered < 0) return;
+    const t = setInterval(() => setFrame(f => f + 1), 1300);
+    return () => clearInterval(t);
+  }, [hovered]);
 
   const show = s => onOpenGallery({
     heading: s.title,
@@ -32,12 +41,23 @@ export default function Spaces({ onOpenGallery }) {
             aria-label={`${s.title}: view ${s.gallery.length} designs`}
             data-reveal="noimg"
             data-delay={i * 0.06}
-            onMouseEnter={() => isDesktop() && setOpen(i)}
+            onMouseEnter={() => { if (isDesktop()) setOpen(i); setHovered(i); }}
+            onMouseLeave={() => setHovered(-1)}
             onFocus={() => setOpen(i)}
             onClick={() => { setOpen(i); show(s); }}
             onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(s); } }}
           >
-            <img src={img(s.image)} alt="" loading="lazy" />
+            {s.gallery.map((g, k) => {
+              const on = (hovered === i ? frame % s.gallery.length : 0) === k;
+              // only the first photo loads up front; the rest load when the panel is hovered
+              if (k > 0 && hovered !== i && !on) return null;
+              return <img key={g.image} className={on ? 'is-on' : ''} src={img(g.image.replace('spaces/', 'spaces/sm/'))} alt="" loading="lazy" />;
+            })}
+            {hovered === i && (
+              <span className="panel__dots" aria-hidden="true">
+                {s.gallery.map((g, k) => <i key={g.image} className={frame % s.gallery.length === k ? 'is-on' : ''} />)}
+              </span>
+            )}
             <div className="panel__txt">
               <span>{String(i + 1).padStart(2, '0')}</span>
               <h3>{s.title}</h3>

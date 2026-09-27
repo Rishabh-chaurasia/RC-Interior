@@ -29,7 +29,7 @@ export const STOPS = [
   {
     key: 'collab', label: 'Collaboration', image: 'spaces/cowork-1.jpg', focus: '45% 60%',
     title: 'Collaboration zone',
-    text: 'Soft seating and shared tables where teams meet without booking a room.',
+    text: 'Shared tables and informal corners where teams meet without booking a room.',
   },
   {
     key: 'cafe', label: 'Café', image: 'spaces/pantry-1.jpg', focus: '50% 55%',

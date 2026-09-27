@@ -117,7 +117,7 @@ export const styles = ['Modern', 'Traditional', 'Hybrid & Sustainable'];
 export const spaces = [
   {
     key: 'entrance', title: 'Entrance & lobby', text: 'The walk from the lift to your door: flooring, lighting and wayfinding that set the tone.',
-    photos: ['Marble lobby with timber accents', 'Marble lift lobby', 'Glass entrance onto a green court', 'Glazed entrance and staircase', 'Timber-clad corridor', 'Grand lobby with a slatted ceiling'],
+    photos: ['Marble lobby with timber accents', 'Marble lift lobby', 'Glass entrance onto a green court', 'Entrance with fluted glass screens', 'Lift lobby with a green wall', 'Grand lobby with a slatted ceiling'],
   },
   {
     key: 'reception', title: 'Reception', text: 'The first ten seconds of your brand. Light, material and logo, working together.',
@@ -125,7 +125,7 @@ export const spaces = [
   },
   {
     key: 'workstation', title: 'Workstations', text: 'Bench desks and open plan that flex with your teams, with good light and acoustics.',
-    photos: ['Open plan with a feature ceiling', 'Workfloor under a green canopy', 'Long bench desks', 'Rows of workstations', 'Desks beside a living wall', 'Timber bench desks'],
+    photos: ['Open plan with a feature ceiling', 'White workstations with task chairs', 'Long bench desks', 'Rows of workstations', 'Desks beside a living wall', 'Timber bench desks'],
   },
   {
     key: 'cabin', title: 'Private cabins', text: 'Focused, personal spaces with elegant furniture, storage and privacy.',
@@ -137,11 +137,11 @@ export const spaces = [
   },
   {
     key: 'meeting', title: 'Meeting rooms', text: 'Rooms for four to twelve, ready for video calls and whiteboards.',
-    photos: ['Meeting room with a screen wall', 'Glass meeting room', 'Curtained meeting room', 'Black-framed glass rooms', 'Round table meeting room', 'Meeting room with a garden view'],
+    photos: ['Meeting room with a screen wall', 'Glass meeting room', 'Curtained meeting room', 'Long meeting table by the window', 'Round table meeting room', 'Meeting room with a garden view'],
   },
   {
     key: 'cowork', title: 'Collaboration zones', text: 'Informal places to plan, pair and present without booking a room.',
-    photos: ['Lounge seating on a round rug', 'Open collaboration area', 'Shared tables under pendants', 'Round table beside timber screens', 'Stepped seating for town halls', 'Long team tables'],
+    photos: ['Shared tables under pendants', 'Lounge corner with a pin-up wall', 'Stepped seating with cushions', 'Round table beside timber screens', 'Stepped seating for town halls', 'Long team tables'],
   },
   {
     key: 'lounge', title: 'Breakout lounge', text: 'Comfortable corners where people recharge and ideas start.',
