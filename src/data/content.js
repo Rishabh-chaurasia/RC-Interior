@@ -24,9 +24,9 @@ export const navLinks = [
 
 export const heroSlides = [
   { src: 'hero.jpg', tag: 'Design concept', caption: 'Double-height workplace atrium', alt: 'Double-height office atrium with timber panelling and lounge seating' },
-  { src: 'icra-reception.jpg', tag: 'ICRA Ltd', caption: 'Reception & arrival, Gurugram', alt: 'ICRA office reception with fluted timber wall' },
+  { src: 'atrium.jpg', tag: 'Design concept', caption: 'Light-filled open office', alt: 'Bright double-height open office with a long shared table and planters' },
   { src: 'boardroom.jpg', tag: 'Design concept', caption: 'Walnut-panelled boardroom', alt: 'Boardroom with walnut table and glass wall' },
-  { src: 'icra-workstations.jpg', tag: 'ICRA Ltd', caption: 'Open workstations for 60+', alt: 'Open workstations with colourful screens and planters' },
+  { src: 'openplan.jpg', tag: 'Design concept', caption: 'Open-plan workstations', alt: 'Open-plan office with timber pods and blue sofas' },
 ];
 
 export const marqueeClients = ['Google', 'Samsung', 'Sony', 'Tech Mahindra', 'SBI Card', 'ICRA', 'Daikin', 'TCS', 'POSCO', 'Varun Beverages', 'Asahi Glass', 'Gabriel India', 'AECOM', 'CBRE', 'Max Healthcare', 'JK Cement', 'Home Credit', 'Ecom Express'];
@@ -64,18 +64,18 @@ export const services = [
     text: 'We map how your teams actually work, then design around it, down to the last light fitting.',
     chips: ['Space planning', 'Design concept', '3D visuals', 'Lighting plans', 'Colour & material', 'Branding elements'],
   },
-  { icon: 'key', title: 'Turnkey Projects', image: 'icra-workstations.jpg', text: 'One contract, one team, one handover date. Civil, services, furniture and finishing.' },
+  { icon: 'key', title: 'Turnkey Projects', image: 'atrium.jpg', text: 'One contract, one team, one handover date. Civil, services, furniture and finishing.' },
   { icon: 'shield', title: 'Electrical, HVAC & Fire', image: 'glass-corridor.jpg', text: 'The work behind the walls, done to code and fully documented.' },
-  { icon: 'hammer', title: 'Renovation & Refurbishment', image: 'icra-reception.jpg', text: 'Refresh a reception or rebuild a floor while your business keeps running.' },
+  { icon: 'hammer', title: 'Renovation & Refurbishment', image: 'corridor.jpg', text: 'Refresh a reception or rebuild a floor while your business keeps running.' },
   { icon: 'wrench', title: 'Repair & Maintenance', image: 'storage.jpg', text: 'R&M contracts that keep your office looking like handover day.' },
 ];
 
 export const styles = ['Modern', 'Traditional', 'Hybrid & Sustainable'];
 
 export const spaces = [
-  { title: 'Receptions', image: 'icra-reception.jpg', text: 'The first ten seconds of your brand. Light, material and logo, working together.' },
-  { title: 'Open plan', image: 'icra-workstations.jpg', text: 'Workstations that encourage collaboration and flex with your teams.' },
-  { title: 'Private cabins', image: 'icra-cabin.jpg', text: 'Focused, personal spaces with elegant furniture and good acoustics.' },
+  { title: 'Receptions', image: 'hero.jpg', text: 'The first ten seconds of your brand. Light, material and logo, working together.' },
+  { title: 'Open plan', image: 'openplan.jpg', text: 'Workstations that encourage collaboration and flex with your teams.' },
+  { title: 'Private cabins', image: 'executive.jpg', text: 'Focused, personal spaces with elegant furniture and good acoustics.' },
   { title: 'Boardrooms', image: 'boardroom.jpg', text: 'Rooms that make the big decisions feel considered.' },
   { title: 'Breakout & café', image: 'lounge.jpg', text: 'Comfortable corners where people recharge and ideas start.' },
 ];
@@ -87,24 +87,41 @@ export const whyCards = [
   { tag: 'Balance', image: 'cafe.jpg', text: 'Open plan for teamwork, cabins for focus, breakout spaces to recharge.', alt: 'Sunlit café' },
 ];
 
-// shape: 'tall' | 'wide'. "ICRA Ltd" = real finished project; "Design concept" = render.
+// Design-concept gallery (generic renders). shape: 'tall' | 'wide'.
+// Real client photos are NOT used here: they only open from the client list (see caseStudies).
 export const projects = [
-  { image: 'icra-reception.jpg', client: 'ICRA Ltd', title: 'Reception & arrival', shape: 'tall' },
-  { image: 'icra-workstations.jpg', client: 'ICRA Ltd', title: 'Open workstations', shape: 'wide' },
-  { image: 'icra-cabin.jpg', client: 'ICRA Ltd', title: 'Director’s cabin', shape: 'tall' },
-  { image: 'icra-open.jpg', client: 'ICRA Ltd', title: 'Office floor', shape: 'wide' },
-  { image: 'icra-cabin-2.jpg', client: 'ICRA Ltd', title: 'Manager’s cabin', shape: 'tall' },
-  { image: 'boardroom.jpg', client: 'Design concept', title: 'Boardroom', shape: 'wide' },
-  { image: 'executive.jpg', client: 'Design concept', title: 'Executive office', shape: 'tall' },
+  { image: 'hero.jpg', client: 'Design concept', title: 'Double-height lobby', shape: 'tall' },
+  { image: 'openplan.jpg', client: 'Design concept', title: 'Open workstations', shape: 'wide' },
+  { image: 'executive.jpg', client: 'Design concept', title: 'Director’s office', shape: 'tall' },
+  { image: 'boardroom.jpg', client: 'Design concept', title: 'Walnut boardroom', shape: 'wide' },
+  { image: 'boardroom-2.jpg', client: 'Design concept', title: 'Meeting room', shape: 'tall' },
+  { image: 'atrium.jpg', client: 'Design concept', title: 'Collaboration hall', shape: 'wide' },
+  { image: 'glass-corridor.jpg', client: 'Design concept', title: 'Glass-fronted corridor', shape: 'tall' },
   { image: 'cafe.jpg', client: 'Design concept', title: 'Staff café', shape: 'tall' },
-  { image: 'openplan.jpg', client: 'Design concept', title: 'Open plan', shape: 'wide' },
+  { image: 'lounge.jpg', client: 'Design concept', title: 'Breakout lounge', shape: 'tall' },
 ];
 
-// Swatches are zoomed-in crops of project photos: pos = focal point, zoom = background-size
+// Real finished projects. These photos appear ONLY when a visitor clicks the client in the client list.
+// Add a client here (with its photos in public/img/) and its name becomes clickable automatically.
+export const caseStudies = {
+  'ICRA Ltd': {
+    place: 'Gurugram',
+    images: [
+      { image: 'icra-reception.jpg', title: 'Reception & arrival' },
+      { image: 'icra-workstations.jpg', title: 'Open workstations' },
+      { image: 'icra-open.jpg', title: 'Office floor' },
+      { image: 'icra-desks.jpg', title: 'Workstation bay' },
+      { image: 'icra-cabin.jpg', title: 'Director’s cabin' },
+      { image: 'icra-cabin-2.jpg', title: 'Manager’s cabin' },
+    ],
+  },
+};
+
+// Swatches are zoomed-in crops of design-concept photos: pos = focal point, zoom = background-size
 export const materials = [
   { name: 'Walnut veneer', use: 'Tables & panelling', image: 'boardroom.jpg', pos: '50% 88%', zoom: '520%' },
-  { name: 'Fluted timber', use: 'Feature walls', image: 'icra-reception.jpg', pos: '10% 24%', zoom: '560%' },
-  { name: 'Italian marble', use: 'Receptions & lobbies', image: 'icra-reception.jpg', pos: '27% 100%', zoom: '900%' },
+  { name: 'Fluted timber', use: 'Feature walls', image: 'lounge.jpg', pos: '100% 25%', zoom: '700%' },
+  { name: 'Polished stone', use: 'Receptions & lobbies', image: 'corridor.jpg', pos: '50% 95%', zoom: '500%' },
   { name: 'Terrazzo', use: 'Cafés & corridors', image: 'cafe.jpg', pos: '85% 95%', zoom: '500%' },
   { name: 'Light oak', use: 'Partitions & doors', image: 'glass-corridor.jpg', pos: '6% 50%', zoom: '420%' },
 ];

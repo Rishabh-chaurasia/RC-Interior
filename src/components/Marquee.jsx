@@ -2,7 +2,7 @@ import { marqueeClients } from '../data/content.js';
 
 export default function Marquee() {
   return (
-    <section className="marquee" id="clients" aria-label="Clients">
+    <section className="marquee" aria-label="Clients">
       <p className="marquee__label">Trusted by teams at</p>
       <div className="marquee__track">
         {[0, 1].map(copy => (

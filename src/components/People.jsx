@@ -1,12 +1,30 @@
-import { clients, team, csrPoints, img } from '../data/content.js';
+import { clients, team, csrPoints, caseStudies, img } from '../data/content.js';
 import { Reveal, SectionHead, Counter, ParallaxImg, Btn } from './ui.jsx';
 
-export function ClientWall() {
+/** Client grid. Clients with photos in `caseStudies` become buttons that open their finished project. */
+export function ClientWall({ onOpenCase }) {
+  const open = name => {
+    const cs = caseStudies[name];
+    onOpenCase({
+      heading: `${name}${cs.place ? `, ${cs.place}` : ''}`,
+      sub: 'Finished project by RC Interior',
+      index: 0,
+      images: cs.images.map(p => ({ src: img(p.image), alt: `${name}: ${p.title}`, title: p.title })),
+    });
+  };
   return (
-    <section className="wall section">
+    <section className="wall section" id="clients">
       <SectionHead kicker="(11) Valued collaborators">30+ companies <em>call us back.</em></SectionHead>
+      <p className="wall__hint"><span className="wall__dot" aria-hidden="true" /> Tap a highlighted client to see the finished project.</p>
       <ul className="wall__grid">
-        {clients.map(c => <li key={c}>{c}</li>)}
+        {clients.map(c => caseStudies[c] ? (
+          <li key={c} className="wall__case">
+            <button type="button" onClick={() => open(c)} aria-label={`${c}: view finished project photos`}>
+              <span className="wall__name">{c}</span>
+              <span className="wall__cta">View project <i aria-hidden="true">→</i></span>
+            </button>
+          </li>
+        ) : <li key={c}>{c}</li>)}
         <li className="wall__more">&amp; many more</li>
       </ul>
     </section>

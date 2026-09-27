@@ -112,6 +112,21 @@ export function setupMotion() {
       });
     });
 
+    /* ---------- 3D flip-in: cards swing up from a tilted plane as they enter ----------
+       (uses the `rotate`/`translate` CSS properties so it never fights the fade-up transform) */
+    gsap.utils.toArray('.bento .card, .why__cards .wcard, .team__grid .member, .swatches .swatch, .steps .step').forEach((el, i) => {
+      const st = { a: 60, z: -160 };
+      const apply = () => {
+        el.style.rotate = st.a > 0.05 ? `1 0 0 ${st.a.toFixed(2)}deg` : '';
+        el.style.translate = st.z < -0.5 ? `0 0 ${st.z.toFixed(1)}px` : '';
+      };
+      apply();
+      gsap.to(st, {
+        a: 0, z: 0, duration: 1.4, ease: 'expo.out', delay: (i % 3) * 0.08, onUpdate: apply,
+        scrollTrigger: { trigger: el, start: 'top 94%', once: true },
+      });
+    });
+
     /* ---------- scroll progress line ---------- */
     gsap.fromTo('.progress', { scaleX: 0 }, { scaleX: 1, ease: 'none', scrollTrigger: { start: 0, end: 'max', scrub: 0.3 } });
 
@@ -165,15 +180,22 @@ export function setupMotion() {
       on(el, 'mouseleave', () => gsap.to(st, { rx: 0, ry: 0, duration: 0.9, ease: 'power3.out', overwrite: true, onUpdate: apply }));
     });
 
-    // hero: photo and heading drift in opposite directions with the mouse
+    // hero: photo and heading tilt in 3D in opposite directions with the mouse (depth)
     const hero = document.querySelector('.hero');
     const slides = document.querySelector('.hero__slides');
     const title = document.querySelector('.hero__title');
     if (hero && slides && title) {
       const st = { x: 0, y: 0 };
+      const tilt = (el, rx, ry) => {
+        const a = Math.hypot(rx, ry);
+        el.style.rotate = a < 0.02 ? 'none' : `${(rx / a).toFixed(3)} ${(ry / a).toFixed(3)} 0 ${a.toFixed(2)}deg`;
+      };
+      slides.style.scale = '1.07'; // so tilted edges never show the background
       const apply = () => {
         slides.style.translate = `${(st.x * -14).toFixed(2)}px ${(st.y * -10).toFixed(2)}px`;
         title.style.translate = `${(st.x * 16).toFixed(2)}px ${(st.y * 8).toFixed(2)}px`;
+        tilt(slides, st.y * -4, st.x * 6);
+        tilt(title, st.y * 5, st.x * -8);
       };
       on(hero, 'mousemove', e => gsap.to(st, { x: e.clientX / innerWidth - 0.5, y: e.clientY / innerHeight - 0.5, duration: 1.2, ease: 'power3.out', overwrite: true, onUpdate: apply }));
       on(hero, 'mouseleave', () => gsap.to(st, { x: 0, y: 0, duration: 1.2, ease: 'power3.out', overwrite: true, onUpdate: apply }));

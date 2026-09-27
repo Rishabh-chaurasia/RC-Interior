@@ -27,7 +27,7 @@ export default function Studio() {
     <section className="studio section" id="studio">
       <div className="studio__top">
         <div className="studio__intro">
-          <p className="kicker">(01) The studio</p>
+          <p className="kicker">(02) The studio</p>
           <h2 className="studio__at" data-split><small>At</small> RC Interior<span className="comma">,</span></h2>
           <Statement />
         </div>

@@ -44,17 +44,71 @@ export function Cursor() {
   return <div ref={ref} className="cursor" aria-hidden="true"><span>View</span></div>;
 }
 
-export function Lightbox({ image, onClose }) {
+/**
+ * Full-screen viewer. `data` = { images: [{ src, alt, title }], index, heading?, sub? }.
+ * With more than one image it becomes a gallery: arrows, ← / → keys, swipe, and a counter.
+ */
+export function Lightbox({ data, onClose, onStep }) {
+  const open = !!data;
+  const count = open ? data.images.length : 0;
+  const multi = count > 1;
+  const current = open ? data.images[data.index] : null;
+  const touchX = useRef(null);
+
   useEffect(() => {
-    if (!image) return;
-    const key = e => e.key === 'Escape' && onClose();
+    if (!open) return;
+    const key = e => {
+      if (e.key === 'Escape') onClose();
+      else if (multi && e.key === 'ArrowRight') onStep(1);
+      else if (multi && e.key === 'ArrowLeft') onStep(-1);
+    };
     addEventListener('keydown', key);
     return () => removeEventListener('keydown', key);
-  }, [image, onClose]);
+  }, [open, multi, onClose, onStep]);
+
+  // preload the neighbours so arrowing through a gallery feels instant
+  useEffect(() => {
+    if (!multi) return;
+    [1, -1].forEach(d => { const im = new Image(); im.src = data.images[(data.index + d + count) % count].src; });
+  }, [multi, data, count]);
+
+  const onBackdrop = e => { if (e.target === e.currentTarget) onClose(); };
   return (
-    <div className={`lightbox ${image ? 'on' : ''}`} aria-hidden={!image} onClick={e => e.target.tagName !== 'IMG' && onClose()}>
-      <button className="lightbox__close round round--light" aria-label="Close">✕</button>
-      {image && <img src={image.src} alt={image.alt} />}
+    <div
+      className={`lightbox ${open ? 'on' : ''} ${multi ? 'lightbox--gallery' : ''}`}
+      aria-hidden={!open}
+      role={open ? 'dialog' : undefined}
+      aria-modal={open || undefined}
+      aria-label={open ? (data.heading || 'Image viewer') : undefined}
+      onClick={onBackdrop}
+      onTouchStart={e => { touchX.current = e.touches[0].clientX; }}
+      onTouchEnd={e => {
+        if (!multi || touchX.current == null) return;
+        const dx = e.changedTouches[0].clientX - touchX.current;
+        if (Math.abs(dx) > 50) onStep(dx < 0 ? 1 : -1);
+        touchX.current = null;
+      }}
+    >
+      {open && data.heading && (
+        <header className="lightbox__head">
+          <b>{data.heading}</b>
+          {data.sub && <span>{data.sub}</span>}
+        </header>
+      )}
+      <button className="lightbox__close round round--light" aria-label="Close" onClick={onClose}>✕</button>
+      {current && <img key={current.src} src={current.src} alt={current.alt} />}
+      {multi && (
+        <>
+          <button className="lightbox__nav lightbox__nav--prev round round--light" aria-label="Previous photo" onClick={() => onStep(-1)}>←</button>
+          <button className="lightbox__nav lightbox__nav--next round round--light" aria-label="Next photo" onClick={() => onStep(1)}>→</button>
+        </>
+      )}
+      {open && (current.title || multi) && (
+        <p className="lightbox__caption">
+          {current.title && <span>{current.title}</span>}
+          {multi && <b>{String(data.index + 1).padStart(2, '0')} / {String(count).padStart(2, '0')}</b>}
+        </p>
+      )}
     </div>
   );
 }

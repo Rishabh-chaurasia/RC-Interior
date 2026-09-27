@@ -25,8 +25,10 @@ function Site() {
   const scroll = useScrollApi();
   const [ready, setReady] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lightbox, setLightbox] = useState(null);
+  const [lightbox, setLightbox] = useState(null); // { images, index, heading?, sub? }
   const onLoaded = useCallback(() => setReady(true), []);
+  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const stepLightbox = useCallback(d => setLightbox(l => l && { ...l, index: (l.index + d + l.images.length) % l.images.length }), []);
 
   // Page-level state lives on <body> because the CSS keys off these classes
   useEffect(() => {
@@ -75,17 +77,17 @@ function Site() {
       <main>
         <Hero ready={ready} />
         <Marquee />
+        <Showcase3D />
         <Studio />
         <Values />
         <Services />
         <Spaces />
-        <Showcase3D />
         <Why />
         <Work onOpenImage={setLightbox} />
         <Materials />
         <Process />
         <Testimonials />
-        <ClientWall />
+        <ClientWall onOpenCase={setLightbox} />
         <Team />
         <Csr />
         <Cta phone={contact.phones[0]} />
@@ -93,7 +95,7 @@ function Site() {
       </main>
       <Footer />
       <WhatsAppButton />
-      <Lightbox image={lightbox} onClose={() => setLightbox(null)} />
+      <Lightbox data={lightbox} onClose={closeLightbox} onStep={stepLightbox} />
     </>
   );
 }

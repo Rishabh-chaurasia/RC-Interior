@@ -8,7 +8,7 @@ export default function Spaces() {
   const [open, setOpen] = useState(0);
   return (
     <section className="spaces section section--dark" id="spaces" data-nav="dark">
-      <SectionHead kicker="(04) Spaces we design">Every room <em>has a job.</em></SectionHead>
+      <SectionHead kicker="(05) Spaces we design">Every room <em>has a job.</em></SectionHead>
       <div className="panels">
         {spaces.map((s, i) => (
           <article
