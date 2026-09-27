@@ -81,7 +81,7 @@ function Site() {
         <Studio />
         <Values />
         <Services />
-        <Spaces />
+        <Spaces onOpenGallery={setLightbox} />
         <Why />
         <Work onOpenImage={setLightbox} />
         <Materials />

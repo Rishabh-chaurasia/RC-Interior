@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { heroSlides, img } from '../data/content.js';
-import { prefersReducedMotion } from '../hooks/scroll.jsx';
 import { Btn } from './ui.jsx';
 
 const SLIDE_MS = 6500;
@@ -9,11 +8,11 @@ export default function Hero({ ready }) {
   const [active, setActive] = useState(0);
   const timer = useRef(null);
 
+  // Slides always auto-advance (it's rotating content, not a decorative effect); reduced-motion
+  // only turns off the zoom/parallax touches elsewhere, handled separately in CSS.
   const restart = useCallback(() => {
     clearInterval(timer.current);
-    if (!prefersReducedMotion()) {
-      timer.current = setInterval(() => setActive(i => (i + 1) % heroSlides.length), SLIDE_MS);
-    }
+    timer.current = setInterval(() => setActive(i => (i + 1) % heroSlides.length), SLIDE_MS);
   }, []);
 
   useEffect(() => {
@@ -46,7 +45,7 @@ export default function Hero({ ready }) {
         </h1>
         <div className="hero__bottom">
           <div className="hero__left">
-            <p className="hero__lede">Workplaces for Samsung, Sony, SBI Card, ICRA and 30+ companies. Concept, 3D, civil, MEP and handover, from one team.</p>
+            <p className="hero__lede">Since 2007, RC Interior has designed and built commercial workspaces across Delhi NCR — from first sketch and 3D visualisation to civil work, MEP and final handover, all under one roof.</p>
             <div className="hero__actions">
               <Btn href="#contact" variant="lime">Book a site visit</Btn>
               <a href="#work" className="link-under link-under--light">See our work</a>
@@ -55,7 +54,6 @@ export default function Hero({ ready }) {
           <div className="hero__ctrl">
             <div className="hero__meta">
               <span className="hero__count"><b>{String(active + 1).padStart(2, '0')}</b> / {String(heroSlides.length).padStart(2, '0')}</span>
-              <span className="hero__tag">{slide.tag}</span>
               <span className="hero__caption">{slide.caption}</span>
             </div>
             <div className="hero__bars" role="tablist" aria-label="Slides">

@@ -68,7 +68,7 @@ export function Csr() {
 export function Cta({ phone }) {
   return (
     <section className="cta" data-nav="dark">
-      <ParallaxImg className="cta__bg" src={img('openplan.jpg')} alt="" loading="lazy" strength={12} />
+      <ParallaxImg className="cta__bg" src={img('spaces/workstation-3.jpg')} alt="" loading="lazy" strength={12} />
       <div className="cta__inner">
         <p className="kicker">Next steps</p>
         <h2 className="cta__title" data-split>Ready to transform <em>your workspace?</em></h2>

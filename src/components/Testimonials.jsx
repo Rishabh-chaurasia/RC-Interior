@@ -21,7 +21,7 @@ export default function Testimonials() {
 
   return (
     <section className="voices" data-nav="dark">
-      <ParallaxImg className="voices__bg" src={img('lounge.jpg')} alt="" loading="lazy" strength={12} />
+      <ParallaxImg className="voices__bg" src={img('spaces/lounge-5.jpg')} alt="" loading="lazy" strength={12} />
       <div className="voices__inner">
         <div className="voices__head">
           <p className="kicker">(10) Client words</p>

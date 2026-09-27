@@ -47,7 +47,7 @@ export default function Studio() {
 
       <div className="studio__grid">
         <figure className="studio__img" data-reveal>
-          <ParallaxImg src={img('corridor.jpg')} alt="Sunlit office corridor with timber wall panels and pendant lights" loading="lazy" />
+          <ParallaxImg src={img('spaces/entrance-5.jpg')} alt="Sunlit office corridor with timber wall panels and pendant lights" loading="lazy" />
           <figcaption>Est. 2007 · Sikandarpur, Gurugram</figcaption>
         </figure>
         <div className="studio__cols">

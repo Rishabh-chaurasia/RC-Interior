@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { contact } from '../data/content.js';
 import { prefersReducedMotion } from '../hooks/scroll.jsx';
 
@@ -72,6 +72,15 @@ export function Lightbox({ data, onClose, onStep }) {
     [1, -1].forEach(d => { const im = new Image(); im.src = data.images[(data.index + d + count) % count].src; });
   }, [multi, data, count]);
 
+  // slideshow: galleries opened with `autoplay` advance on their own; any manual step restarts the timer
+  const [paused, setPaused] = useState(false);
+  useEffect(() => { setPaused(false); }, [open]);
+  useEffect(() => {
+    if (!open || !multi || !data.autoplay || paused) return;
+    const t = setTimeout(() => onStep(1), 4000);
+    return () => clearTimeout(t);
+  }, [open, multi, data, paused, onStep]);
+
   const onBackdrop = e => { if (e.target === e.currentTarget) onClose(); };
   return (
     <div
@@ -101,6 +110,26 @@ export function Lightbox({ data, onClose, onStep }) {
         <>
           <button className="lightbox__nav lightbox__nav--prev round round--light" aria-label="Previous photo" onClick={() => onStep(-1)}>←</button>
           <button className="lightbox__nav lightbox__nav--next round round--light" aria-label="Next photo" onClick={() => onStep(1)}>→</button>
+          {/* thumbnail strip + slideshow progress */}
+          <div className="lightbox__thumbs">
+            {data.images.map((im, i) => (
+              <button
+                key={im.src}
+                type="button"
+                className={i === data.index ? 'is-on' : ''}
+                aria-label={`Photo ${i + 1}`}
+                onClick={() => { setPaused(true); onStep(i - data.index); }}
+              >
+                <img src={im.src} alt="" loading="lazy" />
+                {i === data.index && data.autoplay && !paused && <i key={data.index} className="lightbox__timer" />}
+              </button>
+            ))}
+            {data.autoplay && (
+              <button type="button" className="lightbox__play" onClick={() => setPaused(p => !p)} aria-label={paused ? 'Play slideshow' : 'Pause slideshow'}>
+                {paused ? '▶' : '❚❚'}
+              </button>
+            )}
+          </div>
         </>
       )}
       {open && (current.title || multi) && (

@@ -23,13 +23,32 @@ export const navLinks = [
 ];
 
 export const heroSlides = [
-  { src: 'hero.jpg', tag: 'Design concept', caption: 'Double-height workplace atrium', alt: 'Double-height office atrium with timber panelling and lounge seating' },
-  { src: 'atrium.jpg', tag: 'Design concept', caption: 'Light-filled open office', alt: 'Bright double-height open office with a long shared table and planters' },
-  { src: 'boardroom.jpg', tag: 'Design concept', caption: 'Walnut-panelled boardroom', alt: 'Boardroom with walnut table and glass wall' },
-  { src: 'openplan.jpg', tag: 'Design concept', caption: 'Open-plan workstations', alt: 'Open-plan office with timber pods and blue sofas' },
+  { src: 'spaces/reception-1.jpg', caption: 'Reception in stone and walnut', alt: 'Office reception with a stone desk, walnut wall and pendant lights' },
+  { src: 'spaces/workstation-4.jpg', caption: 'Open-plan workstations', alt: 'Long rows of workstations under linear lights' },
+  { src: 'spaces/boardroom-1.jpg', caption: 'Boardroom with a view', alt: 'Boardroom with a long table and floor-to-ceiling windows' },
+  { src: 'spaces/lounge-2.jpg', caption: 'Green breakout lounge', alt: 'Breakout lounge with a planted wall and soft seating' },
 ];
 
-export const marqueeClients = ['Google', 'Samsung', 'Sony', 'Tech Mahindra', 'SBI Card', 'ICRA', 'Daikin', 'TCS', 'POSCO', 'Varun Beverages', 'Asahi Glass', 'Gabriel India', 'AECOM', 'CBRE', 'Max Healthcare', 'JK Cement', 'Home Credit', 'Ecom Express'];
+// Client logos for the scrolling strip (public/img/logos/). bg = the logo's own background, used for its card.
+export const clientLogos = [
+  { name: 'Google', file: 'google.svg' },
+  { name: 'Samsung', file: 'samsung.svg' },
+  { name: 'Sony', file: 'sony.png', bg: '#000000' },
+  { name: 'Tech Mahindra', file: 'techmahindra.svg' },
+  { name: 'SBI Card', file: 'sbicard.png' },
+  { name: 'ICRA', file: 'icra.png' },
+  { name: 'Daikin', file: 'daikin.png' },
+  { name: 'TCS', file: 'tcs.png' },
+  { name: 'POSCO', file: 'posco.png', bg: '#00588a' },
+  { name: 'Varun Beverages', file: 'varun.png' },
+  { name: 'AGC Asahi Glass', file: 'agc.png' },
+  { name: 'AECOM', file: 'aecom.png' },
+  { name: 'CBRE', file: 'cbre.png', bg: '#003f2d' },
+  { name: 'Max Healthcare', file: 'max.png' },
+  { name: 'JK Cement', file: 'jkcement.png' },
+  { name: 'Home Credit', file: 'homecredit.png', bg: '#cf0e2d' },
+  { name: 'Ecom Express', file: 'ecom.png' },
+];
 
 export const statement = [
   { t: 'we make offices that work as hard as the people in them. With architects, designers and your own team, we turn bare floor plates into ' },
@@ -51,54 +70,112 @@ export const pillars = [
 
 export const expertise = ['Corporate', 'Retail', 'Turnkey', 'Renovation', 'R&M'];
 
+// tone picks the accent colour (see .value--* in styles.css); icon is drawn in Values.jsx
 export const values = [
-  { title: 'Innovation', text: 'New ideas that raise the bar for the workplace.' },
-  { title: 'Integrity', text: 'Clear processes, clear pricing, partnerships you can trust.' },
-  { title: 'Excellence', text: 'Quality you can see in every joint, edge and finish.' },
-  { title: 'Sustainability', text: 'Designs that respect the future, and 1,000 trees for every project.' },
+  {
+    title: 'Innovation', tag: 'New ideas', tone: 'lime', icon: 'spark', image: 'spaces/sm/cowork-3.jpg',
+    text: 'We bring fresh thinking to every brief, so your office works better than the one you left.',
+    points: ['Space plans built around how your teams work', '3D walkthroughs before anything is built', 'Flexible furniture that grows with you'],
+    badge: ['Fresh thinking', 'on every project'],
+  },
+  {
+    title: 'Integrity', tag: 'Transparency', tone: 'oak', icon: 'shield', image: 'spaces/sm/meeting-1.jpg',
+    text: 'Clear processes, clear pricing and partnerships you can trust from the first meeting to handover.',
+    points: ['Itemised quotations, no hidden costs', 'Timelines agreed in writing', 'One point of contact throughout'],
+    badge: ['Clear pricing', 'no surprises'],
+  },
+  {
+    title: 'Excellence', tag: 'Quality', tone: 'teal', icon: 'star', image: 'spaces/sm/reception-3.jpg',
+    text: 'Quality you can see in every joint, edge and finish, checked by our own site team.',
+    points: ['Premium, tested materials', 'In-house site supervision', 'Snag-free handover'],
+    badge: ['Crafted finish', 'every detail'],
+  },
+  {
+    title: 'Sustainability', tag: 'Green', tone: 'green', icon: 'leaf', image: 'spaces/sm/lounge-6.jpg',
+    text: 'Designs that respect the future, with lower running costs for you and more trees for everyone.',
+    points: ['Energy-efficient lighting and HVAC', 'Low-VOC paints and certified woods', '1,000 trees planted for every project'],
+    badge: ['1,000 trees', 'per project'],
+  },
 ];
 
 export const services = [
   {
-    icon: 'plan', title: 'Design & Planning', wide: true, image: 'openplan.jpg',
+    icon: 'plan', title: 'Design & Planning', wide: true, image: 'spaces/sm/cowork-1.jpg',
     text: 'We map how your teams actually work, then design around it, down to the last light fitting.',
-    chips: ['Space planning', 'Design concept', '3D visuals', 'Lighting plans', 'Colour & material', 'Branding elements'],
+    chips: ['Space planning', 'Concept design', '3D visuals', 'Lighting plans', 'Colour & material', 'Branding elements'],
   },
-  { icon: 'key', title: 'Turnkey Projects', image: 'atrium.jpg', text: 'One contract, one team, one handover date. Civil, services, furniture and finishing.' },
-  { icon: 'shield', title: 'Electrical, HVAC & Fire', image: 'glass-corridor.jpg', text: 'The work behind the walls, done to code and fully documented.' },
-  { icon: 'hammer', title: 'Renovation & Refurbishment', image: 'corridor.jpg', text: 'Refresh a reception or rebuild a floor while your business keeps running.' },
-  { icon: 'wrench', title: 'Repair & Maintenance', image: 'storage.jpg', text: 'R&M contracts that keep your office looking like handover day.' },
+  { icon: 'key', title: 'Turnkey Projects', image: 'spaces/sm/workstation-1.jpg', text: 'One contract, one team, one handover date. Civil, services, furniture and finishing.' },
+  { icon: 'shield', title: 'Electrical, HVAC & Fire', image: 'spaces/sm/meeting-4.jpg', text: 'The work behind the walls, done to code and fully documented.' },
+  { icon: 'hammer', title: 'Renovation & Refurbishment', image: 'spaces/sm/entrance-2.jpg', text: 'Refresh a reception or rebuild a floor while your business keeps running.' },
+  { icon: 'wrench', title: 'Repair & Maintenance', image: 'spaces/sm/pantry-2.jpg', text: 'R&M contracts that keep your office looking like handover day.' },
 ];
 
 export const styles = ['Modern', 'Traditional', 'Hybrid & Sustainable'];
 
+// Every zone of an office. Clicking a zone opens its 6 photos as a slideshow.
+// Photos live in public/img/spaces/<key>-1..6.jpg (full size) and spaces/sm/ (1000px, for panels).
 export const spaces = [
-  { title: 'Receptions', image: 'hero.jpg', text: 'The first ten seconds of your brand. Light, material and logo, working together.' },
-  { title: 'Open plan', image: 'openplan.jpg', text: 'Workstations that encourage collaboration and flex with your teams.' },
-  { title: 'Private cabins', image: 'executive.jpg', text: 'Focused, personal spaces with elegant furniture and good acoustics.' },
-  { title: 'Boardrooms', image: 'boardroom.jpg', text: 'Rooms that make the big decisions feel considered.' },
-  { title: 'Breakout & café', image: 'lounge.jpg', text: 'Comfortable corners where people recharge and ideas start.' },
-];
+  {
+    key: 'entrance', title: 'Entrance & lobby', text: 'The walk from the lift to your door: flooring, lighting and wayfinding that set the tone.',
+    photos: ['Marble lobby with timber accents', 'Marble lift lobby', 'Glass entrance onto a green court', 'Glazed entrance and staircase', 'Timber-clad corridor', 'Grand lobby with a slatted ceiling'],
+  },
+  {
+    key: 'reception', title: 'Reception', text: 'The first ten seconds of your brand. Light, material and logo, working together.',
+    photos: ['Stone desk against walnut panelling', 'Warm timber reception', 'Fluted oak desk', 'Lounge reception with halo lights', 'Backlit onyx counter', 'Curved reception with slatted wall'],
+  },
+  {
+    key: 'workstation', title: 'Workstations', text: 'Bench desks and open plan that flex with your teams, with good light and acoustics.',
+    photos: ['Open plan with a feature ceiling', 'Workfloor under a green canopy', 'Long bench desks', 'Rows of workstations', 'Desks beside a living wall', 'Timber bench desks'],
+  },
+  {
+    key: 'cabin', title: 'Private cabins', text: 'Focused, personal spaces with elegant furniture, storage and privacy.',
+    photos: ['Dark timber cabin', 'Director’s desk with display wall', 'Cabin with a stone feature wall', 'Glass-fronted manager cabin', 'Corner cabin with lounge', 'Compact cabin with storage'],
+  },
+  {
+    key: 'boardroom', title: 'Boardrooms', text: 'Rooms that make the big decisions feel considered.',
+    photos: ['Boardroom with a skyline view', 'Timber table by the windows', 'White boardroom for twenty', 'Boardroom with a video wall', 'Glass-walled boardroom', 'Classic walnut boardroom'],
+  },
+  {
+    key: 'meeting', title: 'Meeting rooms', text: 'Rooms for four to twelve, ready for video calls and whiteboards.',
+    photos: ['Meeting room with a screen wall', 'Glass meeting room', 'Curtained meeting room', 'Black-framed glass rooms', 'Round table meeting room', 'Meeting room with a garden view'],
+  },
+  {
+    key: 'cowork', title: 'Collaboration zones', text: 'Informal places to plan, pair and present without booking a room.',
+    photos: ['Lounge seating on a round rug', 'Open collaboration area', 'Shared tables under pendants', 'Round table beside timber screens', 'Stepped seating for town halls', 'Long team tables'],
+  },
+  {
+    key: 'lounge', title: 'Breakout lounge', text: 'Comfortable corners where people recharge and ideas start.',
+    photos: ['Bright lounge with armchairs', 'Planted lounge wall', 'Lounge with a curved sofa', 'Modular sofa lounge', 'Lounge along a glass corridor', 'Lounge with indoor trees'],
+  },
+  {
+    key: 'pantry', title: 'Pantry & café', text: 'A kitchen people actually want to eat in, with room for the whole team.',
+    photos: ['Café with a planted ceiling', 'Pantry with a long table', 'Café with a high counter', 'Minimal pantry bar', 'Timber-lined café', 'Food counter and café'],
+  },
+].map(s => ({
+  ...s,
+  image: `spaces/sm/${s.key}-1.jpg`,
+  gallery: s.photos.map((title, i) => ({ image: `spaces/${s.key}-${i + 1}.jpg`, title })),
+}));
 
 export const whyCards = [
-  { tag: 'Productivity', image: 'biophilic.jpg', text: 'Thoughtful design helps people focus and get more done.', alt: 'Bright office lounge with large plants' },
-  { tag: 'Comfort', image: 'chair.jpg', text: 'Ergonomic furniture and layouts keep teams healthy and happy.', alt: 'Ergonomic mesh office chair' },
-  { tag: 'Brand image', image: 'executive.jpg', text: 'Your space tells visitors who you are before anyone speaks.', alt: 'Executive office with walnut desk' },
-  { tag: 'Balance', image: 'cafe.jpg', text: 'Open plan for teamwork, cabins for focus, breakout spaces to recharge.', alt: 'Sunlit café' },
+  { tag: 'Productivity', image: 'spaces/sm/workstation-5.jpg', text: 'Thoughtful design helps people focus and get more done.', alt: 'Desks beside a living green wall' },
+  { tag: 'Comfort', image: 'spaces/sm/lounge-1.jpg', text: 'Ergonomic furniture and layouts keep teams healthy and happy.', alt: 'Bright lounge with armchairs' },
+  { tag: 'Brand image', image: 'spaces/sm/reception-5.jpg', text: 'Your space tells visitors who you are before anyone speaks.', alt: 'Reception with a backlit counter' },
+  { tag: 'Balance', image: 'spaces/sm/cowork-5.jpg', text: 'Open plan for teamwork, cabins for focus, breakout spaces to recharge.', alt: 'Stepped seating and high tables' },
 ];
 
-// Design-concept gallery (generic renders). shape: 'tall' | 'wide'.
+// Gallery of office interiors. shape: 'tall' | 'wide'.
 // Real client photos are NOT used here: they only open from the client list (see caseStudies).
 export const projects = [
-  { image: 'hero.jpg', client: 'Design concept', title: 'Double-height lobby', shape: 'tall' },
-  { image: 'openplan.jpg', client: 'Design concept', title: 'Open workstations', shape: 'wide' },
-  { image: 'executive.jpg', client: 'Design concept', title: 'Director’s office', shape: 'tall' },
-  { image: 'boardroom.jpg', client: 'Design concept', title: 'Walnut boardroom', shape: 'wide' },
-  { image: 'boardroom-2.jpg', client: 'Design concept', title: 'Meeting room', shape: 'tall' },
-  { image: 'atrium.jpg', client: 'Design concept', title: 'Collaboration hall', shape: 'wide' },
-  { image: 'glass-corridor.jpg', client: 'Design concept', title: 'Glass-fronted corridor', shape: 'tall' },
-  { image: 'cafe.jpg', client: 'Design concept', title: 'Staff café', shape: 'tall' },
-  { image: 'lounge.jpg', client: 'Design concept', title: 'Breakout lounge', shape: 'tall' },
+  { image: 'spaces/reception-2.jpg', title: 'Timber reception', shape: 'tall' },
+  { image: 'spaces/workstation-3.jpg', title: 'Open workstations', shape: 'wide' },
+  { image: 'spaces/cabin-3.jpg', title: 'Director’s cabin', shape: 'tall' },
+  { image: 'spaces/boardroom-4.jpg', title: 'Boardroom', shape: 'wide' },
+  { image: 'spaces/meeting-5.jpg', title: 'Meeting room', shape: 'tall' },
+  { image: 'spaces/lounge-3.jpg', title: 'Breakout lounge', shape: 'wide' },
+  { image: 'spaces/pantry-1.jpg', title: 'Staff café', shape: 'tall' },
+  { image: 'spaces/cowork-2.jpg', title: 'Collaboration area', shape: 'tall' },
+  { image: 'spaces/entrance-3.jpg', title: 'Entrance', shape: 'tall' },
 ];
 
 // Real finished projects. These photos appear ONLY when a visitor clicks the client in the client list.

@@ -59,7 +59,7 @@ export default function Work({ onOpenImage }) {
     <section ref={section} className="work" id="work" data-nav="dark">
       <div className="work__pin">
         <div className="work__head">
-          <p className="kicker">(07) Design concepts</p>
+          <p className="kicker">(07) Gallery</p>
           <h2 className="h2" data-split>Spaces we <em>imagine.</em></h2>
           <p className="work__hint">
             <span className="hint-desktop">Scroll</span><span className="hint-mobile">Swipe</span> to explore →
@@ -76,15 +76,15 @@ export default function Work({ onOpenImage }) {
               onClick={e => {
                 e.preventDefault();
                 onOpenImage({
-                  heading: 'Design concepts',
-                  sub: 'Concept renders of the spaces we build',
+                  heading: 'Spaces we imagine',
+                  sub: 'Office interiors',
                   index: i,
-                  images: projects.map(q => ({ src: img(q.image), alt: `${q.client}: ${q.title}`, title: q.title })),
+                  images: projects.map(q => ({ src: img(q.image), alt: q.title, title: q.title })),
                 });
               }}
             >
-              <figure><img src={img(p.image)} alt={`${p.client} — ${p.title}`} loading="lazy" onLoad={size} /></figure>
-              <figcaption><span>{p.client}</span><b>{p.title}</b></figcaption>
+              <figure><img src={img(p.image)} alt={p.title} loading="lazy" onLoad={size} /></figure>
+              <figcaption><span>{String(i + 1).padStart(2, '0')}</span><b>{p.title}</b></figcaption>
             </a>
           ))}
           <div className="proj proj--end">
