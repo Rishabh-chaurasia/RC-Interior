@@ -10,6 +10,7 @@ import Studio from './components/Studio.jsx';
 import Values from './components/Values.jsx';
 import Services from './components/Services.jsx';
 import Spaces from './components/Spaces.jsx';
+import Studio3D from './components/Studio3D.jsx';
 import Showcase3D from './components/Showcase3D.jsx';
 import Why from './components/Why.jsx';
 import Work from './components/Work.jsx';
@@ -82,6 +83,7 @@ function Site() {
         <Values />
         <Services />
         <Spaces onOpenGallery={setLightbox} />
+        <Studio3D />
         <Why />
         <Work onOpenImage={setLightbox} />
         <Materials />

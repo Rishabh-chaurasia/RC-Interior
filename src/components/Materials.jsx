@@ -6,7 +6,7 @@ export default function Materials() {
     <section className="materials section">
       <div className="materials__head">
         <div>
-          <p className="kicker">(08) Material library</p>
+          <p className="kicker">(09) Material library</p>
           <h2 className="h2" data-split>Textures that <em>tell stories.</em></h2>
         </div>
         <Reveal as="p" className="materials__lede">We pick every finish by hand: how it looks under office light, how it wears after five years, and how it feels when you touch it.</Reveal>

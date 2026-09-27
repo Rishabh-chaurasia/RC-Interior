@@ -29,8 +29,13 @@ export default function Nav({ menuOpen, onToggleMenu }) {
 
   useOnScroll(() => {
     const y = scrollY;
-    if (!menuOpen) setHidden(y > lastY.current && y > 500);
-    lastY.current = y;
+    // only react to real movement: repeated events at the same position (e.g. when scrolling stops)
+    // must not bring the nav back after the visitor scrolled down
+    if (Math.abs(y - lastY.current) > 2) {
+      if (!menuOpen) setHidden(y > lastY.current && y > 500);
+      lastY.current = y;
+    }
+    if (y < 80 && !menuOpen) setHidden(false);
 
     // dark style while the nav floats over a dark section. Reads the section's live background colour,
     // so it also follows the scroll-driven colour shifts in hooks/motion.js.

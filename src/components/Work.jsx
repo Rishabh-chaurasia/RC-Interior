@@ -59,7 +59,7 @@ export default function Work({ onOpenImage }) {
     <section ref={section} className="work" id="work" data-nav="dark">
       <div className="work__pin">
         <div className="work__head">
-          <p className="kicker">(07) Gallery</p>
+          <p className="kicker">(08) Gallery</p>
           <h2 className="h2" data-split>Spaces we <em>imagine.</em></h2>
           <p className="work__hint">
             <span className="hint-desktop">Scroll</span><span className="hint-mobile">Swipe</span> to explore →

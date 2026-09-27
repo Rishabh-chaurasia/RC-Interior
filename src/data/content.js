@@ -17,6 +17,7 @@ export const navLinks = [
   { id: 'studio', label: 'Studio' },
   { id: 'services', label: 'Services' },
   { id: 'spaces', label: 'Spaces' },
+  { id: 'design3d', label: '3D Studio' },
   { id: 'work', label: 'Work' },
   { id: 'clients', label: 'Clients' },
   { id: 'team', label: 'Team' },
@@ -91,7 +92,8 @@ export const values = [
     badge: ['Crafted finish', 'every detail'],
   },
   {
-    title: 'Sustainability', tag: 'Green', tone: 'green', icon: 'leaf', image: 'spaces/sm/lounge-6.jpg',
+    title: 'Sustainability', tag: 'Green', tone: 'green', icon: 'leaf', image: 'csr/plant-1.jpg',
+    gallery: ['csr/plant-1.jpg', 'csr/plant-2.jpg', 'csr/plant-3.jpg', 'csr/plant-4.jpg'], // plantation drives, cross-fading
     text: 'Designs that respect the future, with lower running costs for you and more trees for everyone.',
     points: ['Energy-efficient lighting and HVAC', 'Low-VOC paints and certified woods', '1,000 trees planted for every project'],
     badge: ['1,000 trees', 'per project'],
@@ -220,6 +222,19 @@ export const testimonials = [
 ];
 
 export const clients = ['Google', 'Samsung', 'Sony', 'Samsung SDS', 'Tech Mahindra', 'TCS', 'SBI Card', 'ICRA Ltd', 'Home Credit', 'Ecom Express', 'POSCO India', 'Varun Beverages', 'Asahi Glass', 'Daikin', 'Gabriel India', 'AECOM', 'CB&I', 'Max Healthcare', 'Fluor Daniel', 'CBRE', 'Jakson Ltd', 'ISTD', 'BPTP', 'JK Cement', 'Devyani Food', 'Bloom Hotels', 'Tata Technologies', 'UPS Supply Chain', 'RJ Corp'];
+
+// Logo shown when a client name in the grid is hovered (public/img/logos/). bg = the logo's own background.
+// Clients without a verified logo (e.g. Bloom Hotels) simply keep showing their name.
+export const clientLogoMap = {
+  'Google': { file: 'google.svg' }, 'Samsung': { file: 'samsung.svg' }, 'Sony': { file: 'sony.png', bg: '#000000' },
+  'Samsung SDS': { file: 'samsungsds.png' }, 'Tech Mahindra': { file: 'techmahindra.svg' }, 'TCS': { file: 'tcs.png' },
+  'SBI Card': { file: 'sbicard.png' }, 'ICRA Ltd': { file: 'icra.png' }, 'Home Credit': { file: 'homecredit.png', bg: '#cf0e2d' },
+  'Ecom Express': { file: 'ecom.png' }, 'POSCO India': { file: 'posco.png', bg: '#00588a' }, 'Varun Beverages': { file: 'varun.png' },
+  'Asahi Glass': { file: 'agc.png' }, 'Daikin': { file: 'daikin.png' }, 'AECOM': { file: 'aecom.png' },
+  'Max Healthcare': { file: 'max.png' }, 'Fluor Daniel': { file: 'fluor.png', bg: '#004681' }, 'CBRE': { file: 'cbre.png', bg: '#003f2d' },
+  'Jakson Ltd': { file: 'jakson.png' }, 'ISTD': { file: 'istd.png' }, 'BPTP': { file: 'bptp.png' }, 'JK Cement': { file: 'jkcement.png' },
+  'Tata Technologies': { file: 'tatatech.png' }, 'UPS Supply Chain': { file: 'ups.png' }, 'RJ Corp': { file: 'rjcorp.png' },
+};
 
 export const team = [
   { initials: 'BK', name: 'Brijesh Kumar', role: 'Project Head' },

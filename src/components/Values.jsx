@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { values, img } from '../data/content.js';
 import { Reveal, SectionHead } from './ui.jsx';
 
@@ -11,6 +12,18 @@ const icons = {
 const Icon = ({ name }) => (
   <svg viewBox="0 0 24 24" aria-hidden="true">{icons[name]}</svg>
 );
+
+/** Photo that cross-fades through a small gallery (used for the plantation drives). */
+function Slides({ images }) {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI(n => (n + 1) % images.length), 3200);
+    return () => clearInterval(t);
+  }, [images.length]);
+  return images.map((src, k) => (
+    <img key={src} src={img(src)} alt="" loading="lazy" className={k === i ? 'vtl__slide is-on' : 'vtl__slide'} />
+  ));
+}
 
 /** Zigzag timeline: text card and photo alternate sides, joined by a dashed line with numbered stops. */
 export default function Values() {
@@ -33,7 +46,7 @@ export default function Values() {
             <span className="vtl__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <Reveal className="vtl__media" delay={0.1}>
               <figure data-reveal>
-                <img src={img(v.image)} alt="" loading="lazy" />
+                {v.gallery ? <Slides images={v.gallery} /> : <img src={img(v.image)} alt="" loading="lazy" />}
               </figure>
               <div className="vtl__badge">
                 <span className="vtl__icon"><Icon name={v.icon} /></span>

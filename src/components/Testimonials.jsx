@@ -24,7 +24,7 @@ export default function Testimonials() {
       <ParallaxImg className="voices__bg" src={img('spaces/lounge-5.jpg')} alt="" loading="lazy" strength={12} />
       <div className="voices__inner">
         <div className="voices__head">
-          <p className="kicker">(10) Client words</p>
+          <p className="kicker">(11) Client words</p>
           <div className="voices__nav">
             <button className="round round--light" onClick={() => step(-1)} aria-label="Previous testimonial">←</button>
             <span className="voices__count"><b>{String(active + 1).padStart(2, '0')}</b> / {String(testimonials.length).padStart(2, '0')}</span>
