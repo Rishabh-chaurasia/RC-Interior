@@ -223,8 +223,10 @@ export const testimonials = [
 
 export const clients = ['Google', 'Samsung', 'Sony', 'Samsung SDS', 'Tech Mahindra', 'TCS', 'SBI Card', 'ICRA Ltd', 'Home Credit', 'Ecom Express', 'POSCO India', 'Varun Beverages', 'Asahi Glass', 'Daikin', 'Gabriel India', 'AECOM', 'CB&I', 'Max Healthcare', 'Fluor Daniel', 'CBRE', 'Jakson Ltd', 'ISTD', 'BPTP', 'JK Cement', 'Devyani Food', 'Bloom Hotels', 'Tata Technologies', 'UPS Supply Chain', 'RJ Corp'];
 
-// Logo shown when a client name in the grid is hovered (public/img/logos/). bg = the logo's own background.
-// Clients without a verified logo (e.g. Bloom Hotels) simply keep showing their name.
+// Logo shown when a client name in the grid is hovered (public/img/logos/). bg = the logo's own background;
+// w / h override the default max logo size (72% / 58% of the cell) for very wide or square marks.
+// Clients without a logo entry simply keep showing their name. Devyani Food Industries trades as Cream Bell,
+// so its cell shows the Cream Bell mark (white on the blue of its packs).
 export const clientLogoMap = {
   'Google': { file: 'google.svg' }, 'Samsung': { file: 'samsung.svg' }, 'Sony': { file: 'sony.png', bg: '#000000' },
   'Samsung SDS': { file: 'samsungsds.png' }, 'Tech Mahindra': { file: 'techmahindra.svg' }, 'TCS': { file: 'tcs.png' },
@@ -234,6 +236,8 @@ export const clientLogoMap = {
   'Max Healthcare': { file: 'max.png' }, 'Fluor Daniel': { file: 'fluor.png', bg: '#004681' }, 'CBRE': { file: 'cbre.png', bg: '#003f2d' },
   'Jakson Ltd': { file: 'jakson.png' }, 'ISTD': { file: 'istd.png' }, 'BPTP': { file: 'bptp.png' }, 'JK Cement': { file: 'jkcement.png' },
   'Tata Technologies': { file: 'tatatech.png' }, 'UPS Supply Chain': { file: 'ups.png' }, 'RJ Corp': { file: 'rjcorp.png' },
+  'Gabriel India': { file: 'gabriel.png', w: '84%' }, 'CB&I': { file: 'cbi.png', h: '76%' },
+  'Devyani Food': { file: 'creambell.png', bg: '#2179b6', h: '88%' }, 'Bloom Hotels': { file: 'bloom.svg', bg: '#231f20' },
 };
 
 export const team = [

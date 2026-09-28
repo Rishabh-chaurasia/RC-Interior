@@ -520,7 +520,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .wall__grid li { position: relative; overflow: hidden; }
 .wall__name { transition: opacity .35s, transform .5s var(--ease); }
 .wall__logo { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 18px 22px; background: #fff; opacity: 0; transition: opacity .35s; pointer-events: none; }
-.wall__logo img { display: block; max-width: 72%; max-height: 58%; width: auto; height: auto; object-fit: contain; object-position: center; transform: scale(.9); transition: transform .5s var(--ease); }
+.wall__logo img { display: block; max-width: var(--logo-w, 72%); max-height: var(--logo-h, 58%); width: auto; height: auto; object-fit: contain; object-position: center; transform: scale(.9); transition: transform .5s var(--ease); }
 .wall__grid li.has-logo:hover { background: transparent; } /* no dark frame around the logo */
 .wall__grid li.has-logo:hover .wall__logo img { transform: none; }
 .wall__grid li.has-logo:hover .wall__logo, .wall__case.has-logo button:focus-visible .wall__logo { opacity: 1; }
