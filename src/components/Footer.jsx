@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="footer__base">
         <span>© {new Date().getFullYear()} RC Interior, Gurugram</span>
         <span>Corporate · Retail · Turnkey · Renovation · R&amp;M</span>
-        <a href="https://rcinterior.co.in">rcinterior.co.in</a>
+        <a href="https://www.rcinterior.co.in">www.rcinterior.co.in</a>
       </div>
     </footer>
   );

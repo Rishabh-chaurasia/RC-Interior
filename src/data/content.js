@@ -4,11 +4,12 @@ export const img = name => `${import.meta.env.BASE_URL}img/${name}`;
 
 export const contact = {
   phones: [
-    { label: '+91 95603 74796', href: 'tel:+919560374796' },
-    { label: '+91 96504 56779', href: 'tel:+919650456779' },
+    { label: '+91 96504 56779', href: 'tel:+919650456779', type: 'Mobile' },
+    { label: '+91 124 407 3017', href: 'tel:+911244073017', type: 'Office' },
   ],
-  email: 'amrc.ggn@gmail.com',
-  whatsapp: '919560374796',
+  email: 'info@rcinterior.co.in',
+  website: { label: 'www.rcinterior.co.in', href: 'https://www.rcinterior.co.in' },
+  whatsapp: '919650456779',
   address: ['5, Dhaniram Complex, Sikandarpur', 'Near Metro Pillar 54, Gurugram', 'Haryana 122002'],
   mapSrc: 'https://www.google.com/maps?q=Dhaniram+Complex+Sikanderpur+Gurugram+Haryana+122002&output=embed',
 };

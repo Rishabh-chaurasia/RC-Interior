@@ -96,11 +96,12 @@ export default function Contact() {
         <aside className="info">
           <div className="info__block">
             <p className="kicker">Call</p>
-            {contact.phones.map(p => <a key={p.href} href={p.href}>{p.label}</a>)}
+            {contact.phones.map(p => <a key={p.href} href={p.href}>{p.label} <small>· {p.type}</small></a>)}
           </div>
           <div className="info__block">
             <p className="kicker">Write</p>
             <a href={`mailto:${contact.email}`}>{contact.email}</a>
+            <a href={contact.website.href} target="_blank" rel="noopener">{contact.website.label}</a>
           </div>
           <div className="info__block">
             <p className="kicker">Visit</p>
