@@ -624,9 +624,19 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .footer__base a:hover { color: var(--lime); }
 
 /* ---------- WhatsApp + lightbox ---------- */
-.wa { position: fixed; right: 18px; bottom: 18px; z-index: 50; width: 58px; height: 58px; border-radius: 50%; background: var(--lime); color: var(--ink); display: grid; place-items: center; box-shadow: 0 10px 30px rgba(26,21,18,.25); transition: transform .5s var(--ease); }
+.wa { position: fixed; right: 18px; bottom: 18px; z-index: 50; width: 58px; height: 58px; border-radius: 50%; background: var(--lime); color: var(--ink); display: grid; place-items: center; box-shadow: 0 10px 30px rgba(26,21,18,.25); transition: transform .5s var(--ease), opacity .3s; }
 .wa svg { width: 28px; height: 28px; }
 .wa:hover { transform: scale(1.08) rotate(-8deg); }
+.wa.is-away { transform: scale(.4); opacity: 0; pointer-events: none; }
+.hero__actions .btn, .hero__actions .link-under { flex: none; white-space: nowrap; }
+@media (max-width: 760px) {
+  .wa { right: 14px; bottom: 14px; width: 50px; height: 50px; }
+  .wa svg { width: 24px; height: 24px; }
+  .hero__bottom { padding-right: 0; }
+}
+@media (max-width: 360px) {
+  .hero__actions { flex-wrap: wrap; gap: 14px 20px; }
+}
 .lightbox { position: fixed; inset: 0; z-index: 80; background: rgba(15,12,10,.94); display: grid; place-items: center; padding: 60px 16px; opacity: 0; visibility: hidden; transition: opacity .4s, visibility .4s; }
 .lightbox.on { opacity: 1; visibility: visible; }
 .lightbox img { max-width: min(1200px, 100%); max-height: calc(100svh - 120px); object-fit: contain; border-radius: 14px; transform: scale(.94); transition: transform .6s var(--ease); }
