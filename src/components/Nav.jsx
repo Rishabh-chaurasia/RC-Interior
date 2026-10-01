@@ -2,16 +2,7 @@ import { useRef, useState } from 'react';
 import { navLinks, contact } from '../data/content.js';
 import { useOnScroll } from '../hooks/scroll.jsx';
 import { Btn } from './ui.jsx';
-
-export function BrandMark({ className = 'brand__mark' }) {
-  return (
-    <svg className={className} viewBox="0 0 40 40" aria-hidden="true">
-      <path d="M4 19 20 5l16 14" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M9 17v18h22V17" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinejoin="round" />
-      <rect x="16" y="23" width="8" height="12" rx="1" fill="currentColor" />
-    </svg>
-  );
-}
+import Logo from './Logo.jsx';
 
 // data-nav="dark" marks sections whose darkness comes from photos/children rather than their own background
 function isDarkBg(el) {
@@ -58,8 +49,7 @@ export default function Nav({ menuOpen, onToggleMenu }) {
       <div className="progress" aria-hidden="true" />
       <header className={`nav ${hidden ? 'is-hidden' : ''} ${dark ? 'is-dark' : ''}`} id="top">
         <a href="#top" className="brand" aria-label="RC Interior home">
-          <BrandMark />
-          <span className="brand__rc">RC</span><span className="brand__word">Interior</span>
+          <Logo className="brand__logo" />
         </a>
         <nav className="nav__links" aria-label="Primary">
           {navLinks.map(l => (
