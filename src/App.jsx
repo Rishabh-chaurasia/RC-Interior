@@ -14,6 +14,7 @@ import Studio3D from './components/Studio3D.jsx';
 import Showcase3D from './components/Showcase3D.jsx';
 import Why from './components/Why.jsx';
 import Work from './components/Work.jsx';
+import ClientRing from './components/ClientRing.jsx';
 import Materials from './components/Materials.jsx';
 import Process from './components/Process.jsx';
 import Testimonials from './components/Testimonials.jsx';
@@ -86,6 +87,7 @@ function Site() {
         <Studio3D />
         <Why />
         <Work onOpenImage={setLightbox} />
+        <ClientRing onOpenImage={setLightbox} viewerOpen={!!lightbox} />
         <Materials />
         <Process />
         <Testimonials />
