@@ -22,9 +22,25 @@ export const FINISHES = {
 
 export const DEFAULT_FINISHES = { floor: 'herringbone_parquet', wall: 'walnut_dark', fabric: 'linen_sand' };
 
-export const VIEW_LABELS = [
-  { id: 'overview', label: 'Overview' },
-  { id: 'desk', label: 'Director’s desk' },
-  { id: 'lounge', label: 'Lounge' },
-  { id: 'meeting', label: 'Meeting room' },
+// The two sample projects: the director's office (Room.jsx) and a full corporate floor (BigOffice.jsx).
+export const OFFICES = [
+  { id: 'small', label: 'Director’s office', size: '750 sq ft' },
+  { id: 'large', label: 'Corporate floor', size: '5,800 sq ft' },
 ];
+
+export const VIEW_LABELS = {
+  small: [
+    { id: 'overview', label: 'Overview' },
+    { id: 'desk', label: 'Director’s desk' },
+    { id: 'lounge', label: 'Lounge' },
+    { id: 'meeting', label: 'Meeting room' },
+  ],
+  large: [
+    { id: 'overview', label: 'Overview' },
+    { id: 'reception', label: 'Reception' },
+    { id: 'work', label: 'Workstations' },
+    { id: 'cabins', label: 'Cabins' },
+    { id: 'boardroom', label: 'Boardroom' },
+    { id: 'cafe', label: 'Café & lounge' },
+  ],
+};

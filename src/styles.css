@@ -378,7 +378,12 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 /* ---------- 3D DESIGN STUDIO ---------- */
 .s3d { background: var(--espresso); color: var(--bone); }
 .s3d .section__head { margin-bottom: 18px; }
-.s3d__lede { margin: 0 0 clamp(28px, 4vw, 44px); max-width: 60ch; color: rgba(242,237,229,.75); font-size: 16px; }
+.s3d__lede { margin: 0 0 24px; max-width: 60ch; color: rgba(242,237,229,.75); font-size: 16px; }
+.s3d__offices { display: inline-flex; flex-wrap: wrap; gap: 6px; margin: 0 0 clamp(20px, 3vw, 32px); padding: 6px; border-radius: 999px; border: 1px solid rgba(242,237,229,.14); background: rgba(242,237,229,.04); }
+.s3d__offices button { display: inline-flex; align-items: baseline; gap: 10px; padding: 12px 20px; border-radius: 999px; font: 500 15px var(--sans); color: rgba(242,237,229,.8); transition: background .3s, color .3s; }
+.s3d__offices button:hover { background: rgba(242,237,229,.08); color: var(--bone); }
+.s3d__offices button small { font: 400 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; opacity: .65; }
+.s3d__offices button.is-on { background: var(--lime); color: var(--ink); }
 .s3d__viewer { position: relative; height: min(82svh, 820px); min-height: 520px; border-radius: var(--radius); overflow: hidden; background: #1a1512; box-shadow: 0 40px 80px -40px rgba(0,0,0,.6); isolation: isolate; }
 .s3d__viewer canvas { display: block; cursor: grab; outline: none; touch-action: pan-y; }
 .s3d__viewer canvas:active { cursor: grabbing; }
@@ -706,6 +711,8 @@ html:not(.js) .hero .eyebrow, html:not(.js) .hero__bottom { opacity: 1; transfor
 @media (max-width: 900px) {
   .walk { --per-stop: 60svh; }
   .s3d__viewer { height: 78svh; min-height: 560px; }
+  .s3d__offices { display: grid; grid-template-columns: 1fr 1fr; width: 100%; border-radius: 18px; }
+  .s3d__offices button { flex-direction: column; align-items: center; gap: 4px; padding: 10px 8px; border-radius: 14px; font-size: 14px; }
   .s3d__views { left: 10px; right: 10px; top: 10px; border-radius: 16px; justify-content: center; }
   .s3d__views button { padding: 7px 10px; font-size: 12px; }
   .s3d__tools { top: auto; bottom: 64px; right: 10px; transition: bottom .4s var(--ease); }

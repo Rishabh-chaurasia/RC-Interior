@@ -1,12 +1,6 @@
-import { WORDMARK_WIDTH, RC_PATH, INTERIOR_PATH } from './logoPaths.js';
+import { WORDMARK_WIDTH, RC_PATH, INTERIOR_PATH, HOUSE, FLOOR, CHAIR_SOLID, CHAIR_LINES, CASTERS } from './logoPaths.js';
 
-// The RC house: lime roof + wall swept by a curve, a stepped floor line, and the chair inside.
 // Lime parts read --logo-mark, the chair and "RC" use currentColor, "INTERIOR" reads --logo-word.
-const HOUSE = 'M4 43 55 10l47 32A83 59 0 0 0 19 101V43Z';
-const FLOOR = 'M19 101h58V77h15V63';
-const CHAIR_SOLID = 'M45.6 67.6a1.6 1.6 0 0 1 2.9-1.2l5.5 13.6h-3.4zM50.5 80.5h17.5a2.3 2.3 0 0 1 0 4.6h-15.3z';
-const CHAIR_LINES = 'M54 77.5c4.5-1.8 10-1.6 13.5.4M66 78v2.5M60 85v8M60 93l-5.5 4.2M60 93l5.5 4.2M60 93v4.5';
-const CASTERS = [[54.2, 98.2], [65.8, 98.2], [60, 98.6]];
 
 function House() {
   return (
