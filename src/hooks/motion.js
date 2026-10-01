@@ -103,15 +103,6 @@ export function setupMotion() {
       });
     });
 
-    /* ---------- section colour shift: Services melts into the dark Spaces section below it ----------
-       (only used where the section's heading has already scrolled away, so text never sits on a half-dark background) */
-    [['.services', '.spaces', '#1f1915']].forEach(([from, into, colour]) => {
-      gsap.to(from, {
-        backgroundColor: colour, color: '#f2ede5', ease: 'none',
-        scrollTrigger: { trigger: into, start: 'top bottom', end: 'top 35%', scrub: true },
-      });
-    });
-
     /* ---------- 3D flip-in: cards swing up from a tilted plane as they enter ----------
        (uses the `rotate`/`translate` CSS properties so it never fights the fade-up transform) */
     gsap.utils.toArray('.bento .card, .why__cards .wcard, .team__grid .member, .swatches .swatch, .steps .step').forEach((el, i) => {

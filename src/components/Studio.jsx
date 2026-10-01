@@ -40,7 +40,7 @@ export default function Studio() {
           ))}
           <Reveal className="stat stat--dark">
             <p>Design isn’t just what you see. It’s how your team works in it.</p>
-            <a href="#services" className="link-under link-under--light">Our services</a>
+            <a href="#services" className="link-under">Our services</a>
           </Reveal>
         </div>
       </div>

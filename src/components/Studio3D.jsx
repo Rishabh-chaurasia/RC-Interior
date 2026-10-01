@@ -58,7 +58,7 @@ export default function Studio3D() {
   const pickOffice = id => { setAutoRotate(false); setOffice(id); setView('overview'); };
 
   return (
-    <section ref={section} className="s3d section" id="design3d" data-nav="dark">
+    <section ref={section} className="s3d section" id="design3d">
       <SectionHead kicker="(06) 3D design studio">Your office in 3D, <em>before we build it.</em></SectionHead>
       <p className="s3d__lede">This is how we present every project: a realistic 3D model you can walk around. Pick a project size, drag to look around, jump between zones, and try different finishes.</p>
 

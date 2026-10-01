@@ -188,7 +188,7 @@ export default function Scene({ office = 'small', view, finishes, evening, autoR
       gl={{ antialias: false, powerPreference: 'high-performance', stencil: false }}
       onCreated={({ gl }) => { gl.toneMapping = THREE.NoToneMapping; gl.outputColorSpace = THREE.SRGBColorSpace; }}
     >
-      <color attach="background" args={[evening ? '#141019' : '#1f1915']} />
+      <color attach="background" args={[evening ? '#141019' : '#ece6dc']} />
       {!mobile && <SoftShadows size={18} samples={12} focus={0.6} />}
       <Progress onProgress={onProgress} />
       <Suspense fallback={null}>

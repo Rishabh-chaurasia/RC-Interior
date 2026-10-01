@@ -56,7 +56,7 @@ export default function Work({ onOpenImage }) {
   });
 
   return (
-    <section ref={section} className="work" id="work" data-nav="dark">
+    <section ref={section} className="work" id="work">
       <div className="work__pin">
         <div className="work__head">
           <p className="kicker">(08) Gallery</p>
