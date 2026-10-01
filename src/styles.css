@@ -482,6 +482,52 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .work__progress { margin: 0 var(--gutter); height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
 .work__progress span { display: block; height: 100%; width: 100%; background: var(--lime-deep); transform-origin: left; transform: scaleX(0); }
 
+/* ---------- CLIENT WORK RING (components/ClientRing.jsx) ---------- */
+.cring { background: #fff; overflow: hidden; }
+.cring__head { display: grid; justify-items: center; gap: 16px; text-align: center; margin-bottom: clamp(20px, 3.5vw, 44px); }
+.cring__lede { margin: 0; max-width: 56ch; color: var(--ink-2); }
+.cring__sample { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 10px; margin: 0; font-size: 13px; color: var(--muted); }
+.cring__sample span, .cring__badge { padding: 4px 9px; border-radius: 999px; background: var(--lime); color: var(--ink); font: 600 10px/1.2 var(--mono); font-style: normal; letter-spacing: .1em; text-transform: uppercase; }
+.cring__stage { position: relative; isolation: isolate; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
+.cring__stage:active { cursor: grabbing; }
+.cring__ring { position: absolute; inset: 0; }
+.cring__card { position: absolute; left: 0; top: 0; width: var(--cw); height: var(--ch); padding: 0; border-radius: 6px; overflow: hidden; background: var(--sand); box-shadow: 0 8px 16px -10px rgba(26,21,18,.5); will-change: transform, opacity; transition: box-shadow .3s; }
+.cring__card img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.cring__card.is-active { box-shadow: 0 0 0 3px var(--lime), 0 12px 22px -10px rgba(26,21,18,.55); }
+.cring__card:focus-visible { outline: 3px solid var(--lime-deep); outline-offset: 3px; }
+.cring__preview { position: absolute; z-index: 1100; display: grid; justify-items: center; gap: 10px; opacity: 0; transform: scale(.96); pointer-events: none; transition: opacity .35s ease, transform .5s var(--ease); }
+.cring__preview.is-on { opacity: 1; transform: none; pointer-events: auto; }
+.cring__frame { position: relative; display: block; width: 100%; padding: 0; border-radius: 12px; overflow: hidden; background: var(--sand); box-shadow: 0 28px 50px -22px rgba(26,21,18,.55); cursor: zoom-in; }
+.cring__frame:focus-visible { outline: 3px solid var(--lime-deep); outline-offset: 4px; }
+.cring__layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.cring__layer.is-top { animation: cringIn .45s ease both; } /* new image fades in over the old one, so nothing flashes */
+.cring__layer img { display: block; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .35s ease; }
+.cring__layer img.is-loaded { opacity: 1; }
+.cring__badge { position: absolute; left: 10px; top: 10px; }
+.cring__caption { display: grid; justify-items: center; gap: 3px; text-align: center; animation: cringIn .4s ease both; }
+.cring__caption b { font: 600 17px/1.2 var(--sans); letter-spacing: -.01em; }
+.cring__caption span { max-width: 44ch; font-size: 13px; color: var(--ink-2); }
+.cring__caption em { margin-top: 3px; font: 600 10.5px var(--mono); font-style: normal; letter-spacing: .12em; text-transform: uppercase; color: var(--lime-ink); }
+.cring__idle { position: absolute; left: 50%; z-index: 1090; margin: 0; translate: -50% -50%; font: italic 400 clamp(22px, 2.4vw, 34px)/1 var(--serif); color: var(--muted); white-space: nowrap; opacity: 0; transition: opacity .4s; pointer-events: none; }
+.cring__idle.is-on { opacity: .85; }
+.cring__controls { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 18px; margin-top: clamp(14px, 2vw, 24px); }
+.cring__play { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); font: 500 14px var(--sans); transition: background .3s, border-color .3s; }
+.cring__play:hover { background: var(--lime); border-color: var(--lime); }
+.cring__play:focus-visible { outline: 3px solid var(--lime-deep); outline-offset: 3px; }
+.cring__play i { font-style: normal; font-size: 11px; }
+.cring__help { font: 400 12px var(--mono); color: var(--muted); }
+.cring__help--touch { display: none; }
+@media (pointer: coarse) { .cring__help--mouse { display: none; } .cring__help--touch { display: inline; } }
+@keyframes cringIn { from { opacity: 0; } }
+@media (max-width: 700px) {
+  .cring__preview { gap: 6px; }
+  .cring__caption b { font-size: 14px; }
+  .cring__caption span { font-size: 11.5px; line-height: 1.3; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+  .cring__caption em { font-size: 9.5px; }
+  .cring__badge { left: 6px; top: 6px; padding: 3px 7px; font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) { .cring__layer.is-top, .cring__caption { animation: none; } .cring__preview { transition: opacity .2s; transform: none; } }
+
 /* ---------- MATERIALS ---------- */
 .materials__head { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; align-items: end; margin-bottom: clamp(40px, 5vw, 70px); }
 .materials__head > div { display: grid; gap: 24px; }
