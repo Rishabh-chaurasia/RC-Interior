@@ -61,7 +61,7 @@ export function Team() {
 
 export function Csr() {
   return (
-    <section className="csr" data-nav="dark">
+    <section className="csr">
       <figure className="csr__img" data-reveal data-radius="0px">
         <ParallaxImg src={img('csr.jpg')} alt="Volunteers planting a sapling" loading="lazy" />
       </figure>
@@ -79,7 +79,7 @@ export function Csr() {
 
 export function Cta({ phone }) {
   return (
-    <section className="cta" data-nav="dark">
+    <section className="cta">
       <ParallaxImg className="cta__bg" src={img('spaces/workstation-3.jpg')} alt="" loading="lazy" strength={12} />
       <div className="cta__inner">
         <p className="kicker">Next steps</p>
@@ -87,7 +87,7 @@ export function Cta({ phone }) {
         <Reveal as="p" className="cta__lede">Tell us about your floor plate. We’ll visit, measure and come back with a plan, free.</Reveal>
         <Reveal className="cta__actions">
           <Btn href="#contact" variant="lime">Book a free site visit</Btn>
-          <a href={phone.href} className="link-under link-under--light">or call {phone.label}</a>
+          <a href={phone.href} className="link-under">or call {phone.label}</a>
         </Reveal>
       </div>
     </section>

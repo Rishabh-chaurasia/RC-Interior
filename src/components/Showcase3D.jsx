@@ -103,7 +103,7 @@ export default function Showcase3D() {
   const current = STOPS[stop.index];
 
   return (
-    <section ref={section} className="walk" id="walkthrough" data-nav="dark" style={{ '--stops': LAST }}>
+    <section ref={section} className="walk" id="walkthrough" style={{ '--stops': LAST }}>
       <div className="walk__pin">
         <div ref={stage} className="walk__stage">
           {STOPS.map((st, i) => (

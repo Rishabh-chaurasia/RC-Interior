@@ -1,14 +1,19 @@
+import Logo from './Logo.jsx';
+
 const links = [['studio', 'Studio'], ['services', 'Services'], ['spaces', 'Spaces'], ['work', 'Work'], ['team', 'Team'], ['contact', 'Contact']];
 
 export default function Footer() {
   return (
-    <footer className="footer" data-nav="dark">
+    <footer className="footer">
       <div className="footer__top">
-        <p className="footer__tag">Small change,<br /><em>big differences.</em></p>
+        <div className="footer__brand">
+          <Logo className="footer__logo" tagline />
+          <p className="footer__tag">Small change,<br /><em>big differences.</em></p>
+        </div>
         <nav className="footer__nav" aria-label="Footer">
           {links.map(([id, label]) => <a key={id} href={`#${id}`}><span className="roll" data-text={label}><span>{label}</span></span></a>)}
         </nav>
-        <a href="#top" className="round round--light" aria-label="Back to top">↑</a>
+        <a href="#top" className="round" aria-label="Back to top">↑</a>
       </div>
       <div className="footer__word" aria-hidden="true" data-split>RC Interior</div>
       <div className="footer__base">

@@ -2,7 +2,7 @@ import { Component, Suspense, lazy, useCallback, useEffect, useRef, useState } f
 import { SectionHead } from './ui.jsx';
 import { img } from '../data/content.js';
 // plain data (no three.js), so the controls render before the 3D bundle arrives
-import { FINISHES, DEFAULT_FINISHES, VIEW_LABELS as VIEWS } from './studio3d/finishes.js';
+import { FINISHES, DEFAULT_FINISHES, OFFICES, VIEW_LABELS as VIEWS } from './studio3d/finishes.js';
 
 const Scene = lazy(() => import('./studio3d/Scene.jsx'));
 const GROUPS = [['floor', 'Floor'], ['wall', 'Feature wall'], ['fabric', 'Sofa']];
@@ -32,6 +32,7 @@ export default function Studio3D() {
   const [near, setNear] = useState(false);
   const [active, setActive] = useState(false);
   const [webgl, setWebgl] = useState(null);
+  const [office, setOffice] = useState('small');
   const [view, setView] = useState('overview');
   const [finishes, setFinishes] = useState(DEFAULT_FINISHES);
   const [evening, setEvening] = useState(false);
@@ -54,18 +55,27 @@ export default function Studio3D() {
     setLoad(prev => (prev.done ? prev : { progress: Math.max(prev.progress, progress), done }));
   }, []);
   const stopRotate = useCallback(() => setAutoRotate(false), []);
+  const pickOffice = id => { setAutoRotate(false); setOffice(id); setView('overview'); };
 
   return (
-    <section ref={section} className="s3d section" id="design3d" data-nav="dark">
+    <section ref={section} className="s3d section" id="design3d">
       <SectionHead kicker="(06) 3D design studio">Your office in 3D, <em>before we build it.</em></SectionHead>
-      <p className="s3d__lede">This is how we present every project: a realistic 3D model you can walk around. Drag to look around, jump between zones, and try different finishes.</p>
+      <p className="s3d__lede">This is how we present every project: a realistic 3D model you can walk around. Pick a project size, drag to look around, jump between zones, and try different finishes.</p>
+
+      <div className="s3d__offices" role="group" aria-label="Project">
+        {OFFICES.map(o => (
+          <button key={o.id} type="button" className={office === o.id ? 'is-on' : ''} aria-pressed={office === o.id} onClick={() => pickOffice(o.id)}>
+            {o.label}<small>{o.size}</small>
+          </button>
+        ))}
+      </div>
 
       <div className={`s3d__viewer ${load.done ? 'is-ready' : ''}`}>
         {webgl === false && <Fallback />}
         {webgl && near && (
           <Boundary fallback={<Fallback />}>
             <Suspense fallback={null}>
-              <Scene view={view} finishes={finishes} evening={evening} autoRotate={autoRotate} active={active} mobile={mobile} zoom={zoom} onProgress={onProgress} onUserMove={stopRotate} />
+              <Scene office={office} view={view} finishes={finishes} evening={evening} autoRotate={autoRotate} active={active} mobile={mobile} zoom={zoom} onProgress={onProgress} onUserMove={stopRotate} />
             </Suspense>
           </Boundary>
         )}
@@ -80,7 +90,7 @@ export default function Studio3D() {
 
         {/* zone buttons */}
         <div className="s3d__views" role="group" aria-label="Camera views">
-          {VIEWS.map(v => (
+          {VIEWS[office].map(v => (
             <button key={v.id} type="button" className={view === v.id ? 'is-on' : ''} aria-pressed={view === v.id} onClick={() => { setAutoRotate(false); setView(v.id); }}>{v.label}</button>
           ))}
         </div>

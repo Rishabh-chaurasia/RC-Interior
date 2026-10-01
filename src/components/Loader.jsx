@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { prefersReducedMotion } from '../hooks/scroll.jsx';
+import { LogoMark } from './Logo.jsx';
 
 const COLUMNS = 5;
 
@@ -35,11 +36,7 @@ export default function Loader({ onDone }) {
         <span key={i} className="loader__col" style={{ '--i': i, left: `${(100 / COLUMNS) * i}%` }} />
       ))}
       <div className="loader__inner">
-        <svg className="loader__mark" viewBox="0 0 40 40">
-          <path d="M4 19 20 5l16 14" />
-          <path d="M9 17v18h22V17" />
-          <path d="M16 35V23h8v12" />
-        </svg>
+        <LogoMark className="loader__mark" />
         <div className="loader__words">
           <span className="loader__word">Your space</span>
           <span className="loader__word">Your style</span>

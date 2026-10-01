@@ -25,7 +25,7 @@ export default function Hero({ ready }) {
   const slide = heroSlides[active];
 
   return (
-    <section className="hero" data-nav="dark" aria-label="Introduction" style={{ '--dur': `${SLIDE_MS}ms` }}>
+    <section className="hero" aria-label="Introduction" style={{ '--dur': `${SLIDE_MS}ms` }}>
       <div className="hero__slides">
         {heroSlides.map((s, i) => (
           <figure key={s.src} className={`slide ${i === active ? 'is-active' : ''}`}>
@@ -48,7 +48,7 @@ export default function Hero({ ready }) {
             <p className="hero__lede">Since 2007, RC Interior has designed and built commercial workspaces across Delhi NCR — from first sketch and 3D visualisation to civil work, MEP and final handover, all under one roof.</p>
             <div className="hero__actions">
               <Btn href="#contact" variant="lime">Book a site visit</Btn>
-              <a href="#work" className="link-under link-under--light">See our work</a>
+              <a href="#work" className="link-under">See our work</a>
             </div>
           </div>
           <div className="hero__ctrl">

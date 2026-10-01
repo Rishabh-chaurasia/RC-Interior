@@ -20,15 +20,15 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="voices" data-nav="dark">
+    <section className="voices">
       <ParallaxImg className="voices__bg" src={img('spaces/lounge-5.jpg')} alt="" loading="lazy" strength={12} />
       <div className="voices__inner">
         <div className="voices__head">
           <p className="kicker">(11) Client words</p>
           <div className="voices__nav">
-            <button className="round round--light" onClick={() => step(-1)} aria-label="Previous testimonial">←</button>
+            <button className="round" onClick={() => step(-1)} aria-label="Previous testimonial">←</button>
             <span className="voices__count"><b>{String(active + 1).padStart(2, '0')}</b> / {String(testimonials.length).padStart(2, '0')}</span>
-            <button className="round round--light" onClick={() => step(1)} aria-label="Next testimonial">→</button>
+            <button className="round" onClick={() => step(1)} aria-label="Next testimonial">→</button>
           </div>
         </div>
         <div className="voices__stage" aria-live="polite">

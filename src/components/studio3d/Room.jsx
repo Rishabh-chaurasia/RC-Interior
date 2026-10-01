@@ -16,7 +16,7 @@ const W = 10, D = 7, H = 3;
 const X0 = -W / 2, X1 = W / 2, Z0 = -D / 2, Z1 = D / 2;
 
 /* ---------- shared plain materials ---------- */
-const mat = {
+export const mat = {
   steel: new THREE.MeshStandardMaterial({ color: '#1b1b1d', roughness: 0.35, metalness: 0.85 }),
   white: new THREE.MeshStandardMaterial({ color: '#f4f2ee', roughness: 0.6 }),
   ceiling: new THREE.MeshStandardMaterial({ color: '#f6f5f2', roughness: 0.9, side: THREE.FrontSide }),
@@ -33,7 +33,7 @@ const mat = {
 const MODELS = ['mid_century_lounge_chair', 'modern_arm_chair_01', 'modern_coffee_table_01', 'modern_wooden_cabinet', 'steel_frame_shelves_01', 'potted_plant_01', 'potted_plant_02', 'potted_plant_04', 'desk_lamp_arm_01', 'modern_ceiling_lamp_01', 'ceramic_vase_01', 'ceramic_vase_03', 'dining_chair_02', 'side_table_01'];
 export const preloadModels = () => MODELS.forEach(m => useGLTF.preload(asset(`models/${m}.glb`)));
 
-function Model({ name, position = [0, 0, 0], rotation = 0, scale = 1 }) {
+export function Model({ name, position = [0, 0, 0], rotation = 0, scale = 1 }) {
   const { scene } = useGLTF(asset(`models/${name}.glb`));
   const obj = useMemo(() => scene.clone(true), [scene]);
   useLayoutEffect(() => {
@@ -158,7 +158,7 @@ function FeatureWall({ wall }) {
 
 /* ---------- furniture built from textured parts ---------- */
 
-function Desk({ position }) {
+export function Desk({ position }) {
   const walnut = usePBR('walnut_dark', [1, 1], { roughness: 0.45 });
   const w = 2.0, d = 0.85, h = 0.74;
   return (
@@ -179,7 +179,7 @@ function Desk({ position }) {
   );
 }
 
-function Monitor({ position, on }) {
+export function Monitor({ position, on }) {
   return (
     <group position={position}>
       <mesh position={[0, 0.34, 0]} material={mat.steel} castShadow><boxGeometry args={[0.62, 0.37, 0.025]} /></mesh>
@@ -190,7 +190,7 @@ function Monitor({ position, on }) {
   );
 }
 
-function Sofa({ position, rotation = 0, fabric }) {
+export function Sofa({ position, rotation = 0, fabric }) {
   const cloth = usePBR(fabric, [2, 2], { roughness: 1 });
   const L = 2.3, Dp = 0.95;
   return (
@@ -216,7 +216,7 @@ function Sofa({ position, rotation = 0, fabric }) {
   );
 }
 
-function Rug({ position, size }) {
+export function Rug({ position, size }) {
   const m = usePBR('rug_cream', [size[0] / 0.9, size[1] / 0.9], { roughness: 1 });
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={position} material={m} receiveShadow>
@@ -264,7 +264,7 @@ function GlassRoom() {
   );
 }
 
-function Books({ position, count = 9, seed = 1 }) {
+export function Books({ position, count = 9, seed = 1 }) {
   const items = useMemo(() => {
     let r = seed * 9301;
     const rnd = () => ((r = (r * 9301 + 49297) % 233280) / 233280);
@@ -285,7 +285,7 @@ function Books({ position, count = 9, seed = 1 }) {
   );
 }
 
-function TV({ position, on }) {
+export function TV({ position, on }) {
   return (
     <group position={position}>
       <mesh material={mat.steel} castShadow><boxGeometry args={[1.45, 0.84, 0.04]} /></mesh>
@@ -295,7 +295,7 @@ function TV({ position, on }) {
 }
 
 /** Framed abstract print, drawn on a canvas in the brand palette. */
-function ArtFrame({ position, size = [0.9, 1.2], variant = 0 }) {
+export function ArtFrame({ position, size = [0.9, 1.2], variant = 0 }) {
   const tex = useMemo(() => {
     const c = document.createElement('canvas'); c.width = 600; c.height = Math.round(600 * size[1] / size[0]);
     const g = c.getContext('2d'); const w = c.width, h = c.height;
