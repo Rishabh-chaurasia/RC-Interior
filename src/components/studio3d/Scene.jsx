@@ -175,7 +175,7 @@ function BigLights({ evening, mobile }) {
   );
 }
 
-export default function Scene({ office = 'small', view, finishes, evening, autoRotate, active, mobile, zoom, onProgress, onUserMove }) {
+export default function Scene({ background = '#ece6dc', office = 'small', view, finishes, evening, autoRotate, active, mobile, zoom, onProgress, onUserMove }) {
   const controls = useRef(null);
   const v0 = VIEWS[office][0];
   const large = office === 'large';
@@ -188,7 +188,7 @@ export default function Scene({ office = 'small', view, finishes, evening, autoR
       gl={{ antialias: false, powerPreference: 'high-performance', stencil: false }}
       onCreated={({ gl }) => { gl.toneMapping = THREE.NoToneMapping; gl.outputColorSpace = THREE.SRGBColorSpace; }}
     >
-      <color attach="background" args={[evening ? '#141019' : '#ece6dc']} />
+      <color attach="background" args={[evening ? '#141019' : background]} />
       {!mobile && <SoftShadows size={18} samples={12} focus={0.6} />}
       <Progress onProgress={onProgress} />
       <Suspense fallback={null}>

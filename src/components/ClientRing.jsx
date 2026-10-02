@@ -225,7 +225,6 @@ export default function ClientRing({ onOpenImage, viewerOpen }) {
         <p className="kicker">Client work</p>
         <h2 className="h2" id="cring-title">Our client <em>work.</em></h2>
         <p className="cring__lede">Workplaces we have planned, built and handed over across Delhi NCR. Hover over a project to preview it, drag to spin the ring, and click the preview to see it full size.</p>
-        {SAMPLE && <p className="cring__sample"><span>Sample</span>These are AI-generated design concepts shown as placeholders, not completed client projects.</p>}
       </header>
 
       <div className="cring__wrap" ref={wrap} onPointerLeave={e => e.pointerType === 'mouse' && clear()} onBlur={onBlurWrap}>

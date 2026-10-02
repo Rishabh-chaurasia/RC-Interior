@@ -3,6 +3,19 @@ import { navLinks, contact } from '../data/content.js';
 import { useOnScroll } from '../hooks/scroll.jsx';
 import { Btn } from './ui.jsx';
 import Logo from './Logo.jsx';
+import { THEMES, useTheme } from '../hooks/theme.js';
+
+/** Cycles the colour theme: Ivory → Espresso → Sage → Terracotta. */
+function ThemeButton() {
+  const [theme, next] = useTheme();
+  const upcoming = THEMES[(THEMES.findIndex(t => t.id === theme.id) + 1) % THEMES.length];
+  return (
+    <button type="button" className="theme-btn" onClick={next} aria-label={`Colour theme: ${theme.label}. Switch to ${upcoming.label}`} title={`Theme: ${theme.label} (next: ${upcoming.label})`}>
+      <span key={theme.id} className="theme-btn__dot" style={{ '--a': theme.swatch[0], '--b': theme.swatch[1] }} aria-hidden="true" />
+      <span className="theme-btn__label" aria-hidden="true">{theme.label}</span>
+    </button>
+  );
+}
 
 // data-nav="dark" marks sections whose darkness comes from photos/children rather than their own background
 function isDarkBg(el) {
@@ -58,10 +71,13 @@ export default function Nav({ menuOpen, onToggleMenu }) {
             </a>
           ))}
         </nav>
-        <Btn href="#contact" variant="pill" className="nav__cta">Let’s discuss</Btn>
-        <button className="nav__toggle" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={onToggleMenu}>
-          <span /><span />
-        </button>
+        <div className="nav__end">
+          <ThemeButton />
+          <Btn href="#contact" variant="pill" className="nav__cta">Let’s discuss</Btn>
+          <button className="nav__toggle" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={onToggleMenu}>
+            <span /><span />
+          </button>
+        </div>
       </header>
 
       <div className="menu" aria-hidden={!menuOpen}>
