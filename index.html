@@ -6,7 +6,14 @@
     <title>RC Interior — Commercial Interiors, Gurugram</title>
     <meta name="description" content="RC Interior designs and builds workplaces for India's leading companies. Corporate, retail and turnkey interiors from Gurugram since 2007." />
     <meta name="theme-color" content="#faf7f1" />
-    <script>document.documentElement.classList.add('js')</script>
+    <script>
+      document.documentElement.classList.add('js');
+      // saved colour theme (hooks/theme.js), applied before first paint so the page never flashes
+      try {
+        var t = localStorage.getItem('rc-theme'), m = { espresso: '#1f1915', sage: '#e3e9df', terracotta: '#f1e3d8' };
+        if (m[t]) { document.documentElement.dataset.theme = t; document.querySelector('meta[name="theme-color"]').content = m[t]; }
+      } catch (e) {}
+    </script>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

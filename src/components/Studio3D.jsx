@@ -1,6 +1,7 @@
 import { Component, Suspense, lazy, useCallback, useEffect, useRef, useState } from 'react';
 import { SectionHead } from './ui.jsx';
 import { img } from '../data/content.js';
+import { useThemeToken } from '../hooks/theme.js';
 // plain data (no three.js), so the controls render before the 3D bundle arrives
 import { FINISHES, DEFAULT_FINISHES, OFFICES, VIEW_LABELS as VIEWS } from './studio3d/finishes.js';
 
@@ -33,6 +34,7 @@ export default function Studio3D() {
   const [active, setActive] = useState(false);
   const [webgl, setWebgl] = useState(null);
   const [office, setOffice] = useState('small');
+  const viewerBg = useThemeToken('--viewer');
   const [view, setView] = useState('overview');
   const [finishes, setFinishes] = useState(DEFAULT_FINISHES);
   const [evening, setEvening] = useState(false);
@@ -75,7 +77,7 @@ export default function Studio3D() {
         {webgl && near && (
           <Boundary fallback={<Fallback />}>
             <Suspense fallback={null}>
-              <Scene office={office} view={view} finishes={finishes} evening={evening} autoRotate={autoRotate} active={active} mobile={mobile} zoom={zoom} onProgress={onProgress} onUserMove={stopRotate} />
+              <Scene background={viewerBg} office={office} view={view} finishes={finishes} evening={evening} autoRotate={autoRotate} active={active} mobile={mobile} zoom={zoom} onProgress={onProgress} onUserMove={stopRotate} />
             </Suspense>
           </Boundary>
         )}
