@@ -10,7 +10,7 @@
       document.documentElement.classList.add('js');
       // saved colour theme (hooks/theme.js), applied before first paint so the page never flashes
       try {
-        var t = localStorage.getItem('rc-theme'), m = { espresso: '#1f1915', sage: '#e3e9df', terracotta: '#f1e3d8' };
+        var t = localStorage.getItem('rc-theme'), m = { stone: '#e9e8e5', sage: '#e3e9df', blush: '#f3e4e1', terracotta: '#f1e3d8', espresso: '#1f1915', charcoal: '#1c1d1f', midnight: '#141b26', forest: '#17211b' };
         if (m[t]) { document.documentElement.dataset.theme = t; document.querySelector('meta[name="theme-color"]').content = m[t]; }
       } catch (e) {}
     </script>

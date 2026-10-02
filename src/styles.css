@@ -57,6 +57,39 @@
   --veil: 248, 238, 230; --shadow: 42, 25, 18; --lime-ink: #7f8d0a; --oak: #b0532e; --viewer: #ecdccf;
   --csr-bg: #ece3cf;
 }
+:root[data-theme="stone"] {
+  --bone: #e9e8e5; --paper: #f2f1ee; --paper-2: #eceae6; --sand: #d8d6d0; --surface: #fbfaf8;
+  --ink: #1d1d1f; --ink-2: #3d3d40; --muted: #6e6d6a; --ink-rgb: 29, 29, 31;
+  --veil: 242, 241, 238; --shadow: 29, 29, 31; --lime-ink: #7d8b0a; --oak: #8c6a4a; --viewer: #e3e1dc;
+  --csr-bg: #e4e9da;
+}
+:root[data-theme="blush"] {
+  --bone: #f3e4e1; --paper: #f9eeec; --paper-2: #f5e8e5; --sand: #e8d0cb; --surface: #fdf6f5;
+  --ink: #2d1b1d; --ink-2: #523a3c; --muted: #8d6f70; --ink-rgb: 45, 27, 29;
+  --veil: 249, 238, 236; --shadow: 45, 27, 29; --lime-ink: #7f8d0a; --oak: #a5555c; --viewer: #efdcd8;
+  --csr-bg: #ece7d6;
+}
+:root[data-theme="charcoal"] {
+  --bone: #1c1d1f; --paper: #25272a; --paper-2: #202224; --sand: #33363a; --surface: #2a2c30;
+  --ink: #eceae6; --ink-2: #c9c7c2; --muted: #9a9893; --ink-rgb: 236, 234, 230;
+  --veil: 28, 29, 31; --shadow: 0, 0, 0; --lime-ink: var(--lime); --oak: #c9a27a; --viewer: #25272a;
+  --csr-bg: #1d261b; --csr-ink: #eef1e2; --csr-accent: var(--lime);
+  color-scheme: dark;
+}
+:root[data-theme="midnight"] {
+  --bone: #141b26; --paper: #1b2431; --paper-2: #18202b; --sand: #263243; --surface: #1f2938;
+  --ink: #eef0f4; --ink-2: #c8cfdb; --muted: #93a0b3; --ink-rgb: 238, 240, 244;
+  --veil: 20, 27, 38; --shadow: 0, 0, 0; --lime-ink: var(--lime); --oak: #d4a373; --viewer: #1b2431;
+  --csr-bg: #18241f; --csr-ink: #eef1e2; --csr-accent: var(--lime);
+  color-scheme: dark;
+}
+:root[data-theme="forest"] {
+  --bone: #17211b; --paper: #1e2b23; --paper-2: #1a261f; --sand: #2b3b31; --surface: #223027;
+  --ink: #eef1ea; --ink-2: #c9d3c8; --muted: #93a394; --ink-rgb: 238, 241, 234;
+  --veil: 23, 33, 27; --shadow: 0, 0, 0; --lime-ink: var(--lime); --oak: #d1a679; --viewer: #1e2b23;
+  --csr-bg: #26351f; --csr-ink: #eef1e2; --csr-accent: var(--lime);
+  color-scheme: dark;
+}
 /* colours glide for a moment while the theme changes */
 .theme-switching, .theme-switching *, .theme-switching *::before, .theme-switching *::after {
   transition: background-color .5s ease, color .5s ease, border-color .5s ease, fill .5s ease, box-shadow .5s ease !important;
@@ -210,6 +243,19 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .theme-btn__label { min-width: 6.2em; text-align: left; }
 .nav.is-dark .theme-btn { border-color: rgba(242,237,229,.3); background: rgba(31,25,21,.35); }
 @keyframes themeSpin { from { transform: rotate(-180deg) scale(.6); } }
+.theme { position: relative; }
+.theme-btn[aria-expanded="true"] { background: var(--surface); border-color: rgba(var(--ink-rgb), .25); }
+.theme-menu { position: absolute; right: 0; top: calc(100% + 10px); z-index: 70; width: 290px; display: grid; gap: 14px; padding: 16px; border-radius: 20px; background: var(--surface); color: var(--ink); text-shadow: none; border: 1px solid var(--line); box-shadow: 0 24px 50px -20px rgba(var(--shadow), .45); animation: themeMenu .35s var(--ease); }
+.theme-menu__group { display: grid; gap: 8px; }
+.theme-menu__group > span { font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.theme-menu__group > div { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 6px; }
+.theme-menu__item { display: flex; align-items: center; gap: 10px; padding: 7px 10px 7px 7px; border-radius: 999px; border: 1px solid transparent; font: 500 13px var(--sans); text-align: left; transition: background .25s, border-color .25s; }
+.theme-menu__item:hover { background: rgba(var(--ink-rgb), .06); }
+.theme-menu__item:focus-visible { outline: 2px solid var(--lime-deep); outline-offset: 1px; }
+.theme-menu__item[aria-checked="true"] { border-color: var(--lime-deep); background: rgba(205,220,47,.16); }
+.theme-menu__item i { flex: none; width: 24px; height: 24px; border-radius: 50%; background: linear-gradient(135deg, var(--a) 50%, var(--b) 50%); box-shadow: inset 0 0 0 1px rgba(0,0,0,.18); }
+@keyframes themeMenu { from { opacity: 0; transform: translateY(-6px) scale(.98); } }
+@media (max-width: 420px) { .theme-menu { position: fixed; left: 16px; right: 16px; top: 76px; width: auto; } }
 @media (max-width: 1280px) { .theme-btn { width: 44px; padding: 0; justify-content: center; } .theme-btn__label { display: none; } }
 .brand { display: inline-flex; align-items: center; }
 .brand__logo .logo__art { height: 40px; }
