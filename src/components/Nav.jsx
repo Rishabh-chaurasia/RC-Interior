@@ -1,19 +1,82 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { navLinks, contact } from '../data/content.js';
 import { useOnScroll } from '../hooks/scroll.jsx';
 import { Btn } from './ui.jsx';
 import Logo from './Logo.jsx';
 import { THEMES, useTheme } from '../hooks/theme.js';
 
-/** Cycles the colour theme: Ivory → Espresso → Sage → Terracotta. */
-function ThemeButton() {
-  const [theme, next] = useTheme();
-  const upcoming = THEMES[(THEMES.findIndex(t => t.id === theme.id) + 1) % THEMES.length];
+/** Colour theme picker: the button shows the current theme, its menu lists every theme. */
+function ThemePicker() {
+  const [theme, choose] = useTheme();
+  const [open, setOpen] = useState(false);
+  const wrap = useRef(null);
+  const trigger = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    // focus the current theme when the menu opens
+    wrap.current.querySelector('[aria-checked="true"]')?.focus();
+    const down = e => { if (!wrap.current.contains(e.target)) setOpen(false); };
+    const key = e => { if (e.key === 'Escape') { setOpen(false); trigger.current.focus(); } };
+    addEventListener('pointerdown', down);
+    addEventListener('keydown', key);
+    return () => { removeEventListener('pointerdown', down); removeEventListener('keydown', key); };
+  }, [open]);
+
+  // arrow keys move between swatches, wrapping around
+  const onKeyDown = e => {
+    const keys = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 };
+    if (!(e.key in keys)) return;
+    e.preventDefault();
+    const items = [...wrap.current.querySelectorAll('[role="menuitemradio"]')];
+    const i = items.indexOf(document.activeElement);
+    items[(i + keys[e.key] + items.length) % items.length].focus();
+  };
+
+  const pick = id => { choose(id); setOpen(false); trigger.current.focus(); };
+  const group = (title, list) => (
+    <div className="theme-menu__group" role="group" aria-label={title}>
+      <span aria-hidden="true">{title}</span>
+      <div>
+        {list.map(t => (
+          <button
+            key={t.id}
+            type="button"
+            role="menuitemradio"
+            aria-checked={t.id === theme.id}
+            className="theme-menu__item"
+            tabIndex={-1}
+            onClick={() => pick(t.id)}
+          >
+            <i style={{ '--a': t.swatch[0], '--b': t.swatch[1] }} aria-hidden="true" />
+            {t.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+
   return (
-    <button type="button" className="theme-btn" onClick={next} aria-label={`Colour theme: ${theme.label}. Switch to ${upcoming.label}`} title={`Theme: ${theme.label} (next: ${upcoming.label})`}>
-      <span key={theme.id} className="theme-btn__dot" style={{ '--a': theme.swatch[0], '--b': theme.swatch[1] }} aria-hidden="true" />
-      <span className="theme-btn__label" aria-hidden="true">{theme.label}</span>
-    </button>
+    <div className="theme" ref={wrap}>
+      <button
+        ref={trigger}
+        type="button"
+        className="theme-btn"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        aria-label={`Colour theme: ${theme.label}. Choose a theme`}
+        onClick={() => setOpen(o => !o)}
+      >
+        <span key={theme.id} className="theme-btn__dot" style={{ '--a': theme.swatch[0], '--b': theme.swatch[1] }} aria-hidden="true" />
+        <span className="theme-btn__label" aria-hidden="true">{theme.label}</span>
+      </button>
+      {open && (
+        <div className="theme-menu" role="menu" aria-label="Colour themes" onKeyDown={onKeyDown}>
+          {group('Light', THEMES.filter(t => !t.dark))}
+          {group('Dark', THEMES.filter(t => t.dark))}
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -72,7 +135,7 @@ export default function Nav({ menuOpen, onToggleMenu }) {
           ))}
         </nav>
         <div className="nav__end">
-          <ThemeButton />
+          <ThemePicker />
           <Btn href="#contact" variant="pill" className="nav__cta">Let’s discuss</Btn>
           <button className="nav__toggle" aria-label={menuOpen ? 'Close menu' : 'Open menu'} aria-expanded={menuOpen} onClick={onToggleMenu}>
             <span /><span />

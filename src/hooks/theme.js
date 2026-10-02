@@ -2,14 +2,19 @@ import { useCallback, useEffect, useState } from 'react';
 
 /*
   Colour themes. Each one is a set of CSS tokens in styles.css (:root[data-theme="…"]);
-  `swatch` = [page, accent] for the theme button, `meta` = the browser chrome colour.
-  index.html applies the saved theme before first paint, so there is no flash.
+  `swatch` = [page, accent] for the theme picker, `meta` = the browser chrome colour.
+  index.html applies the saved theme before first paint (keep its id → colour map in sync).
 */
 export const THEMES = [
   { id: 'ivory', label: 'Ivory', swatch: ['#f2ede5', '#cddc2f'], meta: '#faf7f1' },
-  { id: 'espresso', label: 'Espresso', swatch: ['#1f1915', '#cddc2f'], meta: '#1f1915' },
+  { id: 'stone', label: 'Stone', swatch: ['#e9e8e5', '#8c6a4a'], meta: '#e9e8e5' },
   { id: 'sage', label: 'Sage', swatch: ['#e3e9df', '#4f7d3a'], meta: '#e3e9df' },
+  { id: 'blush', label: 'Blush', swatch: ['#f3e4e1', '#a5555c'], meta: '#f3e4e1' },
   { id: 'terracotta', label: 'Terracotta', swatch: ['#f1e3d8', '#b0532e'], meta: '#f1e3d8' },
+  { id: 'espresso', label: 'Espresso', swatch: ['#1f1915', '#cddc2f'], meta: '#1f1915', dark: true },
+  { id: 'charcoal', label: 'Charcoal', swatch: ['#1c1d1f', '#c9a27a'], meta: '#1c1d1f', dark: true },
+  { id: 'midnight', label: 'Midnight', swatch: ['#141b26', '#d4a373'], meta: '#141b26', dark: true },
+  { id: 'forest', label: 'Forest', swatch: ['#17211b', '#cddc2f'], meta: '#17211b', dark: true },
 ];
 const KEY = 'rc-theme';
 
@@ -29,7 +34,7 @@ function apply(theme) {
   dispatchEvent(new CustomEvent('themechange', { detail: theme }));
 }
 
-/** The active theme and a function that moves to the next one. */
+/** The active theme and a setter that takes a theme id. */
 export function useTheme() {
   const [theme, setTheme] = useState(currentTheme);
   useEffect(() => {
@@ -37,11 +42,11 @@ export function useTheme() {
     addEventListener('themechange', on);
     return () => removeEventListener('themechange', on);
   }, []);
-  const next = useCallback(() => {
-    const i = THEMES.findIndex(t => t.id === currentTheme().id);
-    apply(THEMES[(i + 1) % THEMES.length]);
+  const choose = useCallback(id => {
+    const t = THEMES.find(x => x.id === id);
+    if (t && t.id !== currentTheme().id) apply(t);
   }, []);
-  return [theme, next];
+  return [theme, choose];
 }
 
 /** Reads a CSS custom property, re-reading it whenever the theme changes. */
