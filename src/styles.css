@@ -530,8 +530,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .cring { background: var(--surface); overflow: hidden; }
 .cring__head { display: grid; justify-items: center; gap: 16px; text-align: center; margin-bottom: clamp(20px, 3.5vw, 44px); }
 .cring__lede { margin: 0; max-width: 56ch; color: var(--ink-2); }
-.cring__sample { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 10px; margin: 0; font-size: 13px; color: var(--muted); }
-.cring__sample span, .cring__badge { padding: 4px 9px; border-radius: 999px; background: var(--lime); color: var(--on-lime); font: 600 10px/1.2 var(--mono); font-style: normal; letter-spacing: .1em; text-transform: uppercase; }
+.cring__badge { padding: 4px 9px; border-radius: 999px; background: var(--lime); color: var(--on-lime); font: 600 10px/1.2 var(--mono); font-style: normal; letter-spacing: .1em; text-transform: uppercase; }
 .cring__stage { position: relative; isolation: isolate; touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
 .cring__stage:active { cursor: grabbing; }
 .cring__ring { position: absolute; inset: 0; }
