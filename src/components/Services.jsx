@@ -1,5 +1,5 @@
-import { Fragment } from 'react';
-import { services, styles, img } from '../data/content.js';
+import { Fragment, useEffect, useState } from 'react';
+import { services, spaces, styles, img } from '../data/content.js';
 import { Reveal, SectionHead, Btn } from './ui.jsx';
 
 const icons = {
@@ -10,6 +10,22 @@ const icons = {
   wrench: <path d="M30 8a9 9 0 0 0-8.5 12L8 33.5a3.5 3.5 0 0 0 5 5L26.5 25A9 9 0 0 0 38 14l-5 5-5-1-1-5z" />,
 };
 
+/** Background that walks through every part of an office, one zone every few seconds, named in a small tag. */
+function Tour({ keys }) {
+  const zones = keys.map(k => spaces.find(z => z.key === k)).filter(Boolean);
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI(n => (n + 1) % zones.length), 2800);
+    return () => clearInterval(t);
+  }, [zones.length]);
+  return (
+    <>
+      {zones.map((z, k) => <img key={z.key} className={`card__tour ${k === i ? 'is-on' : ''}`} src={img(`spaces/sm/${z.key}-1.jpg`)} alt="" loading="lazy" />)}
+      <span className="card__zone" aria-hidden="true"><b key={i}>{zones[i].title}</b><small>{i + 1} / {zones.length}</small></span>
+    </>
+  );
+}
+
 export default function Services() {
   return (
     <section className="services section" id="services">
@@ -17,8 +33,8 @@ export default function Services() {
 
       <div className="bento">
         {services.map((s, i) => (
-          <Reveal as="article" key={s.title} className={`card ${s.wide ? 'card--wide' : ''}`}>
-            <img className="card__bg" src={img(s.image)} alt="" loading="lazy" />
+          <Reveal as="article" key={s.title} className={`card ${s.wide ? 'card--wide' : ''} ${s.tour ? 'card--tour' : ''}`}>
+            {s.tour ? <Tour keys={s.tour} /> : <img className="card__bg" src={img(s.image)} alt="" loading="lazy" />}
             <svg className="card__icon" viewBox="0 0 48 48" aria-hidden="true">{icons[s.icon]}</svg>
             <span className="card__n">{String(i + 1).padStart(2, '0')}</span>
             <h3>{s.title}</h3>
