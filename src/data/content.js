@@ -71,7 +71,7 @@ export const pillars = [
   { n: 'C', title: 'Mission', text: 'World-class interiors through creativity, technology and smooth execution, so every project carries your brand and works on day one.' },
 ];
 
-export const expertise = ['Corporate', 'Retail', 'Turnkey', 'Renovation', 'R&M'];
+export const expertise = ['Corporate', 'Retail', 'Turnkey', 'Renovation', 'MEP', 'R&M'];
 
 // tone picks the accent colour (see .value--* in styles.css); icon is drawn in Values.jsx
 export const values = [
