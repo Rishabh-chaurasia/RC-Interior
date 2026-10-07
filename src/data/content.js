@@ -66,7 +66,7 @@ export const stats = [
 ];
 
 export const pillars = [
-  { n: 'A', title: 'Who are we', text: 'An interior solutions company rethinking workplaces with new ideas and careful execution, working across Delhi NCR.' },
+  { n: 'A', title: 'Who are we', text: 'An interior solutions company rethinking workplaces with new ideas, careful execution and committed timelines, working across Delhi NCR.' },
   { n: 'B', title: 'Vision', text: 'To set the standard for modern, sustainable design that inspires people and gives businesses room to grow.' },
   { n: 'C', title: 'Mission', text: 'World-class interiors through creativity, technology and smooth execution, so every project carries your brand and works on day one.' },
 ];
