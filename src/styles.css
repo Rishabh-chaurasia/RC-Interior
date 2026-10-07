@@ -830,7 +830,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .footer__contact small { margin-left: 6px; font: 400 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .footer__contact address { margin-top: 16px; font-style: normal; font-size: 14px; line-height: 1.6; color: var(--muted); }
 /* logo drawn line by line (components/LogoBuild.jsx) */
-.lb { --logo-mark: var(--lime); --logo-word: var(--lime-deep); width: min(100%, 1100px); margin: clamp(48px, 7vw, 96px) auto clamp(24px, 4vw, 44px); color: var(--ink); perspective: 1400px; }
+.lb { --logo-mark: var(--lime); --logo-word: var(--lime-deep); width: min(100%, 1100px); margin: clamp(18px, 2.6vw, 36px) auto clamp(24px, 4vw, 44px); color: var(--ink); perspective: 1400px; }
 .lb__stage { display: block; width: 100%; height: auto; overflow: visible; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .7s var(--ease); filter: drop-shadow(0 12px 18px rgba(var(--shadow), .12)); }
 /* every outline is traced (dash offset 1 → 0) and then filled; pathLength="1" makes one dash cover each shape */
 .lb__ink { stroke-width: .7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; stroke-opacity: 0;
@@ -1106,7 +1106,7 @@ html:not(.js) .hero .eyebrow, html:not(.js) .hero__bottom { opacity: 1; transfor
   .footer__contact ul { gap: 4px; }
   .footer__contact a { font-size: 17px; color: var(--ink); }
   .footer__contact address { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line); font-size: 13px; }
-  .lb { margin: 36px auto 18px; }
+  .lb { margin: 18px auto 18px; }
   .footer__base { display: grid; grid-template-columns: 1fr auto; row-gap: 4px; padding: 16px 64px 0 0; }
   .footer__base > span { grid-column: 1 / -1; }
   .footer__top-link { grid-column: 2; grid-row: 2; }
