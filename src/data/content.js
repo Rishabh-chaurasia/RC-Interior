@@ -41,7 +41,7 @@ export const clientLogos = [
   { name: 'SBI Card', file: 'sbicard.png' },
   { name: 'ICRA', file: 'icra.png' },
   { name: 'Daikin', file: 'daikin.png' },
-  { name: 'TCS', file: 'tcs.png' },
+  { name: 'TCS', file: 'tcs.svg' },
   { name: 'POSCO', file: 'posco.png', bg: '#00588a' },
   { name: 'Varun Beverages', file: 'varun.png' },
   { name: 'AGC Asahi Glass', file: 'agc.png' },
@@ -230,7 +230,7 @@ export const clients = ['Google', 'Samsung', 'Sony', 'Samsung SDS', 'Tech Mahind
 // so its cell shows the Cream Bell mark (white on the blue of its packs).
 export const clientLogoMap = {
   'Google': { file: 'google.svg' }, 'Samsung': { file: 'samsung.svg' }, 'Sony': { file: 'sony.png', bg: '#000000' },
-  'Samsung SDS': { file: 'samsungsds.png' }, 'Tech Mahindra': { file: 'techmahindra.svg' }, 'TCS': { file: 'tcs.png' },
+  'Samsung SDS': { file: 'samsungsds.png' }, 'Tech Mahindra': { file: 'techmahindra.svg' }, 'TCS': { file: 'tcs.svg' },
   'SBI Card': { file: 'sbicard.png' }, 'ICRA Ltd': { file: 'icra.png' }, 'Home Credit': { file: 'homecredit.png', bg: '#cf0e2d' },
   'Ecom Express': { file: 'ecom.png' }, 'POSCO India': { file: 'posco.png', bg: '#00588a' }, 'Varun Beverages': { file: 'varun.png' },
   'Asahi Glass': { file: 'agc.png' }, 'Daikin': { file: 'daikin.png' }, 'AECOM': { file: 'aecom.png' },
