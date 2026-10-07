@@ -792,23 +792,25 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .footer__col a:hover { color: var(--ink); background-size: 100% 35%; }
 .footer__contact small { margin-left: 6px; font: 400 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .footer__contact address { margin-top: 16px; font-style: normal; font-size: 14px; line-height: 1.6; color: var(--muted); }
-/* 3D logo build (components/LogoBuild.jsx) */
-.lb { --logo-mark: var(--lime); --logo-word: var(--lime-deep); width: min(100%, 1100px); margin: clamp(56px, 8vw, 110px) auto clamp(28px, 4vw, 48px); color: var(--ink); perspective: 1400px; }
-.lb__stage { position: relative; aspect-ratio: 403.1 / 106; transform-style: preserve-3d; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .7s var(--ease); }
-.lb__layer { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; opacity: 0; backface-visibility: hidden; filter: drop-shadow(0 10px 14px rgba(var(--shadow), .14)); transition: transform 1.2s var(--ease), opacity .6s ease; transition-delay: var(--d); }
-.lb__roof { transform: translate3d(0, -45%, 0) rotateX(88deg); }
-.lb__floor { opacity: 1; filter: none; }
-.lb__floor path { stroke-width: 2.4; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s var(--ease-io) var(--d); }
-.lb__chair { transform: translate3d(0, -10%, 420px) scale(1.5); }
-.lb__rc { transform: rotateY(-100deg) translateZ(80px); }
-.lb__word { transform: translate3d(0, 35%, 0) rotateX(-95deg); }
-.lb.is-built .lb__layer { opacity: 1; transform: none; }
-.lb.is-built .lb__floor path { stroke-dashoffset: 0; }
-.lb__tag { display: flex; justify-content: center; align-items: center; gap: .9em; margin: clamp(14px, 2vw, 24px) 0 0; font: 400 clamp(13px, 1.5vw, 19px)/1 var(--sans); letter-spacing: .04em; color: var(--ink-2); opacity: 0; transform: translateY(14px); transition: opacity .8s ease 1.9s, transform 1s var(--ease) 1.9s; }
+/* logo drawn line by line (components/LogoBuild.jsx) */
+.lb { --logo-mark: var(--lime); --logo-word: var(--lime-deep); width: min(100%, 1100px); margin: clamp(48px, 7vw, 96px) auto clamp(24px, 4vw, 44px); color: var(--ink); perspective: 1400px; }
+.lb__stage { display: block; width: 100%; height: auto; overflow: visible; transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .7s var(--ease); filter: drop-shadow(0 12px 18px rgba(var(--shadow), .12)); }
+/* every outline is traced (dash offset 1 → 0) and then filled; pathLength="1" makes one dash cover each shape */
+.lb__ink { stroke-width: .7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; stroke-opacity: 0;
+  transition: stroke-dashoffset var(--dur) cubic-bezier(.45, 0, .25, 1) var(--d), fill-opacity .5s ease calc(var(--d) + var(--dur) * .85), stroke-opacity 0s linear var(--d); }
+.lb__house { fill: var(--logo-mark); stroke: var(--lime-deep); }
+.lb__chair .lb__ink { fill: currentColor; stroke: currentColor; }
+.lb__rc { fill: currentColor; stroke: currentColor; }
+.lb__word { fill: var(--logo-word); stroke: var(--logo-word); }
+.lb__line { fill: none !important; }
+.lb__floor { stroke: var(--logo-mark); stroke-width: 2.4; }
+.lb__chair .lb__line { stroke-width: 1.7; }
+.lb.is-built .lb__ink { stroke-dashoffset: 0; fill-opacity: 1; stroke-opacity: 1; } /* stroke shows only once its turn starts: round caps leave no dots */
+.lb__tag { display: flex; justify-content: center; align-items: center; gap: .9em; margin: clamp(14px, 2vw, 24px) 0 0; font: 400 clamp(13px, 1.5vw, 19px)/1 var(--sans); letter-spacing: .04em; color: var(--ink-2); opacity: 0; transform: translateY(14px); transition: opacity .8s ease 3.7s, transform 1s var(--ease) 3.7s; }
 .lb__tag i { width: 1px; height: 1.1em; background: var(--lime-deep); }
 .lb.is-built .lb__tag { opacity: 1; transform: none; }
-.lb:not(.is-built) .lb__layer, .lb:not(.is-built) .lb__tag { transition-duration: .2s; transition-delay: 0s; } /* reset quickly, off screen */
-@media (prefers-reduced-motion: reduce) { .lb__layer, .lb__floor path, .lb__tag, .lb__stage { transition: none !important; } }
+.lb:not(.is-built) .lb__ink, .lb:not(.is-built) .lb__tag { transition-duration: .15s; transition-delay: 0s; } /* reset quickly, off screen */
+@media (prefers-reduced-motion: reduce) { .lb__ink, .lb__tag, .lb__stage { transition: none !important; } }
 .footer__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 76px 0 0; border-top: 1px solid var(--line); font: 400 12px var(--mono); color: var(--muted); letter-spacing: .04em; }
 .footer__base a:hover { color: var(--oak); }
 .footer__top-link i { display: inline-grid; place-items: center; width: 28px; height: 28px; margin-left: 8px; border-radius: 50%; border: 1px solid var(--line); font-style: normal; transition: background .3s, color .3s, transform .4s var(--ease); }

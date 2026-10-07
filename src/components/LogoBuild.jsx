@@ -4,20 +4,18 @@ import { prefersReducedMotion } from '../hooks/scroll.jsx';
 
 const W = WORDMARK_WIDTH, H = 106;
 
-/** One piece of the logo on its own layer (full-size viewBox), so it can move in real 3D around its own centre. */
-function Layer({ box: [x0, y0, x1, y1], cls, delay, children }) {
-  const origin = `${(((x0 + x1) / 2 / W) * 100).toFixed(2)}% ${(((y0 + y1) / 2 / H) * 100).toFixed(2)}%`;
-  return (
-    <svg className={`lb__layer ${cls}`} viewBox={`0 0 ${W} ${H}`} style={{ transformOrigin: origin, '--d': `${delay}s` }} aria-hidden="true">
-      {children}
-    </svg>
-  );
-}
+// Drawing order: [start, duration] in seconds. Every outline is traced in turn, then fills in.
+const T = {
+  house: [0, 1], floor: [0.7, 0.7], chair: [1.15, 0.6],
+  rc: i => [1.5 + i * 0.45, 0.7],
+  word: i => [2.3 + i * 0.16, 0.5],
+};
+const step = ([d, dur]) => ({ '--d': `${d}s`, '--dur': `${dur}s` });
 
 /**
- * The RC Interior logo, built in 3D when it scrolls into view: the roof swings down, the floor line
- * draws, the chair drops in, R and C turn to face you, then INTERIOR rises letter by letter.
- * It rebuilds each time the visitor comes back to it, and tilts gently with the pointer once built.
+ * The RC Interior logo, drawn line by line when it scrolls into view: the house outline, the floor
+ * line, the chair, R, C and then INTERIOR letter by letter, each filling in once traced. It redraws
+ * whenever the visitor comes back to it, and tilts gently in 3D with the pointer once drawn.
  */
 export default function LogoBuild() {
   const ref = useRef(null);
@@ -28,7 +26,7 @@ export default function LogoBuild() {
     if (prefersReducedMotion()) { setBuilt(true); return; }
     const io = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && e.intersectionRatio > 0.4) setBuilt(true);
-      else if (!e.isIntersecting) setBuilt(false); // fully out of view: ready to build again
+      else if (!e.isIntersecting) setBuilt(false); // fully out of view: ready to draw again
     }, { threshold: [0, 0.4] });
     io.observe(ref.current);
     return () => io.disconnect();
@@ -45,21 +43,17 @@ export default function LogoBuild() {
 
   return (
     <div ref={ref} className={`lb ${built ? 'is-built' : ''}`} role="img" aria-label="RC Interior. Your space, your style, your choice." onPointerMove={tilt} onPointerLeave={untilt}>
-      <div ref={stage} className="lb__stage">
-        <Layer box={[4, 10, 102, 101]} cls="lb__roof" delay={0}><path className="logo__house" d={HOUSE} /></Layer>
-        <Layer box={[19, 63, 92, 101]} cls="lb__floor" delay={0.35}><path className="logo__floor" d={FLOOR} pathLength="1" /></Layer>
-        <Layer box={[45, 66, 70, 100]} cls="lb__chair" delay={0.6}>
-          <path d={CHAIR_SOLID} fill="currentColor" />
-          <path d={CHAIR_LINES} fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
-          {CASTERS.map(([cx, cy]) => <circle key={cx} cx={cx} cy={cy} r="1.3" fill="currentColor" />)}
-        </Layer>
-        {RC_GLYPHS.map((g, i) => (
-          <Layer key={g.box[0]} box={g.box} cls="lb__rc" delay={0.8 + i * 0.16}><path d={g.d} fill="currentColor" /></Layer>
-        ))}
-        {INTERIOR_GLYPHS.map((g, i) => (
-          <Layer key={g.box[0]} box={g.box} cls="lb__word" delay={1.15 + i * 0.07}><path className="logo__word" d={g.d} /></Layer>
-        ))}
-      </div>
+      <svg ref={stage} className="lb__stage" viewBox={`0 0 ${W} ${H}`} aria-hidden="true">
+        <path className="lb__ink lb__house" d={HOUSE} pathLength="1" style={step(T.house)} />
+        <path className="lb__ink lb__line lb__floor" d={FLOOR} pathLength="1" style={step(T.floor)} />
+        <g className="lb__chair">
+          <path className="lb__ink" d={CHAIR_SOLID} pathLength="1" style={step(T.chair)} />
+          <path className="lb__ink lb__line" d={CHAIR_LINES} pathLength="1" style={step(T.chair)} />
+          {CASTERS.map(([cx, cy]) => <circle key={cx} className="lb__ink" cx={cx} cy={cy} r="1.3" pathLength="1" style={step(T.chair)} />)}
+        </g>
+        {RC_GLYPHS.map((g, i) => <path key={g.box[0]} className="lb__ink lb__rc" d={g.d} pathLength="1" style={step(T.rc(i))} />)}
+        {INTERIOR_GLYPHS.map((g, i) => <path key={g.box[0]} className="lb__ink lb__word" d={g.d} pathLength="1" style={step(T.word(i))} />)}
+      </svg>
       <p className="lb__tag" aria-hidden="true">Your space<i />Your style<i />Your choice</p>
     </div>
   );
