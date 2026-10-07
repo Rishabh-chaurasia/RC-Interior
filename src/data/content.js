@@ -105,7 +105,7 @@ export const services = [
   {
     icon: 'plan', title: 'Design & Planning', wide: true, image: 'spaces/sm/cowork-1.jpg',
     text: 'We map how your teams actually work, then design around it, down to the last light fitting.',
-    chips: ['Space planning', 'Concept design', '3D visuals', 'Lighting plans', 'Colour & material', 'Branding elements'],
+    chips: ['Space planning', 'Concept design', 'Lighting plans', '3D visuals', 'Layout designing', 'Execution plan', 'Material shortlisting', 'Colour finalisation', 'Branding elements', 'Delivery timeline', 'Project submission'],
   },
   { icon: 'key', title: 'Turnkey Projects', image: 'spaces/sm/workstation-1.jpg', text: 'One contract, one team, one handover date. Civil, services, furniture and finishing.' },
   { icon: 'shield', title: 'Electrical, HVAC & Fire', image: 'spaces/sm/meeting-4.jpg', text: 'The work behind the walls, done to code and fully documented.' },
