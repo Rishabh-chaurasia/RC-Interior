@@ -771,7 +771,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .cta__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 26px; }
 
 /* ---------- CONTACT ---------- */
-.contact__title { font: 400 clamp(84px, 17vw, 290px)/.84 var(--serif); letter-spacing: -.05em; margin: 0 0 clamp(40px, 6vw, 80px); display: flex; flex-wrap: wrap; gap: 0 .22em; }
+.contact__title { font: 400 clamp(60px, 12vw, 200px)/.86 var(--serif); letter-spacing: -.045em; margin: 0 0 clamp(32px, 4.5vw, 60px); display: flex; flex-wrap: wrap; gap: 0 .22em; }
 .contact__title em { color: var(--oak); }
 .contact__title .line:nth-child(2) > span { --d: .12s; }
 .contact__grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(30px, 5vw, 80px); align-items: start; }
