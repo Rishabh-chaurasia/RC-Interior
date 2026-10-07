@@ -62,7 +62,7 @@ export const statement = [
 export const stats = [
   { text: 'Years building workspaces across Delhi NCR', value: 19, suffix: '+' },
   { text: 'Enterprise clients, from Google to SBI Card', value: 30, suffix: '+' },
-  { text: 'Specialists in design, 3D, site and MEP', value: 8, suffix: '' },
+  { text: 'Specialists in design, 3D and MEP', value: 8, suffix: '' },
 ];
 
 export const pillars = [
