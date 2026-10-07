@@ -723,8 +723,8 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .member:nth-child(4n+2) { --d: .06s; } .member:nth-child(4n+3) { --d: .12s; } .member:nth-child(4n+4) { --d: .18s; }
 
 /* ---------- CSR ---------- */
-.csr { display: grid; grid-template-columns: .85fr 1.15fr; background: var(--csr-bg); color: var(--csr-ink); }
-.csr__img { margin: 0; overflow: hidden; min-height: clamp(380px, 38vw, 540px); }
+.csr { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; background: var(--csr-bg); color: var(--csr-ink); }
+.csr__img { margin: clamp(24px, 4vw, 56px) 0 clamp(24px, 4vw, 56px) var(--gutter); overflow: hidden; height: clamp(260px, 28vw, 400px); border-radius: var(--radius); } /* a framed photo beside the copy */
 .csr__copy { padding: clamp(44px, 5.5vw, 84px) var(--gutter); display: flex; flex-direction: column; justify-content: center; gap: 24px; }
 .csr .kicker { color: var(--csr-accent); }
 .csr__big { margin: 0; font: 400 clamp(90px, 11vw, 170px)/.8 var(--serif); letter-spacing: -.05em; display: flex; align-items: baseline; gap: 16px; }
@@ -775,6 +775,9 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .map { border-radius: 18px; overflow: hidden; aspect-ratio: 16/10; border: 1px solid var(--line); filter: grayscale(1) sepia(.15) contrast(1.05); transition: filter .6s; }
 .map:hover { filter: none; }
 .map iframe { width: 100%; height: 100%; border: 0; display: block; }
+.map__open { justify-self: start; display: inline-flex; align-items: center; gap: 8px; margin-top: -14px; padding: 10px 16px; border-radius: 999px; background: var(--lime); color: var(--on-lime); font: 500 14px var(--sans); transition: transform .4s var(--ease); }
+.map__open:hover { transform: translateY(-2px); }
+.map__open i { font-style: normal; }
 
 /* ---------- FOOTER ---------- */
 .footer { background: var(--surface); color: var(--ink); box-shadow: 0 -1px 0 var(--line); padding: clamp(56px, 7vw, 96px) var(--gutter) 28px; overflow: hidden; border-radius: var(--radius) var(--radius) 0 0; }
@@ -935,7 +938,7 @@ html:not(.js) .hero .eyebrow, html:not(.js) .hero__bottom { opacity: 1; transfor
   .studio__grid, .why, .csr, .contact__grid { grid-template-columns: 1fr; }
   .studio__img { position: relative; top: 0; aspect-ratio: 4/3; }
   .why__sticky { position: relative; top: 0; }
-  .csr__img { min-height: 300px; }
+  .csr__img { height: 240px; margin: 24px var(--gutter) 0; }
   .bento { grid-template-columns: 1fr 1fr; }
   .card--wide { grid-column: 1 / -1; }
   .panels { flex-direction: column; height: auto; }

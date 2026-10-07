@@ -12,6 +12,7 @@ export const contact = {
   whatsapp: '919650456779',
   address: ['5, Dhaniram Complex, Sikandarpur', 'Near Metro Pillar 54, Gurugram', 'Haryana 122002'],
   mapSrc: 'https://www.google.com/maps?q=Dhaniram+Complex+Sikanderpur+Gurugram+Haryana+122002&output=embed',
+  mapLink: 'https://www.google.com/maps/search/?api=1&query=Dhaniram+Complex+Sikanderpur+Gurugram+Haryana+122002',
 };
 
 export const navLinks = [

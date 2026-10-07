@@ -62,7 +62,7 @@ export function Team() {
 export function Csr() {
   return (
     <section className="csr">
-      <figure className="csr__img" data-reveal data-radius="0px">
+      <figure className="csr__img" data-reveal>
         <ParallaxImg src={img('csr.jpg')} alt="Volunteers planting a sapling" loading="lazy" />
       </figure>
       <div className="csr__copy">
