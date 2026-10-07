@@ -314,7 +314,8 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
   linear-gradient(0deg, rgba(var(--veil),.96) 0%, rgba(var(--veil),.6) 24%, rgba(var(--veil),0) 46%); }
 .hero__bottom { padding-right: 76px; } /* keeps slide controls clear of the floating WhatsApp button */
 .hero__content { position: relative; z-index: 3; flex: 1; padding: 120px var(--gutter) 40px; display: flex; flex-direction: column; justify-content: flex-end; gap: clamp(20px, 3vw, 36px); }
-.hero .eyebrow { opacity: 0; transition: opacity 1s var(--ease) 1s; }
+.hero .eyebrow { font-size: clamp(14px, 1.3vw, 18px); font-weight: 600; letter-spacing: .12em; align-items: center; opacity: 0; transition: opacity 1s var(--ease) 1s; }
+.hero .eyebrow .dot { margin-top: 0; }
 .is-ready .hero .eyebrow { opacity: 1; }
 /* sized by width AND height: (100svh - space for nav, eyebrow, buttons) / 3 lines keeps the hero on one screen */
 .hero__title { font: 400 clamp(56px, min(11.5vw, (100svh - 390px) / 2.6), 200px)/.86 var(--serif); letter-spacing: -.045em; margin: 0; }
