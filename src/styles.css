@@ -469,8 +469,8 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .walk__head { position: absolute; top: 108px; left: var(--gutter); right: var(--gutter); display: grid; gap: 14px; pointer-events: none; opacity: 0; translate: 0 -12px; transition: opacity .5s, translate .7s var(--ease); }
 .walk__head.is-on { opacity: 1; translate: 0 0; }
 .walk__head .kicker { color: var(--ink); background: rgba(var(--veil), .8); }
-.walk__title { margin: 0; font: 400 clamp(40px, 5.2vw, 80px)/.95 var(--serif); letter-spacing: -.03em; max-width: 12ch; }
-.walk__title em { color: var(--oak); }
+.walk__title { margin: 0; width: fit-content; max-width: 12ch; padding: .18em .32em .22em; border-radius: 22px; background: rgba(var(--veil), .86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 18px 40px -20px rgba(var(--shadow), .45); font: 400 clamp(40px, 5.2vw, 80px)/.95 var(--serif); letter-spacing: -.03em; color: var(--ink); }
+.walk__title em { color: var(--oak); } /* on its own panel in the page colour, so it reads in every theme */
 .walk__caption { position: absolute; left: var(--gutter); bottom: 60px; width: min(440px, calc(100% - 2 * var(--gutter))); padding: 22px 24px; border-radius: 18px; background: rgba(var(--veil),.88); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid rgba(var(--ink-rgb),.08); box-shadow: 0 20px 40px -20px rgba(var(--shadow),.35); display: grid; gap: 10px; opacity: 0; translate: 0 18px; transition: opacity .45s, translate .6s var(--ease); pointer-events: none; }
 .walk__caption.is-on { opacity: 1; translate: 0 0; pointer-events: auto; }
 .walk__num { font: 400 12px var(--mono); letter-spacing: .08em; color: var(--oak); }
@@ -1092,6 +1092,20 @@ html:not(.js) .hero .eyebrow, html:not(.js) .hero__bottom { opacity: 1; transfor
   .wall__case button::before { top: 7px; right: 7px; width: 7px; height: 7px; box-shadow: 0 0 0 3px rgba(205,220,47,.35); }
   .wall__cta { font-size: 9px; letter-spacing: .06em; }
 }
+
+/* ---------- phones: the walkthrough as a swipeable row (components/Showcase3D.jsx) ---------- */
+.walk-m { background: var(--paper); }
+.walk-m__row { list-style: none; display: flex; gap: 12px; margin: 0 calc(var(--gutter) * -1); padding: 0 var(--gutter) 8px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; overscroll-behavior-x: contain; }
+.walk-m__row::-webkit-scrollbar { display: none; }
+.walk-m__card:last-child, .vtl__row:last-child, .values__swipe li:last-child { scroll-snap-align: end; } /* so the last card can be swiped fully into view */
+.walk-m__card { flex: 0 0 84%; scroll-snap-align: start; display: flex; flex-direction: column; gap: 8px; padding-bottom: 16px; border-radius: 20px; overflow: hidden; background: var(--surface); border: 1px solid var(--line); }
+.walk-m__card figure { position: relative; margin: 0; aspect-ratio: 4 / 3; background: var(--sand); }
+.walk-m__card img { width: 100%; height: 100%; object-fit: cover; }
+.walk-m__card figcaption { position: absolute; left: 10px; bottom: 10px; padding: 5px 10px; border-radius: 999px; background: rgba(20,16,13,.6); backdrop-filter: blur(6px); color: var(--cream); font: 400 11px var(--mono); }
+.walk-m__card h3 { margin: 6px 16px 0; font: 400 26px/1.05 var(--serif); }
+.walk-m__card p { margin: 0 16px; font-size: 14px; color: var(--ink-2); }
+.walk-m__card .btn { margin: 6px 16px 0; align-self: flex-start; }
+.walk-m__hint { margin: 10px 0 0; text-align: right; font: 400 12px var(--mono); color: var(--muted); }
 
 /* Reduced motion (OS "animation effects" off): no movement, no zooms, no looping motion.
    Colour changes and gentle opacity fades are kept so the page still feels alive. */
