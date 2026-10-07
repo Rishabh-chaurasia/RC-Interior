@@ -8,12 +8,12 @@ import { img } from './content.js';
     2. put a small copy, about 360 px wide, in public/img/client-work/thumbs/<file>.jpg
     3. edit its entry below: client = client or project name, caption = one short line,
        alt = what the photo shows (read out by screen readers).
-  Then set SAMPLE to false so the "sample" labels disappear.
+  SAMPLE = true adds "Sample" labels to the names, the preview and the viewer.
 
-  SAMPLE CONTENT: the 32 images below are AI-generated design concepts supplied as placeholders.
-  They are not photographs of completed client projects, so they are labelled as samples.
+  The 32 images below are AI-generated design concepts supplied as placeholders, not photographs of
+  completed client projects. The sample labels are switched off at the site owner's request.
 */
-export const SAMPLE = true;
+export const SAMPLE = false;
 
 const rows = [
   ['01_reception', 'Reception', 'Stone reception desk with a lounge by the windows'],

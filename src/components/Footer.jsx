@@ -1,25 +1,45 @@
 import Logo from './Logo.jsx';
+import LogoBuild from './LogoBuild.jsx';
+import { contact, services } from '../data/content.js';
 
-const links = [['studio', 'Studio'], ['services', 'Services'], ['spaces', 'Spaces'], ['work', 'Work'], ['team', 'Team'], ['contact', 'Contact']];
+const links = [['about', 'About'], ['services', 'Services'], ['spaces', 'Spaces'], ['design3d', '3D Studio'], ['work', 'Work'], ['client-work', 'Client work'], ['team', 'Team'], ['contact', 'Contact']];
 
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__top">
+      <div className="footer__grid">
         <div className="footer__brand">
           <Logo className="footer__logo" tagline />
-          <p className="footer__tag">Small change,<br /><em>big differences.</em></p>
+          <p className="footer__tag">Small change, <em>big differences.</em></p>
+          <p className="footer__since">Designing and building workplaces across Delhi NCR since 2007.</p>
         </div>
-        <nav className="footer__nav" aria-label="Footer">
-          {links.map(([id, label]) => <a key={id} href={`#${id}`}><span className="roll" data-text={label}><span>{label}</span></span></a>)}
+
+        <nav className="footer__col" aria-label="Footer">
+          <h3>Explore</h3>
+          <ul>{links.map(([id, label]) => <li key={id}><a href={`#${id}`}>{label}</a></li>)}</ul>
         </nav>
-        <a href="#top" className="round" aria-label="Back to top">↑</a>
+
+        <div className="footer__col">
+          <h3>Services</h3>
+          <ul>{services.map(s => <li key={s.title}><a href="#services">{s.title}</a></li>)}</ul>
+        </div>
+
+        <div className="footer__col footer__contact">
+          <h3>Contact</h3>
+          <ul>
+            {contact.phones.map(p => <li key={p.href}><a href={p.href}>{p.label}</a> <small>{p.type}</small></li>)}
+            <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+          </ul>
+          <address>{contact.address.map((l, i) => <span key={l}>{l}{i < contact.address.length - 1 && <br />}</span>)}</address>
+        </div>
       </div>
-      <div className="footer__word" aria-hidden="true" data-split>RC Interior</div>
+
+      <LogoBuild />
+
       <div className="footer__base">
         <span>© {new Date().getFullYear()} RC Interior, Gurugram</span>
-        <span>Corporate · Retail · Turnkey · Renovation · R&amp;M</span>
-        <a href="https://www.rcinterior.co.in">www.rcinterior.co.in</a>
+        <a href={contact.website.href}>{contact.website.label}</a>
+        <a href="#top" className="footer__top-link">Back to top <i aria-hidden="true">↑</i></a>
       </div>
     </footer>
   );

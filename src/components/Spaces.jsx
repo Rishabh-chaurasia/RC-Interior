@@ -29,7 +29,7 @@ export default function Spaces({ onOpenGallery }) {
 
   return (
     <section className="spaces section section--paper" id="spaces">
-      <SectionHead kicker="(05) Spaces we design">Every room <em>has a job.</em></SectionHead>
+      <SectionHead kicker="Spaces we design">Every room <em>has a job.</em></SectionHead>
       <p className="spaces__hint">Every zone of an office, designed by us. Click any space to see {spaces[0].gallery.length} designs.</p>
       <div className="panels">
         {spaces.map((s, i) => (

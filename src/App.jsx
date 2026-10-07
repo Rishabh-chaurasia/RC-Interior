@@ -15,7 +15,6 @@ import Showcase3D from './components/Showcase3D.jsx';
 import Why from './components/Why.jsx';
 import Work from './components/Work.jsx';
 import ClientRing from './components/ClientRing.jsx';
-import Materials from './components/Materials.jsx';
 import Process from './components/Process.jsx';
 import Testimonials from './components/Testimonials.jsx';
 import { ClientWall, Team, Csr, Cta } from './components/People.jsx';
@@ -78,17 +77,16 @@ function Site() {
       <Nav menuOpen={menuOpen} onToggleMenu={() => setMenuOpen(o => !o)} />
       <main>
         <Hero ready={ready} />
-        <Marquee />
-        <Showcase3D />
         <Studio />
+        <Marquee />
         <Values />
         <Services />
         <Spaces onOpenGallery={setLightbox} />
+        <Showcase3D />
         <Studio3D />
         <Why />
         <Work onOpenImage={setLightbox} />
         <ClientRing onOpenImage={setLightbox} viewerOpen={!!lightbox} />
-        <Materials />
         <Process />
         <Testimonials />
         <ClientWall onOpenCase={setLightbox} />

@@ -13,7 +13,7 @@ const icons = {
 export default function Services() {
   return (
     <section className="services section" id="services">
-      <SectionHead kicker="(04) Services">From first sketch <em>to final screw.</em></SectionHead>
+      <SectionHead kicker="Services">From first sketch <em>to final screw.</em></SectionHead>
 
       <div className="bento">
         {services.map((s, i) => (

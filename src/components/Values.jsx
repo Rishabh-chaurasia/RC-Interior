@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { values, img } from '../data/content.js';
-import { Reveal, SectionHead } from './ui.jsx';
+import { values, whyCards, img } from '../data/content.js';
+import { Reveal, SectionHead, Counter } from './ui.jsx';
 
 const icons = {
   spark: <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6" />,
@@ -25,11 +25,12 @@ function Slides({ images }) {
   ));
 }
 
-/** Zigzag timeline: text card and photo alternate sides, joined by a dashed line with numbered stops. */
+/** Zigzag timeline: text card and photo alternate sides, joined by a dashed line with numbered stops.
+ *  On phones it becomes a swipeable row of cards with the "Why it matters" cards folded in below. */
 export default function Values() {
   return (
     <section className="values section">
-      <SectionHead kicker="(03) What we stand for">Four values, <em>every project.</em></SectionHead>
+      <SectionHead kicker="What we stand for">Four values, <em>every project.</em></SectionHead>
       <ol className="vtl">
         {values.map((v, i) => (
           <li key={v.title} className={`vtl__row value--${v.tone} ${i % 2 ? 'is-flip' : ''}`}>
@@ -56,6 +57,20 @@ export default function Values() {
           </li>
         ))}
       </ol>
+      {/* phones only: the "Why it matters" section folds in here (CSS hides the full one) to keep the page short */}
+      <div className="values__why">
+        <h3><span className="kicker">Why it matters</span>Good design is a <em>business decision.</em></h3>
+        <p className="values__stat"><b><Counter value={85} />%</b> Efficient storage alone can raise productivity by keeping workspaces organised and distraction-free.</p>
+        <ul className="values__swipe">
+          {whyCards.map(c => (
+            <li key={c.tag}>
+              <img src={img(c.image)} alt={c.alt} loading="lazy" />
+              <span>{c.tag}</span>
+              <p>{c.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

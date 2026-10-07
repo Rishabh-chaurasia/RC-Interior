@@ -14,7 +14,7 @@ export function ClientWall({ onOpenCase }) {
   };
   return (
     <section className="wall section" id="clients">
-      <SectionHead kicker="(12) Valued collaborators">30+ companies <em>call us back.</em></SectionHead>
+      <SectionHead kicker="Valued collaborators">30+ companies <em>call us back.</em></SectionHead>
       <p className="wall__hint"><span className="wall__dot" aria-hidden="true" /> Tap a highlighted client to see the finished project.</p>
       <ul className="wall__grid">
         {clients.map(c => {
@@ -46,7 +46,7 @@ export function ClientWall({ onOpenCase }) {
 export function Team() {
   return (
     <section className="team section" id="team">
-      <SectionHead kicker="(13) Core team">The people <em>on your site.</em></SectionHead>
+      <SectionHead kicker="Core team">The people <em>on your site.</em></SectionHead>
       <ul className="team__grid">
         {team.map(m => (
           <Reveal as="li" key={m.name} className="member">
@@ -62,12 +62,12 @@ export function Team() {
 export function Csr() {
   return (
     <section className="csr">
-      <figure className="csr__img" data-reveal data-radius="0px">
+      <figure className="csr__img" data-reveal>
         <ParallaxImg src={img('csr.jpg')} alt="Volunteers planting a sapling" loading="lazy" />
       </figure>
       <div className="csr__copy">
-        <p className="kicker">(14) CSR · Designing spaces, nurturing nature</p>
-        <h2 className="csr__big"><Counter value={1000} /><small>trees</small></h2>
+        <p className="kicker">CSR · Designing spaces, nurturing nature</p>
+        <h2 className="csr__big"><Counter value={100} /><small>trees</small></h2>
         <p className="csr__lede">planted for every business we take on. Every project leaves a legacy of green cover, and every client becomes a partner in it.</p>
         <ul className="csr__list">
           {csrPoints.map(p => <li key={p.title}><b>{p.title}</b><span>{p.text}</span></li>)}

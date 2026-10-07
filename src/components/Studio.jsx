@@ -24,10 +24,10 @@ function Statement() {
 
 export default function Studio() {
   return (
-    <section className="studio section" id="studio">
+    <section className="studio section" id="about">
       <div className="studio__top">
         <div className="studio__intro">
-          <p className="kicker">(02) The studio</p>
+          <p className="kicker">About us</p>
           <h2 className="studio__at" data-split><small>At</small> RC Interior<span className="comma">,</span></h2>
           <Statement />
         </div>

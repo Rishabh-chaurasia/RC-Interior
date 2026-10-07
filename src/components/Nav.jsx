@@ -80,6 +80,30 @@ function ThemePicker() {
   );
 }
 
+/** The same themes as swatches inside the phone menu, where the header button is easy to miss. */
+function ThemeSwatches() {
+  const [theme, choose] = useTheme();
+  return (
+    <div className="menu__themes" role="radiogroup" aria-label="Colour theme">
+      <span>Theme · <b>{theme.label}</b></span>
+      <div>
+        {THEMES.map(t => (
+          <button
+            key={t.id}
+            type="button"
+            role="radio"
+            aria-checked={t.id === theme.id}
+            aria-label={t.label}
+            title={t.label}
+            onClick={() => choose(t.id)}
+            style={{ '--a': t.swatch[0], '--b': t.swatch[1] }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // data-nav="dark" marks sections whose darkness comes from photos/children rather than their own background
 function isDarkBg(el) {
   if (el.dataset.nav === 'dark') return true;
@@ -145,11 +169,12 @@ export default function Nav({ menuOpen, onToggleMenu }) {
 
       <div className="menu" aria-hidden={!menuOpen}>
         <nav>
-          {[...navLinks.filter(l => l.id !== 'clients'), { id: 'contact', label: 'Contact' }].map((l, i) => (
-            <a key={l.id} href={`#${l.id}`}><small>{String(i + 1).padStart(2, '0')}</small>{l.label}</a>
+          {[...navLinks.filter(l => l.id !== 'clients'), { id: 'contact', label: 'Contact' }].map(l => (
+            <a key={l.id} href={`#${l.id}`}>{l.label}</a>
           ))}
         </nav>
         <div className="menu__foot">
+          <ThemeSwatches />
           <a href={contact.phones[0].href}>{contact.phones[0].label}</a>
           <a href={`mailto:${contact.email}`}>{contact.email}</a>
         </div>

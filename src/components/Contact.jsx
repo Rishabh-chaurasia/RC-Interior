@@ -110,6 +110,7 @@ export default function Contact() {
           <div className="map">
             <iframe title="RC Interior on Google Maps" src={contact.mapSrc} loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           </div>
+          <a className="map__open" href={contact.mapLink} target="_blank" rel="noopener">Open in Google Maps <i aria-hidden="true">↗</i></a>
         </aside>
       </div>
     </section>

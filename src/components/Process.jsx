@@ -16,7 +16,7 @@ export default function Process() {
 
   return (
     <section className="process section section--paper">
-      <SectionHead kicker="(10) How we work">One team, <em>start to handover.</em></SectionHead>
+      <SectionHead kicker="How we work">One team, <em>start to handover.</em></SectionHead>
       <ol ref={list} className="steps" style={{ '--p': progress.toFixed(3) }}>
         {steps.map((s, i) => (
           <li key={s.title} className={`step ${progress >= i / (steps.length - 1) - 0.02 ? 'is-lit' : ''}`}>
