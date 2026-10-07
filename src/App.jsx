@@ -79,10 +79,10 @@ function Site() {
         <Hero ready={ready} />
         <Studio />
         <Marquee />
-        <Showcase3D />
         <Values />
         <Services />
         <Spaces onOpenGallery={setLightbox} />
+        <Showcase3D />
         <Studio3D />
         <Why />
         <Work onOpenImage={setLightbox} />
