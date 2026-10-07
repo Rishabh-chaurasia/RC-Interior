@@ -461,7 +461,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .bento .card:nth-child(3n+2) { --d: .08s; } .bento .card:nth-child(3n+3) { --d: .16s; }
 
 /* ---------- 3D WALKTHROUGH (pinned; scroll drives the camera) ---------- */
-.walk { --per-stop: 70svh; position: relative; height: calc(100svh + var(--stops) * var(--per-stop)); background: var(--paper); color: var(--ink); }
+.walk { --per-stop: 40svh; position: relative; height: calc(100svh + var(--stops) * var(--per-stop)); background: var(--paper); color: var(--ink); }
 .walk__pin { position: sticky; top: 0; height: 100svh; overflow: hidden; }
 .walk__stage { position: absolute; inset: 0; overflow: hidden; perspective: 1200px; perspective-origin: 50% 50%; background: var(--sand); }
 .walk__layer { position: absolute; inset: -2%; transform-origin: 50% 55%; will-change: transform, opacity; backface-visibility: hidden; }
@@ -486,8 +486,13 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .walk__steps button:hover { color: var(--ink); background: rgba(var(--ink-rgb),.06); }
 .walk__steps button.is-on { color: var(--ink); }
 .walk__steps button.is-on::after { background: var(--lime); border-color: var(--lime-deep); transform: scale(1.35); }
-.walk__hint { position: absolute; right: var(--gutter); bottom: 46px; margin: 0; font: 400 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); padding: 8px 12px; border-radius: 999px; background: rgba(var(--veil),.85); opacity: 0; transition: opacity .4s; pointer-events: none; }
+.walk__hint { position: absolute; right: var(--gutter); bottom: 96px; margin: 0; font: 400 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); padding: 8px 12px; border-radius: 999px; background: rgba(var(--veil),.85); opacity: 0; transition: opacity .4s; pointer-events: none; }
 .walk__hint.is-on { opacity: 1; }
+/* always there while the walkthrough is pinned, so nobody feels stuck in it */
+.walk__skip { position: absolute; right: var(--gutter); bottom: 46px; display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(var(--ink-rgb),.14); background: rgba(var(--veil),.88); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font: 500 13px var(--sans); color: var(--ink); cursor: pointer; transition: background .3s, color .3s, border-color .3s; }
+.walk__skip:hover { background: var(--lime); border-color: var(--lime); color: var(--on-lime); }
+.walk__skip:focus-visible { outline: 3px solid var(--lime-deep); outline-offset: 3px; }
+.walk__skip i { font-style: normal; }
 .walk__hint i { display: inline-block; font-style: normal; animation: nudge 1.6s infinite; }
 @keyframes nudge { 50% { transform: translateY(5px); } }
 .walk__bar { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px; height: 2px; background: rgba(var(--ink-rgb),.14); }
@@ -903,7 +908,7 @@ html:not(.js) .hero .eyebrow, html:not(.js) .hero__bottom { opacity: 1; transfor
   .hero__ctrl { min-width: 0; }
 }
 @media (max-width: 900px) {
-  .walk { --per-stop: 60svh; }
+  .walk { --per-stop: 36svh; }
   .s3d__viewer { height: 78svh; min-height: 560px; }
   .s3d__offices { display: grid; grid-template-columns: 1fr 1fr; width: 100%; border-radius: 18px; }
   .s3d__offices button { flex-direction: column; align-items: center; gap: 4px; padding: 10px 8px; border-radius: 14px; font-size: 14px; }

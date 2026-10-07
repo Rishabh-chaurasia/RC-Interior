@@ -134,6 +134,11 @@ function WalkPinned() {
     const total = el.offsetHeight - innerHeight;
     scroll.scrollTo(top + (k / LAST) * total + 2);
   }, [scroll]);
+  // leave the walkthrough straight away, to the section after it
+  const skip = useCallback(() => {
+    const el = section.current;
+    scroll.scrollTo(el.getBoundingClientRect().top + scrollY + el.offsetHeight);
+  }, [scroll]);
 
   const current = STOPS[stop.index];
 
@@ -173,6 +178,7 @@ function WalkPinned() {
           ))}
         </ol>
 
+        <button type="button" className="walk__skip" onClick={skip}>Skip walkthrough <i aria-hidden="true">↓</i></button>
         <p className={`walk__hint ${stop.start ? 'is-on' : ''}`}>Scroll to walk through <i aria-hidden="true">↓</i></p>
         <div className="walk__bar" aria-hidden="true"><span ref={bar} /></div>
       </div>
