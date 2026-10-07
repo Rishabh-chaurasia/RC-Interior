@@ -78,9 +78,9 @@ function Site() {
       <Nav menuOpen={menuOpen} onToggleMenu={() => setMenuOpen(o => !o)} />
       <main>
         <Hero ready={ready} />
+        <Studio />
         <Marquee />
         <Showcase3D />
-        <Studio />
         <Values />
         <Services />
         <Spaces onOpenGallery={setLightbox} />

@@ -4,7 +4,6 @@ import { useOnScroll, useScrollApi, prefersReducedMotion } from '../hooks/scroll
 import { img } from '../data/content.js';
 import { Btn } from './ui.jsx';
 
-const pad = n => String(n).padStart(2, '0');
 const LAST = STOPS.length - 1;
 const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
 
@@ -118,12 +117,11 @@ export default function Showcase3D() {
         <div className="walk__shade" aria-hidden="true" />
 
         <header className={`walk__head ${stop.index === 0 ? 'is-on' : ''}`}>
-          <p className="kicker">(01) Walk through our work</p>
+          <p className="kicker">Walk through our work</p>
           <h2 className="walk__title" data-split>Step inside, <em>room by room.</em></h2>
         </header>
 
         <div className={`walk__caption ${stop.parked ? 'is-on' : ''}`} aria-live="polite">
-          <span className="walk__num">{pad(stop.index + 1)} / {pad(STOPS.length)}</span>
           <h3>{current.title}</h3>
           <p>{current.text}</p>
           {current.cta && <Btn href="#contact" variant="lime">Plan my office</Btn>}
@@ -133,7 +131,7 @@ export default function Showcase3D() {
           {STOPS.map((st, i) => (
             <li key={st.key}>
               <button type="button" className={i === stop.index ? 'is-on' : ''} onClick={() => jump(i)} aria-current={i === stop.index || undefined}>
-                <b>{pad(i + 1)}</b><span>{st.label}</span>
+                <span>{st.label}</span>
               </button>
             </li>
           ))}

@@ -15,7 +15,7 @@ export const contact = {
 };
 
 export const navLinks = [
-  { id: 'studio', label: 'Studio' },
+  { id: 'about', label: 'About' },
   { id: 'services', label: 'Services' },
   { id: 'spaces', label: 'Spaces' },
   { id: 'design3d', label: '3D Studio' },
@@ -94,10 +94,9 @@ export const values = [
   },
   {
     title: 'Sustainability', tag: 'Green', tone: 'green', icon: 'leaf', image: 'csr/plant-1.jpg',
-    gallery: ['csr/plant-1.jpg', 'csr/plant-2.jpg', 'csr/plant-3.jpg', 'csr/plant-4.jpg'], // plantation drives, cross-fading
     text: 'Designs that respect the future, with lower running costs for you and more trees for everyone.',
-    points: ['Energy-efficient lighting and HVAC', 'Low-VOC paints and certified woods', '1,000 trees planted for every project'],
-    badge: ['1,000 trees', 'per project'],
+    points: ['Energy-efficient lighting and HVAC', 'Low-VOC paints and certified woods', '100 trees planted for every project'],
+    badge: ['100 trees', 'per project'],
   },
 ];
 

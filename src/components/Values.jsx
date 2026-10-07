@@ -29,7 +29,7 @@ function Slides({ images }) {
 export default function Values() {
   return (
     <section className="values section">
-      <SectionHead kicker="(03) What we stand for">Four values, <em>every project.</em></SectionHead>
+      <SectionHead kicker="What we stand for">Four values, <em>every project.</em></SectionHead>
       <ol className="vtl">
         {values.map((v, i) => (
           <li key={v.title} className={`vtl__row value--${v.tone} ${i % 2 ? 'is-flip' : ''}`}>

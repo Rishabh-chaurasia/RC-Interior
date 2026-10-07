@@ -5,7 +5,7 @@ export default function Why() {
   return (
     <section className="why section">
       <div className="why__sticky">
-        <p className="kicker">(07) Why it matters</p>
+        <p className="kicker">Why it matters</p>
         <h2 className="h2" data-split>Good design is a <em>business decision.</em></h2>
         <div className="why__stat">
           <span className="why__num"><Counter value={85} />%</span>
