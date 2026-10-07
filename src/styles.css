@@ -21,6 +21,7 @@
   --shadow: 26, 21, 18;
   --viewer: #ece6dc;       /* 3D studio background */
   --accent-light: #cddc2f; /* theme accent that reads on dark photo overlays */
+  --photo-accent: #6b7a00; /* theme accent for headings set straight on a photo under the page-colour veil */
   --csr-bg: #eef2df; --csr-ink: #1c2716; --csr-accent: #4f7d3a;
   --lime: #cddc2f;      /* from the RC logo */
   --lime-deep: #a3b21a;
@@ -40,7 +41,7 @@
 /* ---------- colour themes (hooks/theme.js sets data-theme on <html>) ----------
    Ivory is the default above. Each theme only swaps tokens; lime stays the brand accent. */
 :root[data-theme="espresso"] {
-  --accent-light: #cddc2f;
+  --accent-light: #cddc2f; --photo-accent: #cddc2f;
   --bone: #1f1915; --paper: #2a221d; --paper-2: #241d18; --sand: #3a3029; --surface: #2f2620;
   --ink: #f2ede5; --ink-2: #d6cdc1; --muted: #a99c8d; --ink-rgb: 242, 237, 229;
   --veil: 31, 25, 21; --shadow: 0, 0, 0; --lime-ink: var(--lime); --oak: #c99a6e; --viewer: #2a221d;
@@ -48,35 +49,35 @@
   color-scheme: dark;
 }
 :root[data-theme="sage"] {
-  --accent-light: #bfe09c;
+  --accent-light: #bfe09c; --photo-accent: #3f7a34;
   --bone: #e3e9df; --paper: #edf1e8; --paper-2: #e8ede2; --sand: #cfd8c6; --surface: #f7f9f4;
   --ink: #1b2620; --ink-2: #3a4a40; --muted: #63705f; --ink-rgb: 27, 38, 32;
   --veil: 237, 241, 232; --shadow: 27, 38, 32; --lime-ink: #6f7d08; --oak: #8a5f3c; --viewer: #dfe6da;
   --csr-bg: #d7e3c8;
 }
 :root[data-theme="terracotta"] {
-  --accent-light: #f4a984;
+  --accent-light: #f4a984; --photo-accent: #b0461e;
   --bone: #f1e3d8; --paper: #f8eee6; --paper-2: #f4e7dc; --sand: #e3cbb9; --surface: #fdf7f2;
   --ink: #2a1912; --ink-2: #4f362a; --muted: #8a6c5c; --ink-rgb: 42, 25, 18;
   --veil: 248, 238, 230; --shadow: 42, 25, 18; --lime-ink: #7f8d0a; --oak: #b0532e; --viewer: #ecdccf;
   --csr-bg: #ece3cf;
 }
 :root[data-theme="stone"] {
-  --accent-light: #e6c9a2;
+  --accent-light: #e6c9a2; --photo-accent: #8a5a2b;
   --bone: #e9e8e5; --paper: #f2f1ee; --paper-2: #eceae6; --sand: #d8d6d0; --surface: #fbfaf8;
   --ink: #1d1d1f; --ink-2: #3d3d40; --muted: #6e6d6a; --ink-rgb: 29, 29, 31;
   --veil: 242, 241, 238; --shadow: 29, 29, 31; --lime-ink: #7d8b0a; --oak: #8c6a4a; --viewer: #e3e1dc;
   --csr-bg: #e4e9da;
 }
 :root[data-theme="blush"] {
-  --accent-light: #f5b9c0;
+  --accent-light: #f5b9c0; --photo-accent: #c0405e;
   --bone: #f3e4e1; --paper: #f9eeec; --paper-2: #f5e8e5; --sand: #e8d0cb; --surface: #fdf6f5;
   --ink: #2d1b1d; --ink-2: #523a3c; --muted: #8d6f70; --ink-rgb: 45, 27, 29;
   --veil: 249, 238, 236; --shadow: 45, 27, 29; --lime-ink: #7f8d0a; --oak: #a5555c; --viewer: #efdcd8;
   --csr-bg: #ece7d6;
 }
 :root[data-theme="charcoal"] {
-  --accent-light: #e3c39a;
+  --accent-light: #e3c39a; --photo-accent: #e3c39a;
   --bone: #1c1d1f; --paper: #25272a; --paper-2: #202224; --sand: #33363a; --surface: #2a2c30;
   --ink: #eceae6; --ink-2: #c9c7c2; --muted: #9a9893; --ink-rgb: 236, 234, 230;
   --veil: 28, 29, 31; --shadow: 0, 0, 0; --lime-ink: var(--lime); --oak: #c9a27a; --viewer: #25272a;
@@ -84,7 +85,7 @@
   color-scheme: dark;
 }
 :root[data-theme="midnight"] {
-  --accent-light: #f0c88f;
+  --accent-light: #f0c88f; --photo-accent: #f0c88f;
   --bone: #141b26; --paper: #1b2431; --paper-2: #18202b; --sand: #263243; --surface: #1f2938;
   --ink: #eef0f4; --ink-2: #c8cfdb; --muted: #93a0b3; --ink-rgb: 238, 240, 244;
   --veil: 20, 27, 38; --shadow: 0, 0, 0; --lime-ink: var(--lime); --oak: #d4a373; --viewer: #1b2431;
@@ -92,7 +93,7 @@
   color-scheme: dark;
 }
 :root[data-theme="forest"] {
-  --accent-light: #c4e07a;
+  --accent-light: #c4e07a; --photo-accent: #c4e07a;
   --bone: #17211b; --paper: #1e2b23; --paper-2: #1a261f; --sand: #2b3b31; --surface: #223027;
   --ink: #eef1ea; --ink-2: #c9d3c8; --muted: #93a394; --ink-rgb: 238, 241, 234;
   --veil: 23, 33, 27; --shadow: 0, 0, 0; --lime-ink: var(--lime); --oak: #d1a679; --viewer: #1e2b23;
@@ -469,8 +470,8 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .walk__head { position: absolute; top: 108px; left: var(--gutter); right: var(--gutter); display: grid; gap: 14px; pointer-events: none; opacity: 0; translate: 0 -12px; transition: opacity .5s, translate .7s var(--ease); }
 .walk__head.is-on { opacity: 1; translate: 0 0; }
 .walk__head .kicker { color: var(--ink); background: rgba(var(--veil), .8); }
-.walk__title { margin: 0; width: fit-content; max-width: 12ch; padding: .18em .32em .22em; border-radius: 22px; background: rgba(var(--veil), .86); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); box-shadow: 0 18px 40px -20px rgba(var(--shadow), .45); font: 400 clamp(40px, 5.2vw, 80px)/.95 var(--serif); letter-spacing: -.03em; color: var(--ink); }
-.walk__title em { color: var(--oak); } /* on its own panel in the page colour, so it reads in every theme */
+.walk__title { margin: 0; font: 400 clamp(40px, 5.2vw, 80px)/.95 var(--serif); letter-spacing: -.03em; max-width: 12ch; text-shadow: 0 0 22px rgba(var(--veil), .95), 0 0 6px rgba(var(--veil), .8); }
+.walk__title em { color: var(--photo-accent); } /* each theme's own colour, strong enough to read over the photo */
 .walk__caption { position: absolute; left: var(--gutter); bottom: 60px; width: min(440px, calc(100% - 2 * var(--gutter))); padding: 22px 24px; border-radius: 18px; background: rgba(var(--veil),.88); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border: 1px solid rgba(var(--ink-rgb),.08); box-shadow: 0 20px 40px -20px rgba(var(--shadow),.35); display: grid; gap: 10px; opacity: 0; translate: 0 18px; transition: opacity .45s, translate .6s var(--ease); pointer-events: none; }
 .walk__caption.is-on { opacity: 1; translate: 0 0; pointer-events: auto; }
 .walk__num { font: 400 12px var(--mono); letter-spacing: .08em; color: var(--oak); }
