@@ -796,8 +796,10 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .info { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 24px; }
 .info > :nth-child(n+3) { grid-column: 1 / -1; } /* Call and Write side by side; Visit, map and link full width */
 .contact__kicker { margin-bottom: clamp(14px, 2vw, 22px); }
+.info .kicker { padding: 5px 12px 5px 10px; gap: 8px; font-size: 15px; } /* Call / Write / Visit: small labels */
+.info .kicker::before { width: 6px; height: 6px; }
 .info__block { display: grid; align-content: start; gap: 6px; padding-top: 18px; border-top: 1px solid var(--line); }
-.info__block a, .info address { font: 400 clamp(20px, 1.75vw, 27px)/1.2 var(--serif); font-style: normal; width: fit-content; }
+.info__block a, .info address { font: 400 clamp(17px, 1.35vw, 21px)/1.25 var(--serif); font-style: normal; width: fit-content; }
 .info__block a { background: linear-gradient(var(--lime), var(--lime)) 0 88% / 0 35% no-repeat; transition: background-size .5s var(--ease); }
 .info__block a:hover { background-size: 100% 35%; }
 .info__block a small { display: block; margin-top: 2px; font: 400 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
@@ -1028,7 +1030,7 @@ html:not(.js) .hero .eyebrow, html:not(.js) .hero__bottom { opacity: 1; transfor
   .field input, .field textarea { padding: 20px 0 8px; }
   .field > span { top: 20px; }
   .info { column-gap: 14px; }
-  .info__block a { font-size: 18px; }
+  .info__block a { font-size: 16px; }
   .csr__list li { grid-template-columns: 1fr; gap: 4px; }
   .why__stat { grid-template-columns: 1fr; }
   .work__track { height: 380px; }
