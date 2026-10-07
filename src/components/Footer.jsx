@@ -1,26 +1,12 @@
 import Logo from './Logo.jsx';
-import { Btn } from './ui.jsx';
+import LogoBuild from './LogoBuild.jsx';
 import { contact, services } from '../data/content.js';
 
 const links = [['about', 'About'], ['services', 'Services'], ['spaces', 'Spaces'], ['design3d', '3D Studio'], ['work', 'Work'], ['client-work', 'Client work'], ['team', 'Team'], ['contact', 'Contact']];
-const wa = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent('Hi RC Interior, I would like to discuss an office interior project.')}`;
 
 export default function Footer() {
   return (
     <footer className="footer">
-      {/* call to action band */}
-      <div className="footer__cta">
-        <div>
-          <p className="footer__eyebrow">Start a project</p>
-          <h2 className="footer__title">Have a space <em>in mind?</em></h2>
-          <p className="footer__lede">Tell us about it. We will visit, measure and plan it with you, from first sketch to handover.</p>
-        </div>
-        <div className="footer__actions">
-          <Btn href="#contact">Book a free site visit</Btn>
-          <a href={wa} target="_blank" rel="noopener" className="footer__wa">Chat on WhatsApp ↗</a>
-        </div>
-      </div>
-
       <div className="footer__grid">
         <div className="footer__brand">
           <Logo className="footer__logo" tagline />
@@ -48,7 +34,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer__word" aria-hidden="true" data-split>RC Interior</div>
+      <LogoBuild />
 
       <div className="footer__base">
         <span>© {new Date().getFullYear()} RC Interior, Gurugram</span>
