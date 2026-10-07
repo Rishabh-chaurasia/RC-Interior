@@ -809,11 +809,14 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .lb__floor { stroke: var(--logo-mark); stroke-width: 2.4; }
 .lb__chair .lb__line { stroke-width: 1.7; }
 .lb.is-built .lb__ink { stroke-dashoffset: 0; fill-opacity: 1; stroke-opacity: 1; } /* stroke shows only once its turn starts: round caps leave no dots */
-.lb__tag { display: flex; justify-content: center; align-items: center; gap: .9em; margin: clamp(14px, 2vw, 24px) 0 0; font: 400 clamp(13px, 1.5vw, 19px)/1 var(--sans); letter-spacing: .04em; color: var(--ink-2); opacity: 0; transform: translateY(14px); transition: opacity .8s ease 3.7s, transform 1s var(--ease) 3.7s; }
-.lb__tag i { width: 1px; height: 1.1em; background: var(--lime-deep); }
-.lb.is-built .lb__tag { opacity: 1; transform: none; }
-.lb:not(.is-built) .lb__ink, .lb:not(.is-built) .lb__tag { transition-duration: .15s; transition-delay: 0s; } /* reset quickly, off screen */
-@media (prefers-reduced-motion: reduce) { .lb__ink, .lb__tag, .lb__stage { transition: none !important; } }
+.lb__tag { display: flex; justify-content: center; align-items: center; margin: clamp(14px, 2vw, 24px) 0 0; font: 400 clamp(13px, 1.5vw, 19px)/1 var(--sans); letter-spacing: .04em; color: var(--ink-2); white-space: pre; }
+.lb__tag span { display: inline-flex; align-items: center; }
+.lb__tag i { display: inline-block; width: 1px; height: 1.1em; margin: 0 .9em; background: var(--lime-deep); transform: scaleY(0); transition: transform .3s ease var(--d); }
+.lb__tag b { font-weight: inherit; opacity: 0; transition: opacity .12s linear var(--d); } /* typed out one letter at a time */
+.lb.is-built .lb__tag b { opacity: 1; }
+.lb.is-built .lb__tag i { transform: none; }
+.lb:not(.is-built) .lb__ink, .lb:not(.is-built) .lb__tag b, .lb:not(.is-built) .lb__tag i { transition-duration: .15s; transition-delay: 0s; } /* reset quickly, off screen */
+@media (prefers-reduced-motion: reduce) { .lb__ink, .lb__tag b, .lb__tag i, .lb__stage { transition: none !important; } }
 .footer__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 76px 0 0; border-top: 1px solid var(--line); font: 400 12px var(--mono); color: var(--muted); letter-spacing: .04em; }
 .footer__base a:hover { color: var(--oak); }
 .footer__top-link i { display: inline-grid; place-items: center; width: 28px; height: 28px; margin-left: 8px; border-radius: 50%; border: 1px solid var(--line); font-style: normal; transition: background .3s, color .3s, transform .4s var(--ease); }

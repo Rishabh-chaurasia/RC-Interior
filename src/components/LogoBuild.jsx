@@ -6,10 +6,12 @@ const W = WORDMARK_WIDTH, H = 106;
 
 // Drawing order: [start, duration] in seconds. Every outline is traced in turn, then fills in.
 const T = {
-  house: [0, 1], floor: [0.7, 0.7], chair: [1.15, 0.6],
-  rc: i => [1.5 + i * 0.45, 0.7],
-  word: i => [2.3 + i * 0.16, 0.5],
+  house: [0.2, 1.4], floor: [1.3, 1], chair: [2, 0.9],
+  rc: i => [2.7 + i * 0.7, 1],
+  word: i => [4.2 + i * 0.28, 0.7],
 };
+const TAG = ['Your space', 'Your style', 'Your choice'];
+const TAG_START = 6.6; // the tagline then writes itself out, letter by letter
 const step = ([d, dur]) => ({ '--d': `${d}s`, '--dur': `${dur}s` });
 
 /**
@@ -25,9 +27,9 @@ export default function LogoBuild() {
   useEffect(() => {
     if (prefersReducedMotion()) { setBuilt(true); return; }
     const io = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && e.intersectionRatio > 0.4) setBuilt(true);
+      if (e.isIntersecting && e.intersectionRatio > 0.85) setBuilt(true); // start only once it is in full view
       else if (!e.isIntersecting) setBuilt(false); // fully out of view: ready to draw again
-    }, { threshold: [0, 0.4] });
+    }, { threshold: [0, 0.85] });
     io.observe(ref.current);
     return () => io.disconnect();
   }, []);
@@ -54,7 +56,17 @@ export default function LogoBuild() {
         {RC_GLYPHS.map((g, i) => <path key={g.box[0]} className="lb__ink lb__rc" d={g.d} pathLength="1" style={step(T.rc(i))} />)}
         {INTERIOR_GLYPHS.map((g, i) => <path key={g.box[0]} className="lb__ink lb__word" d={g.d} pathLength="1" style={step(T.word(i))} />)}
       </svg>
-      <p className="lb__tag" aria-hidden="true">Your space<i />Your style<i />Your choice</p>
+      <p className="lb__tag" aria-hidden="true">
+        {TAG.map((words, w) => {
+          const before = TAG.slice(0, w).join('').length;
+          return (
+            <span key={words}>
+              {w > 0 && <i style={{ '--d': `${TAG_START + (before + w) * 0.05}s` }} />}
+              {[...words].map((ch, c) => <b key={c} style={{ '--d': `${TAG_START + (before + w + c) * 0.05}s` }}>{ch}</b>)}
+            </span>
+          );
+        })}
+      </p>
     </div>
   );
 }
