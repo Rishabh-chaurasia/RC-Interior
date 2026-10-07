@@ -4,21 +4,53 @@ import { useOnScroll, isDesktop, prefersReducedMotion } from '../hooks/scroll.js
 import { Btn } from './ui.jsx';
 
 /**
- * Horizontal gallery. On desktop the section is made as tall as the track is wide,
- * and vertical scrolling slides the sticky track sideways. On mobile it's a swipe row.
+ * Horizontal gallery. On desktop it moves with the cursor, not the scroll wheel: rest the pointer
+ * towards the left edge and it glides left, towards the right edge and it glides right (arrow
+ * buttons do the same in steps), so the page itself never gets stuck here. On mobile it's a swipe row.
  */
 export default function Work({ onOpenImage }) {
   const section = useRef(null);
   const track = useRef(null);
   const bar = useRef(null);
   const dist = useRef(0);
+  const pan = useRef({ x: 0, target: 0, vel: 0, raf: 0 });
 
   const size = () => {
     if (!section.current) return;
-    if (!isDesktop()) { section.current.style.height = ''; dist.current = 0; return; }
-    dist.current = Math.max(0, track.current.scrollWidth - innerWidth);
-    section.current.style.height = `${innerHeight + dist.current}px`;
+    dist.current = isDesktop() ? Math.max(0, track.current.scrollWidth - innerWidth) : 0;
+    const p = pan.current;
+    p.x = p.target = Math.min(p.x, dist.current);
+    place();
   };
+
+  const place = () => {
+    const p = pan.current;
+    if (!isDesktop()) { track.current.style.transform = ''; return; }
+    track.current.style.transform = `translate3d(${-p.x}px,0,0)`;
+    bar.current.style.transform = `scaleX(${dist.current ? p.x / dist.current : 0})`;
+    coverflow();
+  };
+
+  // glide towards the target; the cursor's distance from the centre sets the speed
+  const tick = () => {
+    const p = pan.current;
+    p.target = Math.min(dist.current, Math.max(0, p.target + p.vel));
+    p.x += (p.target - p.x) * (prefersReducedMotion() ? 1 : 0.12);
+    if (Math.abs(p.target - p.x) < 0.3) p.x = p.target;
+    place();
+    p.raf = p.vel || p.x !== p.target ? requestAnimationFrame(tick) : 0;
+  };
+  const run = () => { if (!pan.current.raf) pan.current.raf = requestAnimationFrame(tick); };
+
+  const onMove = e => {
+    if (e.pointerType !== 'mouse' || !isDesktop()) return;
+    const d = e.clientX / innerWidth - 0.5; // -0.5 … 0.5
+    const a = Math.max(0, Math.abs(d) - 0.14) / 0.36; // still in the middle, faster towards the edges
+    pan.current.vel = Math.sign(d) * a * a * 18;
+    run();
+  };
+  const onLeave = () => { pan.current.vel = 0; };
+  const step = dir => { pan.current.target += dir * innerWidth * 0.55; run(); };
 
   // 3D coverflow: each photo turns towards the centre of the screen and sinks back as it moves away
   const coverflow = () => {
@@ -42,18 +74,10 @@ export default function Work({ onOpenImage }) {
     addEventListener('load', size);
     const t = track.current;
     t.addEventListener('scroll', coverflow, { passive: true }); // mobile swipe row
-    return () => { removeEventListener('resize', size); removeEventListener('load', size); t.removeEventListener('scroll', coverflow); };
+    return () => { removeEventListener('resize', size); removeEventListener('load', size); t.removeEventListener('scroll', coverflow); cancelAnimationFrame(pan.current.raf); };
   }, []);
 
-  useOnScroll(() => {
-    if (isDesktop() && dist.current) {
-      const r = section.current.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, -r.top / dist.current));
-      track.current.style.transform = `translate3d(${-p * dist.current}px,0,0)`;
-      bar.current.style.transform = `scaleX(${p})`;
-    }
-    coverflow();
-  });
+  useOnScroll(coverflow);
 
   return (
     <section ref={section} className="work" id="work">
@@ -62,10 +86,11 @@ export default function Work({ onOpenImage }) {
           <p className="kicker">Gallery</p>
           <h2 className="h2" data-split>Spaces we <em>imagine.</em></h2>
           <p className="work__hint">
-            <span className="hint-desktop">Scroll</span><span className="hint-mobile">Swipe</span> to explore →
+            <span className="hint-desktop">Move the cursor left or right</span><span className="hint-mobile">Swipe</span> to explore ↔
             <a href="#clients" className="work__real">Real client projects ↓</a>
           </p>
         </div>
+        <div className="work__stage" onPointerMove={onMove} onPointerLeave={onLeave}>
         <div ref={track} className="work__track">
           {projects.map((p, i) => (
             <a
@@ -92,7 +117,12 @@ export default function Work({ onOpenImage }) {
             <Btn href="#contact" variant="lime">Start a project</Btn>
           </div>
         </div>
-        <div className="work__progress"><span ref={bar} /></div>
+        </div>
+        <div className="work__nav">
+          <button type="button" className="work__arrow" onClick={() => step(-1)} aria-label="Previous designs">←</button>
+          <div className="work__progress"><span ref={bar} /></div>
+          <button type="button" className="work__arrow" onClick={() => step(1)} aria-label="More designs">→</button>
+        </div>
       </div>
     </section>
   );

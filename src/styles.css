@@ -606,6 +606,12 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .proj--end p { margin: 0; font: 400 clamp(44px, 5vw, 76px)/.95 var(--serif); letter-spacing: -.02em; }
 .proj--end em { color: var(--oak); }
 .proj--end .btn { align-self: flex-start; }
+.work__stage { position: relative; }
+.work__nav { display: flex; align-items: center; gap: 16px; margin: 0 var(--gutter); }
+.work__nav .work__progress { flex: 1; margin: 0; }
+.work__arrow { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); color: var(--ink); font-size: 18px; cursor: pointer; transition: background .3s, border-color .3s, color .3s; }
+.work__arrow:hover { background: var(--lime); border-color: var(--lime); color: var(--on-lime); }
+.work__arrow:focus-visible { outline: 3px solid var(--lime-deep); outline-offset: 3px; }
 .work__progress { margin: 0 var(--gutter); height: 2px; background: var(--line); border-radius: 2px; overflow: hidden; }
 .work__progress span { display: block; height: 100%; width: 100%; background: var(--lime-deep); transform-origin: left; transform: scaleX(0); }
 
@@ -984,7 +990,7 @@ html:not(.js) .hero .eyebrow, html:not(.js) .hero__bottom { opacity: 1; transfor
   .work__track::-webkit-scrollbar { display: none; }
   .proj { scroll-snap-align: start; }
   .hint-desktop { display: none; } .hint-mobile { display: inline; }
-  .work__progress { display: none; }
+  .work__progress, .work__nav { display: none; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
   .footer__brand { grid-column: 1 / -1; }
 }
