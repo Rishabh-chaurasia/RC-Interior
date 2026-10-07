@@ -108,7 +108,7 @@ export const services = [
     chips: ['Space planning', 'Concept design', 'Lighting plans', '3D visuals', 'Layout designing', 'Execution plan', 'Material shortlisting', 'Colour finalisation', 'Branding elements', 'Delivery timeline', 'Project submission'],
   },
   // tour: the card's background walks through the office, reception first (keys of `spaces` below, in order)
-  { icon: 'key', title: 'Turnkey Projects', image: 'spaces/sm/workstation-1.jpg', text: 'One contract, one team, one point of contact. Civil, services, furniture and finishing.',
+  { icon: 'key', title: 'Turnkey Projects', image: 'spaces/sm/workstation-1.jpg', text: 'One contract, one team, one committed timeline. Civil, services, furniture and finishing.',
     tour: ['reception', 'entrance', 'workstation', 'cabin', 'meeting', 'boardroom', 'cowork', 'lounge', 'pantry'] },
   { icon: 'shield', title: 'Electrical, HVAC & Fire', image: 'spaces/sm/meeting-4.jpg', text: 'The work behind the walls, done to code and fully documented.' },
   { icon: 'hammer', title: 'Renovation & Refurbishment', image: 'spaces/sm/entrance-2.jpg', text: 'Refresh a reception or rebuild a floor while your business keeps running.' },
