@@ -284,7 +284,7 @@ export default function ClientRing({ onOpenImage, viewerOpen }) {
               {shown && (
                 <div className="cring__caption" key={active}>
                   <b>{shown.client}</b>
-                  <span>{shown.title} · {shown.caption}</span>
+                  <span>{shown.client === shown.title ? shown.caption : `${shown.title} · ${shown.caption}`}</span>
                   <em>Click to enlarge +</em>
                 </div>
               )}
