@@ -816,7 +816,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .lb.is-built .lb__tag b { opacity: 1; }
 .lb.is-built .lb__tag i { transform: none; }
 .lb:not(.is-built) .lb__ink, .lb:not(.is-built) .lb__tag b, .lb:not(.is-built) .lb__tag i { transition-duration: .15s; transition-delay: 0s; } /* reset quickly, off screen */
-@media (prefers-reduced-motion: reduce) { .lb__ink, .lb__tag b, .lb__tag i, .lb__stage { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { .lb__stage { transform: none; transition: none; } } /* the drawing still plays: owner's request */
 .footer__base { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 76px 0 0; border-top: 1px solid var(--line); font: 400 12px var(--mono); color: var(--muted); letter-spacing: .04em; }
 .footer__base a:hover { color: var(--oak); }
 .footer__top-link i { display: inline-grid; place-items: center; width: 28px; height: 28px; margin-left: 8px; border-radius: 50%; border: 1px solid var(--line); font-style: normal; transition: background .3s, color .3s, transform .4s var(--ease); }

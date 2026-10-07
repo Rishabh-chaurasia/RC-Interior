@@ -17,7 +17,7 @@ const step = ([d, dur]) => ({ '--d': `${d}s`, '--dur': `${dur}s` });
 /**
  * The RC Interior logo, drawn line by line when it scrolls into view: the house outline, the floor
  * line, the chair, R, C and then INTERIOR letter by letter, each filling in once traced. It redraws
- * whenever the visitor comes back to it, and tilts gently in 3D with the pointer once drawn.
+ * whenever the visitor comes back to it, also with reduced motion on, and tilts gently in 3D with the pointer once drawn.
  */
 export default function LogoBuild() {
   const ref = useRef(null);
@@ -25,7 +25,7 @@ export default function LogoBuild() {
   const [built, setBuilt] = useState(false);
 
   useEffect(() => {
-    if (prefersReducedMotion()) { setBuilt(true); return; }
+    // played even with the OS "reduce motion" setting on (owner's request): it only traces and fades, nothing moves
     const io = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && e.intersectionRatio > 0.85) setBuilt(true); // start only once it is in full view
       else if (!e.isIntersecting) setBuilt(false); // fully out of view: ready to draw again
@@ -35,7 +35,7 @@ export default function LogoBuild() {
   }, []);
 
   const tilt = e => {
-    if (!built || e.pointerType !== 'mouse') return;
+    if (!built || e.pointerType !== 'mouse' || prefersReducedMotion()) return;
     const r = ref.current.getBoundingClientRect();
     const nx = (e.clientX - r.left) / r.width - 0.5, ny = (e.clientY - r.top) / r.height - 0.5;
     stage.current.style.setProperty('--ry', `${(nx * 14).toFixed(2)}deg`);
