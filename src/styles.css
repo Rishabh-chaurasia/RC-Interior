@@ -1003,6 +1003,48 @@ html:not(.js) .hero .eyebrow, html:not(.js) .hero__bottom { opacity: 1; transfor
   .footer__grid { grid-template-columns: 1fr; gap: 28px; }
   .footer__base { padding-right: 64px; }
 }
+/* ---------- phones: a shorter page ----------
+   Values become a swipeable row, "Why it matters" folds into the Values section, Process is a compact list. */
+.values__why { display: none; }
+@media (max-width: 760px) {
+  .vtl { display: flex; gap: 14px; max-width: none; margin: 0 calc(var(--gutter) * -1); padding: 4px var(--gutter) 18px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; overscroll-behavior-x: contain; }
+  .vtl::-webkit-scrollbar { display: none; }
+  .vtl::before, .vtl__num, .vtl__badge { display: none; }
+  .vtl__row, .vtl__row.is-flip { flex: 0 0 84%; scroll-snap-align: start; display: flex; flex-direction: column; border-radius: 22px; overflow: hidden; background: var(--surface); border: 1px solid rgba(var(--ink-rgb),.07); box-shadow: 0 18px 40px -22px rgba(var(--shadow),.25); }
+  .vtl__row .vtl__media { order: -1; }
+  .vtl .reveal { opacity: 1; transform: none; } /* cards off to the side are swiped in, not scrolled in */
+  .vtl__media figure { aspect-ratio: 16 / 9; border-radius: 0; box-shadow: none; }
+  .vtl__card { flex: 1; border: 0; border-radius: 0; box-shadow: none; padding: 18px 18px 20px; gap: 8px; align-content: start; }
+  .vtl__card h3 { font-size: 22px; margin: 0; }
+  .vtl__card > p { font-size: 14px; }
+  .vtl__card ul { gap: 6px; margin-top: 2px; }
+  .vtl__card li { font-size: 13px; gap: 8px; }
+  .vtl__card li svg { width: 16px; height: 16px; }
+
+  .why { display: none; }
+  .values__why { display: grid; gap: 14px; margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--line); }
+  .values__why h3 { margin: 0; display: grid; gap: 12px; font: 400 clamp(30px, 8.5vw, 38px)/1.02 var(--serif); letter-spacing: -.02em; }
+  .values__why h3 .kicker { margin: 0; }
+  .values__why h3 em { color: var(--oak); }
+  .values__stat { margin: 0; display: flex; align-items: center; gap: 14px; font-size: 14px; color: var(--ink-2); }
+  .values__stat b { flex: none; font: 400 56px/.8 var(--serif); letter-spacing: -.03em; color: var(--lime-deep); }
+  .values__swipe { list-style: none; display: flex; gap: 12px; margin: 4px calc(var(--gutter) * -1) 0; padding: 0 var(--gutter) 6px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gutter); scrollbar-width: none; overscroll-behavior-x: contain; }
+  .values__swipe::-webkit-scrollbar { display: none; }
+  .values__swipe li { position: relative; flex: 0 0 72%; aspect-ratio: 4 / 3.4; scroll-snap-align: start; border-radius: 18px; overflow: hidden; background: var(--sand); display: flex; flex-direction: column; justify-content: flex-end; gap: 8px; padding: 16px; color: #fff; }
+  .values__swipe img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+  .values__swipe li { isolation: isolate; }
+  .values__swipe li::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(20,16,13,.78), rgba(20,16,13,0) 60%); }
+  .values__swipe span { align-self: flex-start; background: var(--lime); color: var(--on-lime); font: 500 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; }
+  .values__swipe p { margin: 0; font: 400 21px/1.08 var(--serif); }
+
+  .steps { grid-template-columns: 1fr; row-gap: 0; }
+  .step { grid-template-columns: 44px 1fr; column-gap: 14px; row-gap: 2px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .step:last-child { border-bottom: 0; }
+  .step__dot { grid-row: span 2; width: 44px; height: 44px; font-size: 18px; }
+  .step h3 { margin: 0; font-size: 24px; align-self: end; }
+  .step p { font-size: 14px; max-width: none; }
+}
+
 /* Reduced motion (OS "animation effects" off): no movement, no zooms, no looping motion.
    Colour changes and gentle opacity fades are kept so the page still feels alive. */
 @media (prefers-reduced-motion: reduce) {

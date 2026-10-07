@@ -21,13 +21,16 @@ export function setupMotion() {
   const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
   const cleanups = [];
   const on = (el, type, fn, opts) => { el.addEventListener(type, fn, opts); cleanups.push(() => el.removeEventListener(type, fn, opts)); };
+  // Elements hidden at this screen size (e.g. the full "Why" section on phones) get no scroll
+  // animation: a once-only trigger on a display:none element fires inside ScrollTrigger.refresh and breaks it.
+  const shown = sel => gsap.utils.toArray(sel).filter(el => el.getClientRects().length);
 
   if (reduce) {
     // Reduced motion: nothing moves, but headings and images still fade in gently
     const soft = gsap.context(() => {
       gsap.set('.progress', { display: 'none' });
       // (.reveal elements already fade in via CSS, so they're left alone here)
-      gsap.utils.toArray('[data-split], [data-reveal]:not(.reveal)').forEach(el => {
+      shown('[data-split], [data-reveal]:not(.reveal)').forEach(el => {
         gsap.set(el, { visibility: 'visible' });
         gsap.from(el, { opacity: 0, duration: 0.9, ease: 'power1.out', scrollTrigger: { trigger: el, start: 'top 90%', once: true } });
       });
@@ -44,6 +47,7 @@ export function setupMotion() {
     if (dead) return;
     ctx.add(() => {
       document.querySelectorAll('[data-split]').forEach(el => {
+        if (!el.getClientRects().length) { gsap.set(el, { visibility: 'visible' }); return; }
         const hero = el.dataset.split === 'hero';
         const split = SplitText.create(el, splitOpts);
         splits.push(split);
@@ -75,7 +79,7 @@ export function setupMotion() {
   const ctx = gsap.context(() => {
 
     /* ---------- curtain image reveals ---------- */
-    gsap.utils.toArray('[data-reveal]').forEach(el => {
+    shown('[data-reveal]').forEach(el => {
       const r = el.dataset.radius || '22px';
       const img = el.dataset.reveal === 'noimg' ? null : el.querySelector('img:not([data-parallax])');
       const tl = gsap.timeline({ delay: +el.dataset.delay || 0, scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
@@ -95,7 +99,7 @@ export function setupMotion() {
         scrollTrigger: { trigger: '.work', start: 'top 65%', once: true } });
 
     /* ---------- scroll parallax + zoom-out ---------- */
-    gsap.utils.toArray('img[data-parallax]').forEach(img => {
+    shown('img[data-parallax]').forEach(img => {
       const s = +img.dataset.parallax || 8;
       gsap.fromTo(img, { yPercent: -s / 2, scale: 1.18 }, {
         yPercent: s / 2, scale: 1.04, ease: 'none',
@@ -105,7 +109,7 @@ export function setupMotion() {
 
     /* ---------- 3D flip-in: cards swing up from a tilted plane as they enter ----------
        (uses the `rotate`/`translate` CSS properties so it never fights the fade-up transform) */
-    gsap.utils.toArray('.bento .card, .why__cards .wcard, .team__grid .member, .swatches .swatch, .steps .step').forEach((el, i) => {
+    shown('.bento .card, .why__cards .wcard, .team__grid .member, .swatches .swatch, .steps .step').forEach((el, i) => {
       const st = { a: 60, z: -160 };
       const apply = () => {
         el.style.rotate = st.a > 0.05 ? `1 0 0 ${st.a.toFixed(2)}deg` : '';
