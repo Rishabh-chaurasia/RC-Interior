@@ -90,13 +90,14 @@ function EnquiryForm() {
 export default function Contact() {
   return (
     <section className="contact section" id="contact">
+      <p className="kicker contact__kicker">Contact us</p>
       <h2 className="contact__title" data-split>Let’s <em>discuss!</em></h2>
       <div className="contact__grid">
         <EnquiryForm />
         <aside className="info">
           <div className="info__block">
             <p className="kicker">Call</p>
-            {contact.phones.map(p => <a key={p.href} href={p.href}>{p.label} <small>· {p.type}</small></a>)}
+            {contact.phones.map(p => <a key={p.href} href={p.href}>{p.label} <small>{p.type}</small></a>)}
           </div>
           <div className="info__block">
             <p className="kicker">Write</p>

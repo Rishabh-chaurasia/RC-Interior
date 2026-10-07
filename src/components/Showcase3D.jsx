@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { STOPS, stopFromProgress } from './3d/stops.js';
 import { useOnScroll, useScrollApi, prefersReducedMotion } from '../hooks/scroll.jsx';
 import { img } from '../data/content.js';
-import { Btn } from './ui.jsx';
+import { Btn, SectionHead } from './ui.jsx';
 
 const LAST = STOPS.length - 1;
 const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
@@ -12,7 +12,43 @@ const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a
  * the viewport; scroll progress "walks" the camera into each photo (a zoom-through with a 3D tilt)
  * and on into the next room. Captions, step list and progress bar follow the same progress.
  */
+const PHONE = '(max-width: 760px)';
+
+/** Phones get a swipeable row of the same stops instead: no pinned, many-screens-tall scroll to get stuck in. */
 export default function Showcase3D() {
+  const [phone, setPhone] = useState(() => matchMedia(PHONE).matches);
+  useEffect(() => {
+    const mq = matchMedia(PHONE);
+    const on = () => setPhone(mq.matches);
+    mq.addEventListener('change', on);
+    return () => mq.removeEventListener('change', on);
+  }, []);
+  return phone ? <WalkSwipe /> : <WalkPinned />;
+}
+
+function WalkSwipe() {
+  return (
+    <section className="walk-m section" id="walkthrough">
+      <SectionHead kicker="Walk through our work">Step inside, <em>room by room.</em></SectionHead>
+      <ol className="walk-m__row" aria-label="Walkthrough stops">
+        {STOPS.map((st, i) => (
+          <li key={st.key} className="walk-m__card">
+            <figure>
+              <img src={img(st.image)} alt={st.title} style={{ objectPosition: st.focus }} loading="lazy" decoding="async" />
+              <figcaption>{String(i + 1).padStart(2, '0')} / {String(STOPS.length).padStart(2, '0')} · {st.label}</figcaption>
+            </figure>
+            <h3>{st.title}</h3>
+            <p>{i === 0 ? 'Swipe to walk through an office the way your visitors will: lobby, reception, workfloor, cabins, boardroom and café.' : st.text}</p>
+            {st.cta && <Btn href="#contact" variant="lime">Plan my office</Btn>}
+          </li>
+        ))}
+      </ol>
+      <p className="walk-m__hint">Swipe <i aria-hidden="true">→</i></p>
+    </section>
+  );
+}
+
+function WalkPinned() {
   const section = useRef(null);
   const stage = useRef(null);
   const layers = useRef([]);
@@ -98,6 +134,11 @@ export default function Showcase3D() {
     const total = el.offsetHeight - innerHeight;
     scroll.scrollTo(top + (k / LAST) * total + 2);
   }, [scroll]);
+  // leave the walkthrough straight away, to the section after it
+  const skip = useCallback(() => {
+    const el = section.current;
+    scroll.scrollTo(el.getBoundingClientRect().top + scrollY + el.offsetHeight);
+  }, [scroll]);
 
   const current = STOPS[stop.index];
 
@@ -137,6 +178,7 @@ export default function Showcase3D() {
           ))}
         </ol>
 
+        <button type="button" className="walk__skip" onClick={skip}>Skip walkthrough <i aria-hidden="true">↓</i></button>
         <p className={`walk__hint ${stop.start ? 'is-on' : ''}`}>Scroll to walk through <i aria-hidden="true">↓</i></p>
         <div className="walk__bar" aria-hidden="true"><span ref={bar} /></div>
       </div>

@@ -41,7 +41,7 @@ export const clientLogos = [
   { name: 'SBI Card', file: 'sbicard.png' },
   { name: 'ICRA', file: 'icra.png' },
   { name: 'Daikin', file: 'daikin.png' },
-  { name: 'TCS', file: 'tcs.png' },
+  { name: 'TCS', file: 'tcs.svg' },
   { name: 'POSCO', file: 'posco.png', bg: '#00588a' },
   { name: 'Varun Beverages', file: 'varun.png' },
   { name: 'AGC Asahi Glass', file: 'agc.png' },
@@ -61,17 +61,17 @@ export const statement = [
 
 export const stats = [
   { text: 'Years building workspaces across Delhi NCR', value: 19, suffix: '+' },
-  { text: 'Enterprise clients, from Google to SBI Card', value: 30, suffix: '+' },
-  { text: 'Specialists in design, 3D, site and MEP', value: 8, suffix: '' },
+  { text: 'Enterprise clients, from Google, Samsung and Sony to ICRA and Bloom Hotels', value: 30, suffix: '+' },
+  { text: 'Specialists in projects, design, 3D, layout, MEP and R&M', value: 8, suffix: '' },
 ];
 
 export const pillars = [
-  { n: 'A', title: 'Who we are', text: 'An interior solutions company rethinking workplaces with new ideas and careful execution, working across Delhi NCR.' },
+  { n: 'A', title: 'Who are we', text: 'An interior solutions company rethinking workplaces with new ideas, careful execution and committed timelines, working across Delhi NCR.' },
   { n: 'B', title: 'Vision', text: 'To set the standard for modern, sustainable design that inspires people and gives businesses room to grow.' },
   { n: 'C', title: 'Mission', text: 'World-class interiors through creativity, technology and smooth execution, so every project carries your brand and works on day one.' },
 ];
 
-export const expertise = ['Corporate', 'Retail', 'Turnkey', 'Renovation', 'R&M'];
+export const expertise = ['Corporate', 'Retail', 'Turnkey', 'Renovation', 'MEP', 'R&M'];
 
 // tone picks the accent colour (see .value--* in styles.css); icon is drawn in Values.jsx
 export const values = [
@@ -105,9 +105,11 @@ export const services = [
   {
     icon: 'plan', title: 'Design & Planning', wide: true, image: 'spaces/sm/cowork-1.jpg',
     text: 'We map how your teams actually work, then design around it, down to the last light fitting.',
-    chips: ['Space planning', 'Concept design', '3D visuals', 'Lighting plans', 'Colour & material', 'Branding elements'],
+    chips: ['Space planning', 'Concept design', 'Lighting plans', '3D visuals', 'Layout designing', 'Execution plan', 'Material shortlisting', 'Colour finalisation', 'Branding elements', 'Delivery timeline', 'Project submission'],
   },
-  { icon: 'key', title: 'Turnkey Projects', image: 'spaces/sm/workstation-1.jpg', text: 'One contract, one team, one handover date. Civil, services, furniture and finishing.' },
+  // tour: the card's background walks through the office, reception first (keys of `spaces` below, in order)
+  { icon: 'key', title: 'Turnkey Projects', image: 'spaces/sm/workstation-1.jpg', text: 'One contract, one team, one committed timeline. Civil, electrical, plumbing, flooring, structures, partitions, installation, painting, furniture placement and finishing.',
+    tour: ['reception', 'entrance', 'workstation', 'cabin', 'meeting', 'boardroom', 'cowork', 'lounge', 'pantry'] },
   { icon: 'shield', title: 'Electrical, HVAC & Fire', image: 'spaces/sm/meeting-4.jpg', text: 'The work behind the walls, done to code and fully documented.' },
   { icon: 'hammer', title: 'Renovation & Refurbishment', image: 'spaces/sm/entrance-2.jpg', text: 'Refresh a reception or rebuild a floor while your business keeps running.' },
   { icon: 'wrench', title: 'Repair & Maintenance', image: 'spaces/sm/pantry-2.jpg', text: 'R&M contracts that keep your office looking like handover day.' },
@@ -230,7 +232,7 @@ export const clients = ['Google', 'Samsung', 'Sony', 'Samsung SDS', 'Tech Mahind
 // so its cell shows the Cream Bell mark (white on the blue of its packs).
 export const clientLogoMap = {
   'Google': { file: 'google.svg' }, 'Samsung': { file: 'samsung.svg' }, 'Sony': { file: 'sony.png', bg: '#000000' },
-  'Samsung SDS': { file: 'samsungsds.png' }, 'Tech Mahindra': { file: 'techmahindra.svg' }, 'TCS': { file: 'tcs.png' },
+  'Samsung SDS': { file: 'samsungsds.png' }, 'Tech Mahindra': { file: 'techmahindra.svg' }, 'TCS': { file: 'tcs.svg' },
   'SBI Card': { file: 'sbicard.png' }, 'ICRA Ltd': { file: 'icra.png' }, 'Home Credit': { file: 'homecredit.png', bg: '#cf0e2d' },
   'Ecom Express': { file: 'ecom.png' }, 'POSCO India': { file: 'posco.png', bg: '#00588a' }, 'Varun Beverages': { file: 'varun.png' },
   'Asahi Glass': { file: 'agc.png' }, 'Daikin': { file: 'daikin.png' }, 'AECOM': { file: 'aecom.png' },

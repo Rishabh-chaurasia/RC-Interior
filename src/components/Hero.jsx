@@ -36,7 +36,7 @@ export default function Hero({ ready }) {
       <div className="hero__shade" aria-hidden="true" />
 
       <div className="hero__content">
-        <p className="eyebrow"><span className="dot" />Commercial interiors · Gurugram · Since 2007</p>
+        <p className="eyebrow"><span className="dot" />Commercial interiors · Since 2007</p>
         {/* letters are split and animated by hooks/motion.js once the loader lifts */}
         <h1 className="hero__title" data-split="hero">
           <span>Your space.</span>
