@@ -239,7 +239,7 @@ export const clientLogoMap = {
   'Max Healthcare': { file: 'max.png' }, 'Fluor Daniel India': { file: 'fluor.png', bg: '#004681' }, 'CBRE': { file: 'cbre.png', bg: '#003f2d' },
   'Jakson Ltd': { file: 'jakson.png' }, 'ISTD': { file: 'istd.png', w: '96%', h: '100%', pad: '6px' }, 'BPTP': { file: 'bptp.png' }, 'JK Cement': { file: 'jkcement.png' },
   'Tata Technologies': { file: 'tatatech.png' }, 'UPS Supply Chain': { file: 'ups.png' }, 'RJ Corp': { file: 'rjcorp.png' },
-  'Gabriel India': { file: 'gabriel.png', w: '84%' }, 'CB&I': { file: 'cbi.png', h: '76%' },
+  'Gabriel India': { file: 'gabriel.png', w: '84%' }, 'CB&I': { file: 'cbi.png', h: '76%' }, 'McDermott': { file: 'mcdermott.png', h: '80%' },
   'Devyani Food': { file: 'creambell.png', bg: '#2179b6', h: '88%' }, 'Bloom Hotels': { file: 'bloom.svg', bg: '#231f20' },
 };
 
