@@ -6,13 +6,12 @@ import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { asset, usePBR, FINISHES } from './materials.js';
 import { mat, Model, Desk, Monitor, Sofa, Rug, Books, ArtFrame, TV } from './Room.jsx';
-import { WORDMARK_WIDTH, RC_PATH, INTERIOR_PATH, HOUSE, FLOOR, CHAIR_SOLID, CHAIR_LINES, CASTERS } from '../logoPaths.js';
 
 /*
   A 30 m × 18 m corporate floor (about 5,800 sq ft), built like Room.jsx but at company scale.
   Axes: x = window wall(-15) → right(+15), z = back wall(-9) → front(+9), y = up. Units are metres.
   Zones: lounge + café by the windows (left), 48-seat workfloor (centre), huddle room, 3 cabins and
-  phone booths along the back wall, 10-seat boardroom (back right), reception with logo wall (front right).
+  phone booths along the back wall, 10-seat boardroom (back right), reception with a feature wall (front right).
   Repeated furniture (desks, task chairs, dining chairs, plants…) is instanced to keep draw calls low.
 */
 
@@ -254,31 +253,6 @@ function FinishPanel({ wall, width, position, height = H, depth = 0.14 }) {
   );
 }
 
-/** The RC Interior logo as a sign, drawn from the same paths as the page logo. */
-function LogoSign({ position, width, dark, evening }) {
-  const tex = useMemo(() => {
-    const k = 2048 / WORDMARK_WIDTH;
-    const c = document.createElement('canvas'); c.width = 2048; c.height = Math.ceil(106 * k);
-    const g = c.getContext('2d');
-    g.scale(k, k);
-    const ink = dark ? '#f2ede5' : '#1a1512';
-    g.fillStyle = '#cddc2f'; g.fill(new Path2D(HOUSE));
-    g.strokeStyle = '#cddc2f'; g.lineWidth = 1.8; g.stroke(new Path2D(FLOOR));
-    g.fillStyle = ink; g.fill(new Path2D(CHAIR_SOLID));
-    g.strokeStyle = ink; g.lineWidth = 1.7; g.lineCap = g.lineJoin = 'round'; g.stroke(new Path2D(CHAIR_LINES));
-    CASTERS.forEach(([x, y]) => { g.beginPath(); g.arc(x, y, 1.3, 0, Math.PI * 2); g.fill(); });
-    g.fill(new Path2D(RC_PATH));
-    g.fillStyle = dark ? '#cddc2f' : '#a3b21a'; g.fill(new Path2D(INTERIOR_PATH));
-    const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t;
-  }, [dark]);
-  return (
-    <mesh position={position}>
-      <planeGeometry args={[width, (width * 106) / WORDMARK_WIDTH]} />
-      <meshStandardMaterial map={tex} emissiveMap={tex} emissive="#ffffff" emissiveIntensity={evening ? 0.55 : 0.12} transparent alphaTest={0.4} roughness={0.35} metalness={0.2} />
-    </mesh>
-  );
-}
-
 /* ---------- zones ---------- */
 
 function Reception({ wall, fabric, evening }) {
@@ -286,9 +260,8 @@ function Reception({ wall, fabric, evening }) {
   const stone = usePBR('marble_01', [2, 0.4], { roughness: 0.4 });
   return (
     <group>
-      {/* free-standing logo wall in the chosen finish */}
+      {/* free-standing feature wall in the chosen finish */}
       <FinishPanel wall={wall} width={5.8} position={[11.5, 0, -1.3]} />
-      <Suspense fallback={null}><LogoSign position={[11.5, 1.95, -1.3 + 0.14]} width={3.8} dark={wall === 'walnut_dark' || wall === 'marble_01'} evening={evening} /></Suspense>
 
       {/* reception counter: walnut body, stone top, lime LED line */}
       <group position={[11.5, 0, 1.7]}>
