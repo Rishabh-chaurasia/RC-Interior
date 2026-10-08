@@ -51,6 +51,19 @@ export const clientLogos = [
   { name: 'JK Cement', file: 'jkcement.png' },
   { name: 'Home Credit', file: 'homecredit.png', bg: '#cf0e2d' },
   { name: 'Ecom Express', file: 'ecom.png' },
+  { name: 'Samsung SDS', file: 'samsungsds.png' },
+  { name: 'Fluor Daniel India', file: 'fluor.png', bg: '#004681' },
+  { name: 'Jakson Ltd', file: 'jakson.png' },
+  { name: 'ISTD', file: 'istd.png' },
+  { name: 'BPTP', file: 'bptp.png' },
+  { name: 'Tata Technologies', file: 'tatatech.png' },
+  { name: 'UPS Supply Chain', file: 'ups.png' },
+  { name: 'RJ Corp', file: 'rjcorp.png' },
+  { name: 'Gabriel India', file: 'gabriel.png' },
+  { name: 'CB&I', file: 'cbi.png' },
+  { name: 'McDermott', file: 'mcdermott.png' },
+  { name: 'Devyani Food', file: 'creambell.png', bg: '#2179b6' },
+  { name: 'Bloom Hotels', file: 'bloom.svg', bg: '#231f20' },
 ];
 
 export const statement = [
