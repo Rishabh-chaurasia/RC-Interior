@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.rcinterior.co.in/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image><image:loc>https://www.rcinterior.co.in/og-image.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/hero.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/spaces/boardroom-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/spaces/cabin-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/spaces/cowork-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/spaces/entrance-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/spaces/lounge-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/spaces/meeting-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/spaces/pantry-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/spaces/reception-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/spaces/workstation-1.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/01_reception.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/02_reception_waiting.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/03_boardroom.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/04_boardroom_executive.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/05_meeting_room_large.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/06_meeting_room_small.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/07_meeting_room_glass.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/08_open_workstations.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/09_workstations_compact.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/10_workstations_premium.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/11_founder_cabin.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/12_director_cabin.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/13_manager_cabin.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/14_collaboration_zone.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/15_breakout_lounge.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/16_phone_booths.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/17_focus_room.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/18_training_room.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/19_auditorium.jpg</image:loc></image:image>
+    <image:image><image:loc>https://www.rcinterior.co.in/img/client-work/20_pantry.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.rcinterior.co.in/llms.txt</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+</urlset>
