@@ -21,7 +21,7 @@ export function ClientWall({ onOpenCase }) {
           const lg = clientLogoMap[c];
           // hovering a name reveals the company's logo; w/h let very wide or square marks use more of the cell
           const logo = lg && (
-            <span className="wall__logo" style={{ background: lg.bg, '--logo-w': lg.w, '--logo-h': lg.h }} aria-hidden="true">
+            <span className="wall__logo" style={{ background: lg.bg, '--logo-w': lg.w, '--logo-h': lg.h, '--logo-pad': lg.pad }} aria-hidden="true">
               <img src={img(`logos/${lg.file}`)} alt="" loading="lazy" draggable="false" />
             </span>
           );

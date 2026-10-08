@@ -51,6 +51,19 @@ export const clientLogos = [
   { name: 'JK Cement', file: 'jkcement.png' },
   { name: 'Home Credit', file: 'homecredit.png', bg: '#cf0e2d' },
   { name: 'Ecom Express', file: 'ecom.png' },
+  { name: 'Samsung SDS', file: 'samsungsds.png' },
+  { name: 'Fluor Daniel India', file: 'fluor.png', bg: '#004681' },
+  { name: 'Jakson Ltd', file: 'jakson.png' },
+  { name: 'ISTD', file: 'istd.png' },
+  { name: 'BPTP', file: 'bptp.png' },
+  { name: 'Tata Technologies', file: 'tatatech.png' },
+  { name: 'UPS Supply Chain', file: 'ups.png' },
+  { name: 'RJ Corp', file: 'rjcorp.png' },
+  { name: 'Gabriel India', file: 'gabriel.png' },
+  { name: 'CB&I', file: 'cbi.png' },
+  { name: 'McDermott', file: 'mcdermott.png' },
+  { name: 'Devyani Food', file: 'creambell.png', bg: '#2179b6' },
+  { name: 'Bloom Hotels', file: 'bloom.svg', bg: '#231f20' },
 ];
 
 export const statement = [
@@ -224,7 +237,7 @@ export const testimonials = [
   { quote: 'The transformation of our corporate headquarters was remarkable. They optimised space, raised safety standards and created an inspiring place for our people.', name: 'Rajesh Yadav', company: 'Gabriel India' },
 ];
 
-export const clients = ['Google', 'Samsung', 'Sony', 'Samsung SDS', 'Tech Mahindra', 'TCS', 'SBI Card', 'ICRA Ltd', 'Home Credit', 'Ecom Express', 'POSCO India', 'Varun Beverages', 'Asahi Glass', 'Daikin', 'Gabriel India', 'AECOM', 'CB&I', 'Max Healthcare', 'Fluor Daniel', 'CBRE', 'Jakson Ltd', 'ISTD', 'BPTP', 'JK Cement', 'Devyani Food', 'Bloom Hotels', 'Tata Technologies', 'UPS Supply Chain', 'RJ Corp'];
+export const clients = ['Google', 'Samsung', 'Sony', 'Samsung SDS', 'Tech Mahindra', 'TCS', 'SBI Card', 'ICRA Ltd', 'Home Credit', 'Ecom Express', 'POSCO India', 'Varun Beverages', 'Asahi Glass Ltd', 'Daikin', 'Gabriel India', 'AECOM', 'CB&I', 'McDermott', 'Max Healthcare', 'Fluor Daniel India', 'CBRE', 'Jakson Ltd', 'ISTD', 'BPTP', 'JK Cement', 'Devyani Food', 'Bloom Hotels', 'Tata Technologies', 'UPS Supply Chain', 'RJ Corp'];
 
 // Logo shown when a client name in the grid is hovered (public/img/logos/). bg = the logo's own background;
 // w / h override the default max logo size (72% / 58% of the cell) for very wide or square marks.
@@ -235,11 +248,11 @@ export const clientLogoMap = {
   'Samsung SDS': { file: 'samsungsds.png' }, 'Tech Mahindra': { file: 'techmahindra.svg' }, 'TCS': { file: 'tcs.svg' },
   'SBI Card': { file: 'sbicard.png' }, 'ICRA Ltd': { file: 'icra.png' }, 'Home Credit': { file: 'homecredit.png', bg: '#cf0e2d' },
   'Ecom Express': { file: 'ecom.png' }, 'POSCO India': { file: 'posco.png', bg: '#00588a' }, 'Varun Beverages': { file: 'varun.png' },
-  'Asahi Glass': { file: 'agc.png' }, 'Daikin': { file: 'daikin.png' }, 'AECOM': { file: 'aecom.png' },
-  'Max Healthcare': { file: 'max.png' }, 'Fluor Daniel': { file: 'fluor.png', bg: '#004681' }, 'CBRE': { file: 'cbre.png', bg: '#003f2d' },
-  'Jakson Ltd': { file: 'jakson.png' }, 'ISTD': { file: 'istd.png' }, 'BPTP': { file: 'bptp.png' }, 'JK Cement': { file: 'jkcement.png' },
+  'Asahi Glass Ltd': { file: 'agc.png' }, 'Daikin': { file: 'daikin.png' }, 'AECOM': { file: 'aecom.png' },
+  'Max Healthcare': { file: 'max.png' }, 'Fluor Daniel India': { file: 'fluor.png', bg: '#004681' }, 'CBRE': { file: 'cbre.png', bg: '#003f2d' },
+  'Jakson Ltd': { file: 'jakson.png' }, 'ISTD': { file: 'istd.png', w: '96%', h: '100%', pad: '6px' }, 'BPTP': { file: 'bptp.png' }, 'JK Cement': { file: 'jkcement.png' },
   'Tata Technologies': { file: 'tatatech.png' }, 'UPS Supply Chain': { file: 'ups.png' }, 'RJ Corp': { file: 'rjcorp.png' },
-  'Gabriel India': { file: 'gabriel.png', w: '84%' }, 'CB&I': { file: 'cbi.png', h: '76%' },
+  'Gabriel India': { file: 'gabriel.png', w: '84%' }, 'CB&I': { file: 'cbi.png', h: '76%' }, 'McDermott': { file: 'mcdermott.png', h: '80%' },
   'Devyani Food': { file: 'creambell.png', bg: '#2179b6', h: '88%' }, 'Bloom Hotels': { file: 'bloom.svg', bg: '#231f20' },
 };
 
