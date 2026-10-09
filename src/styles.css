@@ -771,7 +771,7 @@ em { font-family: var(--serif); font-style: italic; font-weight: 400; }
 .cta__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 26px; }
 
 /* ---------- CONTACT ---------- */
-.contact__title { font: 400 64px/.95 var(--serif); letter-spacing: 0; margin: 0 0 20px; display: flex; flex-wrap: wrap; gap: 0 .22em; }
+.contact__title { font: 400 clamp(60px, 12vw, 200px)/.86 var(--serif); letter-spacing: 0; margin: 0 0 20px; display: flex; flex-wrap: wrap; gap: 0 .22em; }
 .contact__title em { color: var(--oak); }
 .contact__title .line:nth-child(2) > span { --d: .12s; }
 .contact { padding-top: 24px; padding-bottom: 24px; scroll-margin-top: 90px; }
@@ -1035,7 +1035,7 @@ html:not(.js) .hero .eyebrow, html:not(.js) .hero__bottom { opacity: 1; transfor
   .wall__grid { grid-template-columns: repeat(2, 1fr); }
   .wall__grid li { min-height: 80px; font-size: 19px; }
   .contact { padding-top: 24px; padding-bottom: 24px; }
-  .contact__title { font-size: 48px; margin-bottom: 18px; }
+  .contact__title { margin-bottom: 18px; }
   .contact__grid { gap: 20px; }
   .form { padding: 16px; }
   .form__row { gap: 12px; }
