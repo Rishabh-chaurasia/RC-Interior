@@ -77,7 +77,7 @@ function EnquiryForm() {
         <Field name="phone" label="Phone" type="tel" autoComplete="tel" required error={errors.phone} />
         <Field name="area" label="Area (sq ft)" inputMode="numeric" />
       </div>
-      <Field name="message" label="Anything else?" textarea rows={3} />
+      <Field name="message" label="Anything else?" textarea rows={2} />
       <div className="form__actions">
         <Btn type="submit">Send on WhatsApp</Btn>
         <button type="button" className="link-under" onClick={sendEmail}>or send by email</button>
