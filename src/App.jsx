@@ -45,6 +45,21 @@ function Site() {
     return setupMotion();
   }, [ready]);
 
+  // Restore contact deep links after the loader and scroll animations initialize.
+  useEffect(() => {
+    if (!ready || location.hash !== '#contact') return;
+    let cancelled = false;
+    let frame = 0;
+    document.fonts.ready.then(() => {
+      if (cancelled) return;
+      frame = requestAnimationFrame(() => {
+        const target = document.getElementById('contact');
+        if (target) scroll.scrollTo(target.getBoundingClientRect().top + window.scrollY - 90);
+      });
+    });
+    return () => { cancelled = true; cancelAnimationFrame(frame); };
+  }, [ready, scroll]);
+
   // Pause smooth scroll while the menu or lightbox covers the page
   useEffect(() => {
     if (menuOpen || lightbox) scroll.stop(); else scroll.start();
