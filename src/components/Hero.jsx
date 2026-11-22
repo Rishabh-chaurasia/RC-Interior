@@ -45,7 +45,7 @@ export default function Hero({ ready }) {
         </h1>
         <div className="hero__bottom">
           <div className="hero__left">
-            <p className="hero__lede">Since 2007, RC Interior has designed and built commercial workspaces across Delhi NCR — from first sketch and 3D visualisation to civil work, MEP and final handover, all under one roof.</p>
+            <p className="hero__lede">Since 2006, RC Interior has designed and built commercial workspaces across Delhi NCR — from first sketch and 3D visualisation to civil work, MEP and final handover, all under one roof.</p>
             <div className="hero__actions">
               <Btn href="#contact" variant="lime">Book a site visit</Btn>
               <a href="#work" className="link-under">See our work</a>
