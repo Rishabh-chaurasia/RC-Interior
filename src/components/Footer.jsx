@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="footer__brand">
           <Logo className="footer__logo" tagline />
           <p className="footer__tag">Small change, <em>big differences.</em></p>
-          <p className="footer__since">Designing and building workplaces across Delhi NCR since 2007.</p>
+          <p className="footer__since">Designing and building workplaces across Delhi NCR since 2006.</p>
         </div>
 
         <nav className="footer__col" aria-label="Footer">
