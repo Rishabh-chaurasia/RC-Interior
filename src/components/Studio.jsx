@@ -48,7 +48,7 @@ export default function Studio() {
       <div className="studio__grid">
         <figure className="studio__img" data-reveal>
           <ParallaxImg src={img('spaces/entrance-5.jpg')} alt="Lift lobby with a green wall and lounge chair" loading="lazy" />
-          <figcaption>Est. 2007 · Sikandarpur, Gurugram</figcaption>
+          <figcaption>Est. 2006 · Gurugram</figcaption>
         </figure>
         <div className="studio__cols">
           {pillars.map(p => (
